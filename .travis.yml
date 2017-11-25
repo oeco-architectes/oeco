@@ -17,6 +17,8 @@ script:
   - composer e2e
   - killall chromedriver-linux
   - killall php
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 cache:
   directories:
     - $HOME/.composer/cache
