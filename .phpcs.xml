@@ -9,6 +9,7 @@
   <exclude-pattern>public/index.php</exclude-pattern>
 
   <rule ref="PSR1"/>
+  <rule ref="PSR2"/>
 
   <rule ref="PSR1.Classes.ClassDeclaration">
     <exclude-pattern>database/migrations/*.php</exclude-pattern>
