@@ -62,7 +62,8 @@
             "@php artisan package:discover"
         ],
         "lint": [
-          "phpcs --extensions=php --standard=.phpcs.xml ."
+          "phpcs --extensions=php --standard=.phpcs.xml .",
+          "yarn run lint"
         ],
         "test": [
             "phpunit --colors=always"
