@@ -10,6 +10,9 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
   - yarn run development
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > cc-test-reporter
+  - chmod +x cc-test-reporter
+  - ./cc-test-reporter before-build
   - php artisan serve --env=testing &
 script:
   - composer lint
@@ -17,6 +20,9 @@ script:
   - composer e2e
   - killall chromedriver-linux
   - killall php
+after_script:
+  - ln -s coverage/clover.xml
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 cache:
