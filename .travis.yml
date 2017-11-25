@@ -1,0 +1,13 @@
+language: php
+php:
+  - 7.0
+before_install:
+  - git config core.safecrlf false
+install:
+  - travis_retry composer create-project --no-interaction --prefer-dist
+script:
+  - composer run test
+cache:
+  directories:
+    - $HOME/.composer/cache
+    - $HOME/.npm
