@@ -29,7 +29,7 @@ Development environment
 ### Installation
 
 ```bash
-composer install
+composer create-project
 ```
 
 ### Run tests
@@ -54,9 +54,10 @@ composer install --no-dev
 yarn run production
 ```
 
-### Serve configuration
+### Server configuration
 
-Serve `public/` directory using [Apache](https://www.apache.org/) with
+1. Create `.env` file (use `.env.production.example` as template).
+2. Serve `public/` directory using [Apache](https://www.apache.org/) with
 [PHP](http://php.net/) module enabled.
 
 
