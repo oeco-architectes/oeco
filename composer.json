@@ -49,7 +49,7 @@
     "scripts": {
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.development.example', '.env');\"",
-            "@php -r \"file_exists('.env.testing') || copy('.env.testing.example', '.env');\""
+            "@php -r \"file_exists('.env.testing') || copy('.env.testing.example', '.env.testing');\""
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate",
@@ -68,6 +68,9 @@
         ],
         "test": [
             "phpunit --colors=always"
+        ],
+        "e2e": [
+            "@php artisan dusk --colors=always"
         ]
     },
     "config": {

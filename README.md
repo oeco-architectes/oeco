@@ -39,6 +39,14 @@ composer lint
 composer test
 ```
 
+### Run end-to-end tests
+
+```bash
+yarn run development
+php artisan serve --port=9000
+composer e2e
+```
+
 ### Start a local server
 
 ```bash

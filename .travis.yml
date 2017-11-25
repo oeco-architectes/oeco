@@ -4,10 +4,19 @@ php:
 before_install:
   - git config core.safecrlf false
 install:
-  - travis_retry composer create-project --no-interaction --prefer-dist
+  - travis_retry composer create-project --no-interaction
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - ./vendor/laravel/dusk/bin/chromedriver-linux &
+  - yarn run development
+  - php artisan serve --port=9000 &
 script:
   - composer lint
   - composer test
+  - composer e2e
+  - killall chromedriver-linux
+  - killall php
 cache:
   directories:
     - $HOME/.composer/cache
