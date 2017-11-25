@@ -10,7 +10,7 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
   - yarn run development
-  - php artisan serve --port=9000 &
+  - php artisan serve --env=testing &
 script:
   - composer lint
   - composer test

@@ -43,7 +43,7 @@ composer test
 
 ```bash
 yarn run development
-php artisan serve --port=9000
+php artisan serve --env=testing
 composer e2e
 ```
 
