@@ -1,9 +1,17 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
-    "license": "MIT",
+    "name": "oeco-architectes/oeco",
+    "description": "Oeco Architectes wrbsite",
+    "keywords": ["oeco", "architecture", "website"],
+    "license": "proprietary",
     "type": "project",
+    "authors": [
+        {
+            "name": "Alex Mercier",
+            "email": "pro.alexandre.mercier@gmail.com",
+            "homepage": "https://amercier.com",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "php": ">=7.0.0",
         "fideloper/proxy": "~3.3",
@@ -46,6 +54,9 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover"
+        ],
+        "post-install-cmd": [
+            "yarn install"
         ]
     },
     "config": {
