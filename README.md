@@ -34,7 +34,10 @@ composer create-project
 
 ### Run tests
 
-Tests are not set up yet.
+```bash
+composer lint
+composer test
+```
 
 ### Start a local server
 
