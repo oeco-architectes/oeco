@@ -39,6 +39,14 @@ composer lint
 composer test
 ```
 
+### Run end-to-end tests
+
+```bash
+yarn run development
+php artisan serve --env=testing
+composer e2e
+```
+
 ### Start a local server
 
 ```bash
@@ -64,10 +72,10 @@ yarn run production
 [PHP](http://php.net/) module enabled.
 
 
-Continuous Integration
-----------------------
+Continuous Deployment
+---------------------
 
-Continuous Integration is not setup yet.
+Continuous Deployment is not setup yet.
 
 
 License
