@@ -19,6 +19,9 @@
         "laravel/tinker": "~1.0"
     },
     "require-dev": {
+        "amercier/webconsole-cli": "^0.1.3",
+        "axy/htpasswd-cli": "^0.1.1",
+        "dg/ftp-deployment": "^2.7",
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
         "laravel/dusk": "^2.0",
@@ -71,6 +74,47 @@
         ],
         "e2e": [
             "@php artisan dusk --colors=always"
+        ],
+        "migrate": [
+          "@php artisan down --no-interaction",
+          "@php artisan cache:clear --no-interaction",
+          "@php artisan config:cache --no-interaction",
+          "@php artisan migrate --force --no-interaction",
+          "@php artisan up --no-interaction"
+        ],
+        "remote": [
+          "webconsole -u \"$DEPLOY_WEBCONSOLE_USERNAME\" -p \"$DEPLOY_WEBCONSOLE_PASSWORD\" -P $DEPLOY_PATH $DEPLOY_WEBCONSOLE_URL"
+        ],
+        "set-env": [
+          "set_env() { [ -z \"$3\" ] && echo ERROR: missing \\'$4\\' environment variable >&2 && exit 1 || sed -i'' \"s/$2=.*/$2=$3/\" \"$1\"; }; set_env"
+        ],
+        "deploy": [
+          "@php artisan cache:clear",
+          "@php artisan config:clear",
+          "@php -r \"copy('.env.${DEPLOY_ENVIRONMENT}.example', '.env.${DEPLOY_ENVIRONMENT}');\"",
+          "@composer set-env .env.${DEPLOY_ENVIRONMENT} APP_KEY $DEPLOY_APP_KEY DEPLOY_APP_KEY",
+          "@composer set-env .env.${DEPLOY_ENVIRONMENT} DB_HOST $DEPLOY_DB_HOST DEPLOY_DB_HOST",
+          "@composer set-env .env.${DEPLOY_ENVIRONMENT} DB_PORT $DEPLOY_DB_PORT DEPLOY_DB_PORT",
+          "@composer set-env .env.${DEPLOY_ENVIRONMENT} DB_CONNECTION $DEPLOY_DB_CONNECTION DEPLOY_DB_CONNECTION",
+          "@composer set-env .env.${DEPLOY_ENVIRONMENT} DB_DATABASE $DEPLOY_DB_DATABASE DEPLOY_DB_DATABASE",
+          "@composer set-env .env.${DEPLOY_ENVIRONMENT} DB_USERNAME $DEPLOY_DB_USERNAME DEPLOY_DB_USERNAME",
+          "@composer set-env .env.${DEPLOY_ENVIRONMENT} DB_PASSWORD $DEPLOY_DB_PASSWORD DEPLOY_DB_PASSWORD",
+          "npm run production",
+          "deployment .deployment.php",
+          "@composer remote \"[[ -f composer.phar ]] || curl -s https://getcomposer.org/installer | ~/php\"",
+          "@composer remote \"~/php composer.phar install --no-dev\"",
+          "@composer remote \"~/php composer.phar migrate\""
+        ],
+        "deploy-staging": [
+            "axy-htpasswd -cb public/.htpasswd \"$DEPLOY_STAGING_USERNAME\" \"$DEPLOY_STAGING_PASSWORD\"",
+            "DEPLOY_PATH=staging DEPLOY_ENVIRONMENT=staging composer deploy",
+            "rm -rf public/.htpasswd",
+            "curl --fail --silent --show-error https://${DEPLOY_STAGING_USERNAME}:${DEPLOY_STAGING_PASSWORD}@staging.oeco-architectes.com/ >/dev/null"
+        ],
+        "deploy-production": [
+            "rm -rf public/.htpasswd",
+            "DEPLOY_PATH=www2 DEPLOY_ENVIRONMENT=production composer deploy",
+            "curl --fail --silent --show-error https://www2.oeco-architectes.com/ >/dev/null"
         ]
     },
     "config": {

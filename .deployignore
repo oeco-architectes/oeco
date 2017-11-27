@@ -1,0 +1,10 @@
+/coverage
+/node_modules
+/storage/framework/sessions/*
+!/storage/framework/sessions/.gitignore
+/temp
+/vendor
+/.*
+/cc-test-reporter
+*.sqlite
+*.log

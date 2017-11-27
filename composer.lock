@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c3ae4a76eb2353737f5997e3f1761da1",
+    "content-hash": "77d33efef88a2b525909b965d2c730eb",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2160,6 +2160,512 @@
     ],
     "packages-dev": [
         {
+            "name": "amercier/cli-helpers",
+            "version": "v1.4.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/amercier/php-cli-helpers.git",
+                "reference": "5767dd441960c0ed89b64ba72fb312bf8e217739"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/amercier/php-cli-helpers/zipball/5767dd441960c0ed89b64ba72fb312bf8e217739",
+                "reference": "5767dd441960c0ed89b64ba72fb312bf8e217739",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "^0.4.4",
+                "phpunit/phpunit": "^4.8",
+                "squizlabs/php_codesniffer": "^3.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Cli": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "src/"
+            ],
+            "license": [
+                "ISC"
+            ],
+            "description": "Utility classes to write PHP command-line scripts",
+            "homepage": "https://github.com/amercier/php-cli-helpers",
+            "keywords": [
+                "cli",
+                "command",
+                "command-line",
+                "helpers",
+                "line",
+                "utilities",
+                "utility"
+            ],
+            "time": "2017-11-15T21:10:18+00:00"
+        },
+        {
+            "name": "amercier/webconsole-cli",
+            "version": "v0.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/amercier/webconsole-cli.git",
+                "reference": "b4e0ae8f6e39773f6cb6afa5753d87e771d7cab5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/amercier/webconsole-cli/zipball/b4e0ae8f6e39773f6cb6afa5753d87e771d7cab5",
+                "reference": "b4e0ae8f6e39773f6cb6afa5753d87e771d7cab5",
+                "shasum": ""
+            },
+            "require": {
+                "amercier/cli-helpers": "^1.4",
+                "php": ">=5.3.2"
+            },
+            "bin": [
+                "bin/webconsole"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "ISC"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Mercier",
+                    "email": "pro.alexandre.mercier@gmail.com"
+                }
+            ],
+            "description": "Command-line interface for Nickolay Kovalev's Web Console",
+            "time": "2017-11-15T14:22:25+00:00"
+        },
+        {
+            "name": "axy/backtrace",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axypro/backtrace.git",
+                "reference": "2ab4b9bd49b1174fc9e767a53caf783da07c6bec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axypro/backtrace/zipball/2ab4b9bd49b1174fc9e767a53caf783da07c6bec",
+                "reference": "2ab4b9bd49b1174fc9e767a53caf783da07c6bec",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "axy\\backtrace\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oleg Grigoriev",
+                    "email": "go.vasac@gmail.com"
+                }
+            ],
+            "description": "Tracing in PHP",
+            "homepage": "https://github.com/axypro/backtrace",
+            "keywords": [
+                "Backtrace",
+                "debug",
+                "exception",
+                "trace"
+            ],
+            "time": "2015-12-05T12:44:09+00:00"
+        },
+        {
+            "name": "axy/binary",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axypro/binary.git",
+                "reference": "34bc6a8e927f6f72833122a5591407d2f9fba147"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axypro/binary/zipball/34bc6a8e927f6f72833122a5591407d2f9fba147",
+                "reference": "34bc6a8e927f6f72833122a5591407d2f9fba147",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "axy\\binary\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oleg Grigoriev",
+                    "email": "go.vasac@gmail.com"
+                }
+            ],
+            "description": "Working with binary strings",
+            "homepage": "https://github.com/axypro/binary",
+            "time": "2015-12-02T08:53:05+00:00"
+        },
+        {
+            "name": "axy/cli-bin",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axypro/cli-bin.git",
+                "reference": "48a53d3034a828eb24fe48dd76ae71c63102c11a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axypro/cli-bin/zipball/48a53d3034a828eb24fe48dd76ae71c63102c11a",
+                "reference": "48a53d3034a828eb24fe48dd76ae71c63102c11a",
+                "shasum": ""
+            },
+            "require": {
+                "axy/evil": "~0.1.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "axy\\cli\\bin\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oleg Grigoriev",
+                    "email": "go.vasac@gmail.com"
+                }
+            ],
+            "description": "Helper for creating console utilities",
+            "homepage": "https://github.com/axypro/cli-bin",
+            "time": "2015-12-03T07:42:59+00:00"
+        },
+        {
+            "name": "axy/crypt",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axypro/crypt.git",
+                "reference": "dc67b26447135615eb24c9c4108e1730cedb02e2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axypro/crypt/zipball/dc67b26447135615eb24c9c4108e1730cedb02e2",
+                "reference": "dc67b26447135615eb24c9c4108e1730cedb02e2",
+                "shasum": ""
+            },
+            "require": {
+                "axy/binary": "~0.1.0",
+                "axy/random": "~0.1.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "axy\\crypt\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oleg Grigoriev",
+                    "email": "go.vasac@gmail.com"
+                }
+            ],
+            "description": "Some crypt algorithms",
+            "homepage": "https://github.com/axypro/crypt",
+            "keywords": [
+                "APR_MD5",
+                "crypt",
+                "hash"
+            ],
+            "time": "2015-12-02T13:20:32+00:00"
+        },
+        {
+            "name": "axy/errors",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axypro/errors.git",
+                "reference": "4edb49d1a8791f09a6f603cfdf8449fa0edfe206"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axypro/errors/zipball/4edb49d1a8791f09a6f603cfdf8449fa0edfe206",
+                "reference": "4edb49d1a8791f09a6f603cfdf8449fa0edfe206",
+                "shasum": ""
+            },
+            "require": {
+                "axy/backtrace": "~1.0.2",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "axy\\errors\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oleg Grigoriev",
+                    "email": "go.vasac@gmail.com"
+                }
+            ],
+            "description": "Exceptions in PHP",
+            "homepage": "https://github.com/axypro/errors",
+            "keywords": [
+                "error",
+                "exception"
+            ],
+            "time": "2015-11-13T13:56:59+00:00"
+        },
+        {
+            "name": "axy/evil",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axypro/evil.git",
+                "reference": "fd7b8d674b4dd45ab66bc97c50fc4f992a48eb38"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axypro/evil/zipball/fd7b8d674b4dd45ab66bc97c50fc4f992a48eb38",
+                "reference": "fd7b8d674b4dd45ab66bc97c50fc4f992a48eb38",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "axy\\evil\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oleg Grigoriev",
+                    "email": "go.vasac@gmail.com"
+                }
+            ],
+            "description": "Necessary evil",
+            "homepage": "https://github.com/axypro/evil",
+            "time": "2015-11-10T11:05:41+00:00"
+        },
+        {
+            "name": "axy/htpasswd",
+            "version": "0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axypro/htpasswd.git",
+                "reference": "274ee1a64993cf52fb03d11d7281556d065b608b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axypro/htpasswd/zipball/274ee1a64993cf52fb03d11d7281556d065b608b",
+                "reference": "274ee1a64993cf52fb03d11d7281556d065b608b",
+                "shasum": ""
+            },
+            "require": {
+                "axy/crypt": "~0.1.1",
+                "axy/errors": "~1.0.4",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "axy\\htpasswd\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oleg Grigoriev",
+                    "email": "go.vasac@gmail.com"
+                }
+            ],
+            "description": "Working with htpasswd file",
+            "homepage": "https://github.com/axypro/htpasswd",
+            "time": "2015-12-03T09:18:57+00:00"
+        },
+        {
+            "name": "axy/htpasswd-cli",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axypro/htpasswd-cli.git",
+                "reference": "8236a3d666e38664099a6072db43dcaa8472687e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axypro/htpasswd-cli/zipball/8236a3d666e38664099a6072db43dcaa8472687e",
+                "reference": "8236a3d666e38664099a6072db43dcaa8472687e",
+                "shasum": ""
+            },
+            "require": {
+                "axy/cli-bin": "~0.1.0",
+                "axy/htpasswd": "0.*",
+                "php": ">=5.4.0"
+            },
+            "bin": [
+                "bin/axy-htpasswd"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "axy\\htpasswd\\cli\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oleg Grigoriev",
+                    "email": "go.vasac@gmail.com"
+                }
+            ],
+            "description": "Htpasswd CLI utility",
+            "homepage": "https://github.com/axypro/htpasswd-cli",
+            "keywords": [
+                "htpasswd"
+            ],
+            "time": "2015-12-03T11:12:09+00:00"
+        },
+        {
+            "name": "axy/random",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axypro/random.git",
+                "reference": "16cfacb9b848a1c21ccca33bb250897fec0ee17a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axypro/random/zipball/16cfacb9b848a1c21ccca33bb250897fec0ee17a",
+                "reference": "16cfacb9b848a1c21ccca33bb250897fec0ee17a",
+                "shasum": ""
+            },
+            "require": {
+                "axy/binary": "~0.1.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "axy\\random\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oleg Grigoriev",
+                    "email": "go.vasac@gmail.com"
+                }
+            ],
+            "description": "Generates pseudo-random",
+            "homepage": "https://github.com/axypro/random",
+            "keywords": [
+                "random"
+            ],
+            "time": "2015-12-02T12:13:41+00:00"
+        },
+        {
+            "name": "dg/ftp-deployment",
+            "version": "v2.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dg/ftp-deployment.git",
+                "reference": "89d0123008fc3b695af6881253013dc96ee49b7a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dg/ftp-deployment/zipball/89d0123008fc3b695af6881253013dc96ee49b7a",
+                "reference": "89d0123008fc3b695af6881253013dc96ee49b7a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-zlib": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "nette/tester": "~1.3"
+            },
+            "suggest": {
+                "ext-ftp": "to connect to ftp:// server",
+                "ext-json": "to preprocess CSS files via online service",
+                "ext-openssl": "to connect to ftps:// server and preprocess CSS files",
+                "ext-ssh2": "to connect to sftp:// server"
+            },
+            "bin": [
+                "deployment"
+            ],
+            "type": "project",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0",
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https://davidgrudl.com"
+                }
+            ],
+            "description": "A tool for automated deployment of web applications to an FTP server.",
+            "homepage": "https://github.com/dg/ftp-deployment",
+            "keywords": [
+                "deployment",
+                "ftp",
+                "ssh"
+            ],
+            "time": "2016-12-22T20:37:08+00:00"
+        },
+        {
             "name": "doctrine/instantiator",
             "version": "1.0.5",
             "source": {
@@ -2911,16 +3417,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "5.2.3",
+            "version": "5.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "8e1d2397d8adf59a3f12b2878a3aaa66d1ab189d"
+                "reference": "033ec97498cf530cc1be4199264cad568b19be26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/8e1d2397d8adf59a3f12b2878a3aaa66d1ab189d",
-                "reference": "8e1d2397d8adf59a3f12b2878a3aaa66d1ab189d",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/033ec97498cf530cc1be4199264cad568b19be26",
+                "reference": "033ec97498cf530cc1be4199264cad568b19be26",
                 "shasum": ""
             },
             "require": {
@@ -2929,7 +3435,7 @@
                 "php": "^7.0",
                 "phpunit/php-file-iterator": "^1.4.2",
                 "phpunit/php-text-template": "^1.2.1",
-                "phpunit/php-token-stream": "^2.0",
+                "phpunit/php-token-stream": "^2.0.1",
                 "sebastian/code-unit-reverse-lookup": "^1.0.1",
                 "sebastian/environment": "^3.0",
                 "sebastian/version": "^2.0.1",
@@ -2971,20 +3477,20 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-11-03T13:47:33+00:00"
+            "time": "2017-11-27T09:00:30+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
-            "version": "1.4.3",
+            "version": "1.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-file-iterator.git",
-                "reference": "8ebba84e5bd74fc5fdeb916b38749016c7232f93"
+                "reference": "730b01bc3e867237eaac355e06a36b85dd93a8b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/8ebba84e5bd74fc5fdeb916b38749016c7232f93",
-                "reference": "8ebba84e5bd74fc5fdeb916b38749016c7232f93",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/730b01bc3e867237eaac355e06a36b85dd93a8b4",
+                "reference": "730b01bc3e867237eaac355e06a36b85dd93a8b4",
                 "shasum": ""
             },
             "require": {
@@ -3018,7 +3524,7 @@
                 "filesystem",
                 "iterator"
             ],
-            "time": "2017-11-24T15:00:59+00:00"
+            "time": "2017-11-27T13:52:08+00:00"
         },
         {
             "name": "phpunit/php-text-template",
@@ -3112,16 +3618,16 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "9a02332089ac48e704c70f6cefed30c224e3c0b0"
+                "reference": "791198a2c6254db10131eecfe8c06670700904db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/9a02332089ac48e704c70f6cefed30c224e3c0b0",
-                "reference": "9a02332089ac48e704c70f6cefed30c224e3c0b0",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/791198a2c6254db10131eecfe8c06670700904db",
+                "reference": "791198a2c6254db10131eecfe8c06670700904db",
                 "shasum": ""
             },
             "require": {
@@ -3157,7 +3663,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2017-08-20T05:47:52+00:00"
+            "time": "2017-11-27T05:48:46+00:00"
         },
         {
             "name": "phpunit/phpunit",
