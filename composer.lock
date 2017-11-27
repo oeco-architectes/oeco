@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "062218f9b28d38974307c79b4ccb0f93",
+    "content-hash": "77d33efef88a2b525909b965d2c730eb",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2241,6 +2241,372 @@
             ],
             "description": "Command-line interface for Nickolay Kovalev's Web Console",
             "time": "2017-11-15T14:22:25+00:00"
+        },
+        {
+            "name": "axy/backtrace",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axypro/backtrace.git",
+                "reference": "2ab4b9bd49b1174fc9e767a53caf783da07c6bec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axypro/backtrace/zipball/2ab4b9bd49b1174fc9e767a53caf783da07c6bec",
+                "reference": "2ab4b9bd49b1174fc9e767a53caf783da07c6bec",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "axy\\backtrace\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oleg Grigoriev",
+                    "email": "go.vasac@gmail.com"
+                }
+            ],
+            "description": "Tracing in PHP",
+            "homepage": "https://github.com/axypro/backtrace",
+            "keywords": [
+                "Backtrace",
+                "debug",
+                "exception",
+                "trace"
+            ],
+            "time": "2015-12-05T12:44:09+00:00"
+        },
+        {
+            "name": "axy/binary",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axypro/binary.git",
+                "reference": "34bc6a8e927f6f72833122a5591407d2f9fba147"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axypro/binary/zipball/34bc6a8e927f6f72833122a5591407d2f9fba147",
+                "reference": "34bc6a8e927f6f72833122a5591407d2f9fba147",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "axy\\binary\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oleg Grigoriev",
+                    "email": "go.vasac@gmail.com"
+                }
+            ],
+            "description": "Working with binary strings",
+            "homepage": "https://github.com/axypro/binary",
+            "time": "2015-12-02T08:53:05+00:00"
+        },
+        {
+            "name": "axy/cli-bin",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axypro/cli-bin.git",
+                "reference": "48a53d3034a828eb24fe48dd76ae71c63102c11a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axypro/cli-bin/zipball/48a53d3034a828eb24fe48dd76ae71c63102c11a",
+                "reference": "48a53d3034a828eb24fe48dd76ae71c63102c11a",
+                "shasum": ""
+            },
+            "require": {
+                "axy/evil": "~0.1.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "axy\\cli\\bin\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oleg Grigoriev",
+                    "email": "go.vasac@gmail.com"
+                }
+            ],
+            "description": "Helper for creating console utilities",
+            "homepage": "https://github.com/axypro/cli-bin",
+            "time": "2015-12-03T07:42:59+00:00"
+        },
+        {
+            "name": "axy/crypt",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axypro/crypt.git",
+                "reference": "dc67b26447135615eb24c9c4108e1730cedb02e2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axypro/crypt/zipball/dc67b26447135615eb24c9c4108e1730cedb02e2",
+                "reference": "dc67b26447135615eb24c9c4108e1730cedb02e2",
+                "shasum": ""
+            },
+            "require": {
+                "axy/binary": "~0.1.0",
+                "axy/random": "~0.1.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "axy\\crypt\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oleg Grigoriev",
+                    "email": "go.vasac@gmail.com"
+                }
+            ],
+            "description": "Some crypt algorithms",
+            "homepage": "https://github.com/axypro/crypt",
+            "keywords": [
+                "APR_MD5",
+                "crypt",
+                "hash"
+            ],
+            "time": "2015-12-02T13:20:32+00:00"
+        },
+        {
+            "name": "axy/errors",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axypro/errors.git",
+                "reference": "4edb49d1a8791f09a6f603cfdf8449fa0edfe206"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axypro/errors/zipball/4edb49d1a8791f09a6f603cfdf8449fa0edfe206",
+                "reference": "4edb49d1a8791f09a6f603cfdf8449fa0edfe206",
+                "shasum": ""
+            },
+            "require": {
+                "axy/backtrace": "~1.0.2",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "axy\\errors\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oleg Grigoriev",
+                    "email": "go.vasac@gmail.com"
+                }
+            ],
+            "description": "Exceptions in PHP",
+            "homepage": "https://github.com/axypro/errors",
+            "keywords": [
+                "error",
+                "exception"
+            ],
+            "time": "2015-11-13T13:56:59+00:00"
+        },
+        {
+            "name": "axy/evil",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axypro/evil.git",
+                "reference": "fd7b8d674b4dd45ab66bc97c50fc4f992a48eb38"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axypro/evil/zipball/fd7b8d674b4dd45ab66bc97c50fc4f992a48eb38",
+                "reference": "fd7b8d674b4dd45ab66bc97c50fc4f992a48eb38",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "axy\\evil\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oleg Grigoriev",
+                    "email": "go.vasac@gmail.com"
+                }
+            ],
+            "description": "Necessary evil",
+            "homepage": "https://github.com/axypro/evil",
+            "time": "2015-11-10T11:05:41+00:00"
+        },
+        {
+            "name": "axy/htpasswd",
+            "version": "0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axypro/htpasswd.git",
+                "reference": "274ee1a64993cf52fb03d11d7281556d065b608b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axypro/htpasswd/zipball/274ee1a64993cf52fb03d11d7281556d065b608b",
+                "reference": "274ee1a64993cf52fb03d11d7281556d065b608b",
+                "shasum": ""
+            },
+            "require": {
+                "axy/crypt": "~0.1.1",
+                "axy/errors": "~1.0.4",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "axy\\htpasswd\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oleg Grigoriev",
+                    "email": "go.vasac@gmail.com"
+                }
+            ],
+            "description": "Working with htpasswd file",
+            "homepage": "https://github.com/axypro/htpasswd",
+            "time": "2015-12-03T09:18:57+00:00"
+        },
+        {
+            "name": "axy/htpasswd-cli",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axypro/htpasswd-cli.git",
+                "reference": "8236a3d666e38664099a6072db43dcaa8472687e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axypro/htpasswd-cli/zipball/8236a3d666e38664099a6072db43dcaa8472687e",
+                "reference": "8236a3d666e38664099a6072db43dcaa8472687e",
+                "shasum": ""
+            },
+            "require": {
+                "axy/cli-bin": "~0.1.0",
+                "axy/htpasswd": "0.*",
+                "php": ">=5.4.0"
+            },
+            "bin": [
+                "bin/axy-htpasswd"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "axy\\htpasswd\\cli\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oleg Grigoriev",
+                    "email": "go.vasac@gmail.com"
+                }
+            ],
+            "description": "Htpasswd CLI utility",
+            "homepage": "https://github.com/axypro/htpasswd-cli",
+            "keywords": [
+                "htpasswd"
+            ],
+            "time": "2015-12-03T11:12:09+00:00"
+        },
+        {
+            "name": "axy/random",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axypro/random.git",
+                "reference": "16cfacb9b848a1c21ccca33bb250897fec0ee17a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axypro/random/zipball/16cfacb9b848a1c21ccca33bb250897fec0ee17a",
+                "reference": "16cfacb9b848a1c21ccca33bb250897fec0ee17a",
+                "shasum": ""
+            },
+            "require": {
+                "axy/binary": "~0.1.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "axy\\random\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oleg Grigoriev",
+                    "email": "go.vasac@gmail.com"
+                }
+            ],
+            "description": "Generates pseudo-random",
+            "homepage": "https://github.com/axypro/random",
+            "keywords": [
+                "random"
+            ],
+            "time": "2015-12-02T12:13:41+00:00"
         },
         {
             "name": "dg/ftp-deployment",

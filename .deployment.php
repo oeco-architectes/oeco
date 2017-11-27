@@ -4,7 +4,7 @@ return [
     'oeco' => [
         'remote' => 'ftp://'
             . getenv('DEPLOY_FTP_USERNAME') . ':' . getenv('DEPLOY_FTP_PASSWORD')
-            . '@' . getenv('DEPLOY_FTP_URL') . '/' . getenv('DEPLOY_SUBDOMAIN'),
+            . '@' . getenv('DEPLOY_FTP_URL') . '/' . getenv('DEPLOY_PATH'),
         'local' => '.',
         'ignore' => file_get_contents('.deployignore'),
         'allowDelete' => true,
