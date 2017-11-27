@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c3ae4a76eb2353737f5997e3f1761da1",
+    "content-hash": "062218f9b28d38974307c79b4ccb0f93",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2159,6 +2159,146 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "amercier/cli-helpers",
+            "version": "v1.4.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/amercier/php-cli-helpers.git",
+                "reference": "5767dd441960c0ed89b64ba72fb312bf8e217739"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/amercier/php-cli-helpers/zipball/5767dd441960c0ed89b64ba72fb312bf8e217739",
+                "reference": "5767dd441960c0ed89b64ba72fb312bf8e217739",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "^0.4.4",
+                "phpunit/phpunit": "^4.8",
+                "squizlabs/php_codesniffer": "^3.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Cli": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "src/"
+            ],
+            "license": [
+                "ISC"
+            ],
+            "description": "Utility classes to write PHP command-line scripts",
+            "homepage": "https://github.com/amercier/php-cli-helpers",
+            "keywords": [
+                "cli",
+                "command",
+                "command-line",
+                "helpers",
+                "line",
+                "utilities",
+                "utility"
+            ],
+            "time": "2017-11-15T21:10:18+00:00"
+        },
+        {
+            "name": "amercier/webconsole-cli",
+            "version": "v0.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/amercier/webconsole-cli.git",
+                "reference": "b4e0ae8f6e39773f6cb6afa5753d87e771d7cab5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/amercier/webconsole-cli/zipball/b4e0ae8f6e39773f6cb6afa5753d87e771d7cab5",
+                "reference": "b4e0ae8f6e39773f6cb6afa5753d87e771d7cab5",
+                "shasum": ""
+            },
+            "require": {
+                "amercier/cli-helpers": "^1.4",
+                "php": ">=5.3.2"
+            },
+            "bin": [
+                "bin/webconsole"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "ISC"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Mercier",
+                    "email": "pro.alexandre.mercier@gmail.com"
+                }
+            ],
+            "description": "Command-line interface for Nickolay Kovalev's Web Console",
+            "time": "2017-11-15T14:22:25+00:00"
+        },
+        {
+            "name": "dg/ftp-deployment",
+            "version": "v2.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dg/ftp-deployment.git",
+                "reference": "89d0123008fc3b695af6881253013dc96ee49b7a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dg/ftp-deployment/zipball/89d0123008fc3b695af6881253013dc96ee49b7a",
+                "reference": "89d0123008fc3b695af6881253013dc96ee49b7a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-zlib": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "nette/tester": "~1.3"
+            },
+            "suggest": {
+                "ext-ftp": "to connect to ftp:// server",
+                "ext-json": "to preprocess CSS files via online service",
+                "ext-openssl": "to connect to ftps:// server and preprocess CSS files",
+                "ext-ssh2": "to connect to sftp:// server"
+            },
+            "bin": [
+                "deployment"
+            ],
+            "type": "project",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0",
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https://davidgrudl.com"
+                }
+            ],
+            "description": "A tool for automated deployment of web applications to an FTP server.",
+            "homepage": "https://github.com/dg/ftp-deployment",
+            "keywords": [
+                "deployment",
+                "ftp",
+                "ssh"
+            ],
+            "time": "2016-12-22T20:37:08+00:00"
+        },
         {
             "name": "doctrine/instantiator",
             "version": "1.0.5",
