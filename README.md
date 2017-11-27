@@ -80,7 +80,19 @@ yarn run production
 Continuous Deployment
 ---------------------
 
-Continuous Deployment is not setup yet.
+Each commit triggers a CI build on Travis CI. Tests are run in the following
+order:
+1. linting: `composer lint`
+2. unit tests: `composer test`
+3. end-to-end tests: `composer e2e`
+
+Each commit to `master` branch, after having passed all tests, is automatically
+deployed (when build passes) to the **staging platform**
+(https://staging.oeco-architectes.com).
+
+Each tagged commit on `master` branch, after having passed all tests, is
+automatically deployed (when build passes) to the **production platform**
+(https://www.oeco-architectes.com, behind basic auth).
 
 
 License
