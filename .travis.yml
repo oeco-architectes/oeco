@@ -35,7 +35,7 @@ deploy:
     skip_cleanup: true
     script: COMPOSER_PROCESS_TIMEOUT=0 composer run deploy-staging
     on:
-      branch: staging-deployment
+      branch: master
   - provider: script
     skip_cleanup: true
     script: COMPOSER_PROCESS_TIMEOUT=0 composer run deploy-production
