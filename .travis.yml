@@ -41,4 +41,4 @@ deploy:
     script: COMPOSER_PROCESS_TIMEOUT=0 composer run deploy-production
     on:
       branch: master
-      tag: true
+      tags: true
