@@ -91,5 +91,9 @@
                 </div>
             </div>
         </div>
+
+        @if(config('app.env') == 'development')
+            <script src="http://localhost:35729/livereload.js"></script>
+        @endif
     </body>
 </html>
