@@ -16,7 +16,7 @@ before_script:
   - php artisan serve --env=testing &
 script:
   - composer lint
-  - composer test
+  - composer test-with-coverage
   - composer e2e
   - killall chromedriver-linux
   - killall php

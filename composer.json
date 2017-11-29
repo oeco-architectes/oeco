@@ -71,7 +71,10 @@
           "yarn run lint"
         ],
         "test": [
-            "phpunit --colors=always --coverage-clover coverage/clover.xml --coverage-html coverage/"
+            "phpunit --colors=always"
+        ],
+        "test-with-coverage": [
+            "@composer test -- --coverage-clover coverage/clover.xml --coverage-html coverage/"
         ],
         "e2e": [
             "@php artisan dusk --colors=always"
