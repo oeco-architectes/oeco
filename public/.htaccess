@@ -442,6 +442,7 @@ AddDefaultCharset utf-8
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteCond %{HTTP_HOST} !^www\. [NC]
+    RewriteCond %{HTTP_HOST} !^www2\. [NC]
     RewriteCond %{HTTP_HOST} !^staging\. [NC]
     RewriteCond %{HTTP_HOST} !^localhost$ [NC]
     RewriteCond %{SERVER_ADDR} !=127.0.0.1
