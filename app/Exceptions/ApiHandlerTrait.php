@@ -3,9 +3,15 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Session\TokenMismatchException;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 trait ApiHandlerTrait
 {
@@ -33,6 +39,25 @@ trait ApiHandlerTrait
         }
 
         return parent::prepareResponse($request, $e);
+    }
+
+    /**
+     * Prepare exception for rendering.
+     *
+     * @param  \Exception  $e
+     * @return \Exception
+     */
+    protected function prepareException(Exception $e)
+    {
+        if ($e instanceof ModelNotFoundException || $e instanceof NotFoundHttpException) {
+            return new NotFoundHttpException('Resource not found', $e);
+        } elseif ($e instanceof AuthorizationException) {
+            return new AccessDeniedHttpException('Access denied', $e);
+        } elseif ($e instanceof TokenMismatchException) {
+            return new HttpException(419, 'Authentication timed out', $e);
+        } else {
+            return $e;
+        }
     }
 
     /**

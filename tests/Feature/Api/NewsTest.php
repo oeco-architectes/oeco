@@ -4,6 +4,7 @@ namespace Tests\Feature\Api;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
 use App\News;
 use App\User;
 
@@ -93,6 +94,17 @@ class NewsTest extends TestCase
                 'title' => 'Lorem ipsum dolor',
                 'slug' => 'lorem-ipsum-dolor',
                 'summary' => 'Sit amet',
+            ]);
+    }
+
+    public function testUnknownNewsDetailsReturnsError()
+    {
+        $maxId = DB::table('news')->max('id');
+
+        $response = $this->json('GET', '/api/news/' . $maxId + 1, [], $this->getAuthorizedHeaders())
+            ->assertStatus(404)
+            ->assertExactJson([
+                'message' => 'Resource not found'
             ]);
     }
 }
