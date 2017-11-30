@@ -29,6 +29,7 @@
         "laravel/tinker": "^1.0",
         "mockery/mockery": "~1.0",
         "phpunit/phpunit": "~6.0",
+        "spatie/laravel-artisan-dd": "^2.0",
         "squizlabs/php_codesniffer": "^3.1"
     },
     "autoload": {
@@ -120,6 +121,9 @@
             "rm -rf public/.htpasswd",
             "DEPLOY_PATH=www2 DEPLOY_ENVIRONMENT=production composer deploy",
             "curl --fail --silent --show-error https://www2.oeco-architectes.com/ >/dev/null"
+        ],
+        "token": [
+            "@php artisan dd 'App\\User::first()->generateToken()'"
         ]
     },
     "config": {

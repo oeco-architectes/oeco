@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "63ebb6f490df58b4e7bcbb61e7122d3c",
+    "content-hash": "e8d69ddafa1bd03e174eb92e05087a9f",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -4780,6 +4780,58 @@
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
             "time": "2016-10-03T07:35:21+00:00"
+        },
+        {
+            "name": "spatie/laravel-artisan-dd",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-artisan-dd.git",
+                "reference": "2104fc70de9e46d82a125d26c46ac6e7863a6a42"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-artisan-dd/zipball/2104fc70de9e46d82a125d26c46ac6e7863a6a42",
+                "reference": "2104fc70de9e46d82a125d26c46ac6e7863a6a42",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "~5.5.0",
+                "illuminate/support": "~5.5.0",
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.5.0",
+                "phpunit/phpunit": "^6.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\ArtisanDd\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Run dd from your commandline",
+            "homepage": "https://github.com/spatie/laravel-artisan-dd",
+            "keywords": [
+                "artisan",
+                "debug",
+                "develop",
+                "laravel-artisan-dd",
+                "spatie"
+            ],
+            "time": "2017-08-30T14:06:55+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
