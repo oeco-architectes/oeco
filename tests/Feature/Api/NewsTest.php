@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Feature\Api;
+namespace Tests\Feature\Api;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -9,17 +9,16 @@ use App\User;
 
 class NewsTest extends TestCase
 {
+    use Authorized;
+
     public function testsNewsAreCreatedCorrectly()
     {
-        $user = factory(User::class)->create();
-        $token = $user->generateToken();
-        $headers = ['Authorization' => "Bearer $token"];
         $payload = [
             'title' => 'Lorem ipsum dolor',
             'summary' => 'Sit amet',
         ];
 
-        $this->json('POST', '/api/news', $payload, $headers)
+        $this->json('POST', '/api/news', $payload, $this->getAuthorizedHeaders())
             ->assertStatus(201)
             ->assertJson([
                 'title' => 'Lorem ipsum dolor',
@@ -30,9 +29,6 @@ class NewsTest extends TestCase
 
     public function testsNewsAreUpdatedCorrectly()
     {
-        $user = factory(User::class)->create();
-        $token = $user->generateToken();
-        $headers = ['Authorization' => "Bearer $token"];
         $news = factory(News::class)->create([
             'title' => 'First title',
             'summary' => 'First summary',
@@ -43,7 +39,7 @@ class NewsTest extends TestCase
             'summary' => 'Sit amet',
         ];
 
-        $response = $this->json('PUT', '/api/news/' . $news->id, $payload, $headers)
+        $response = $this->json('PUT', '/api/news/' . $news->id, $payload, $this->getAuthorizedHeaders())
             ->assertStatus(200)
             ->assertJson([
                 'title' => 'Lorem ipsum dolor',
@@ -54,15 +50,12 @@ class NewsTest extends TestCase
 
     public function testsNewsAreDeletedCorrectly()
     {
-        $user = factory(User::class)->create();
-        $token = $user->generateToken();
-        $headers = ['Authorization' => "Bearer $token"];
         $news = factory(News::class)->create([
             'title' => 'First title',
             'summary' => 'First summary',
         ]);
 
-        $this->json('DELETE', '/api/news/' . $news->id, [], $headers)
+        $this->json('DELETE', '/api/news/' . $news->id, [], $this->getAuthorizedHeaders())
             ->assertStatus(204);
     }
 
@@ -78,11 +71,7 @@ class NewsTest extends TestCase
             'summary' => 'Second summary',
         ]);
 
-        $user = factory(User::class)->create();
-        $token = $user->generateToken();
-        $headers = ['Authorization' => "Bearer $token"];
-
-        $response = $this->json('GET', '/api/news', [], $headers)
+        $response = $this->json('GET', '/api/news', [], $this->getAuthorizedHeaders())
             ->assertStatus(200)
             ->assertJsonFragment([ 'title' => 'First title', 'slug' => 'second-title', 'summary' => 'First summary' ])
             ->assertJsonFragment([ 'title' => 'Second title', 'slug' => 'second-title', 'summary' => 'Second summary' ])
@@ -93,15 +82,12 @@ class NewsTest extends TestCase
 
     public function testNewsDetailsAreReturnedCorrectly()
     {
-        $user = factory(User::class)->create();
-        $token = $user->generateToken();
-        $headers = ['Authorization' => "Bearer $token"];
         $news = factory(News::class)->create([
             'title' => 'Lorem ipsum dolor',
             'summary' => 'Sit amet',
         ]);
 
-        $response = $this->json('GET', '/api/news/' . $news->id, [], $headers)
+        $response = $this->json('GET', '/api/news/' . $news->id, [], $this->getAuthorizedHeaders())
             ->assertStatus(200)
             ->assertJson([
                 'title' => 'Lorem ipsum dolor',
