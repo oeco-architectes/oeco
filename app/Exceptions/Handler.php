@@ -7,6 +7,8 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
+    use ApiHandlerTrait;
+
     /**
      * A list of the exception types that are not reported.
      *
@@ -37,21 +39,5 @@ class Handler extends ExceptionHandler
     public function report(Exception $exception)
     {
         parent::report($exception);
-    }
-
-    /**
-     * Force JSON rendering on all API calls
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception $e
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    protected function prepareResponse($request, Exception $e)
-    {
-        if ($request->is('api/*')) {
-            return $this->prepareJsonResponse($request, $e);
-        }
-
-        return parent::prepareResponse($request, $e);
     }
 }
