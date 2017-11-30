@@ -25,3 +25,4 @@ Route::delete('news/{news}', 'Api\NewsController@delete');
 
 Route::post('register', 'Auth\RegisterController@register');
 Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout');
