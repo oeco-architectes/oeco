@@ -24,3 +24,4 @@ Route::put('news/{news}', 'Api\NewsController@update');
 Route::delete('news/{news}', 'Api\NewsController@delete');
 
 Route::post('register', 'Auth\RegisterController@register');
+Route::post('login', 'Auth\LoginController@login');
