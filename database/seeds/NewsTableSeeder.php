@@ -18,7 +18,7 @@ class NewsTableSeeder extends Seeder
 
         // And now, let's create a few articles in our database
         $position = 0;
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             News::create([
                 'title' => $faker->sentence,
                 'summary' => $faker->paragraph,
