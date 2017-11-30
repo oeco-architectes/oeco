@@ -15,6 +15,7 @@
     "require": {
         "php": ">=7.0.0",
         "cocur/slugify": "^3.0",
+        "doctrine/dbal": "^2.5",
         "fideloper/proxy": "~3.3",
         "fzaninotto/faker": "^1.7",
         "laravel/framework": "5.5.*",

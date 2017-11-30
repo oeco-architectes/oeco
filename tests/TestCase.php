@@ -12,7 +12,7 @@ abstract class TestCase extends BaseTestCase
     public function setUp()
     {
         parent::setUp();
-        Artisan::call('migrate');
-        Artisan::call('db:seed');
+        $this->artisan('migrate');
+        $this->artisan('db:seed');
     }
 }
