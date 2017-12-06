@@ -21,13 +21,15 @@ class NewsTableSeeder extends Seeder
         News::truncate();
 
         // Let's delete all news image
-        foreach (glob(News::imagePath('*')) as $path) {
-            $relativePath = PathHelper::createRelativePath(app_path(), $path);
-            echo 'Deleting ' . $c($relativePath)->yellow() . ' ';
-            if (unlink($path)) {
-                echo $c("✔\n")->green();
-            } else {
-                echo $c("✘\n")->red();
+        if (App::environment() !== 'testing') {
+            foreach (glob(News::imagePath('*')) as $path) {
+                $relativePath = PathHelper::createRelativePath(app_path(), $path);
+                echo 'Deleting ' . $c($relativePath)->yellow() . ' ';
+                if (unlink($path)) {
+                    echo $c("✔\n")->green();
+                } else {
+                    echo $c("✘\n")->red();
+                }
             }
         }
 
@@ -42,16 +44,18 @@ class NewsTableSeeder extends Seeder
 
             $path = $news->getImagePath();
 
-            if (!file_exists($path)) {
-                $relativePath = PathHelper::createRelativePath(app_path(), $path);
-                echo 'Generating ' . $c($relativePath)->yellow() . ' ';
-                file_put_contents(
-                    $path,
-                    file_get_contents('http://kitten.amercier.com/kitten.jpg')
-                );
-                echo $c("✔\n")->green();
-            } else {
-                echo 'Skipping ' . $path . ', already exists.';
+            if (App::environment() !== 'testing') {
+                if (!file_exists($path)) {
+                    $relativePath = PathHelper::createRelativePath(app_path(), $path);
+                    echo 'Generating ' . $c($relativePath)->yellow() . ' ';
+                    file_put_contents(
+                        $path,
+                        file_get_contents('http://kitten.amercier.com/kitten.jpg')
+                    );
+                    echo $c("✔\n")->green();
+                } else {
+                    echo 'Skipping ' . $path . ', already exists.';
+                }
             }
         }
     }
