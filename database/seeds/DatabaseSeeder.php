@@ -10,6 +10,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        if (App::environment() === 'production') {
+            throw new RuntimeError('Seeding is forbidden in production environment');
+        }
+
         $this->call(UsersTableSeeder::class);
         $this->call(NewsTableSeeder::class);
     }

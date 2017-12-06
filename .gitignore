@@ -4,9 +4,7 @@
 /public/fonts
 /public/hot
 /public/js
-/public/storage
 /public/mix-manifest.json
-/storage/*.key
 /temp
 /vendor
 /.idea
