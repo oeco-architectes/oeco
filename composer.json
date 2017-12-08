@@ -1,6 +1,6 @@
 {
     "name": "oeco-architectes/oeco",
-    "description": "Oeco Architectes wrbsite",
+    "description": "Oeco Architectes website",
     "keywords": ["oeco", "architecture", "website"],
     "license": "proprietary",
     "type": "project",
@@ -15,9 +15,11 @@
     "require": {
         "php": ">=7.0.0",
         "cocur/slugify": "^3.0",
+        "czproject/path-helper": "^4.0",
         "doctrine/dbal": "^2.5",
         "fideloper/proxy": "~3.3",
         "fzaninotto/faker": "^1.7",
+        "kevinlebrun/colors.php": "^1.0",
         "laravel/framework": "5.5.*",
         "spatie/laravel-artisan-dd": "^2.0"
     },
@@ -115,6 +117,7 @@
             "axy-htpasswd -cb public/.htpasswd \"$DEPLOY_STAGING_USERNAME\" \"$DEPLOY_STAGING_PASSWORD\"",
             "DEPLOY_PATH=staging DEPLOY_ENVIRONMENT=staging composer deploy",
             "rm -rf public/.htpasswd",
+            "@composer remote \"~/php artisan db:seed\"",
             "curl --fail --silent --show-error https://${DEPLOY_STAGING_USERNAME}:${DEPLOY_STAGING_PASSWORD}@staging.oeco-architectes.com/ >/dev/null"
         ],
         "deploy-production": [

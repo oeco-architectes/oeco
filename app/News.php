@@ -47,6 +47,16 @@ class News extends Model
         throw new RuntimeException('Slug cannot be set explicitely, set title instead.');
     }
 
+    public function getImagePath()
+    {
+        return self::imagePath($this->slug);
+    }
+
+    public static function imagePath($slug, $extension = 'jpg')
+    {
+        return storage_path('app/img/news/' . $slug . '.' . $extension);
+    }
+
     /**
      * Convert a title to a slug
      * @param string $title A title
