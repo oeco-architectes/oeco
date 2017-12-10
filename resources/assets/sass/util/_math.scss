@@ -1,0 +1,10 @@
+$default-browser-font-size: 16px;
+
+/// Get a font-size in percentage, based on a given base (typically the default
+/// browser font size)
+/// @param {number} $value Font size in pixels
+/// @param {number} $base Base font size (=100%)
+/// @return {number} Return a font size in percent
+@function fontSizePercentage($value, $base: $default-browser-font-size) {
+  @return percentage($value / $base);
+}

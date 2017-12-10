@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-  <section class="oeco-article">
-    <h1 class="oeco-article__title">ŒCO : Œuvre Collective</h1>
-    <article class="oeco-article__content">
+  <section>
+    <article class="oeco-article">
+      <h1 class="oeco-article__title">ŒCO : Œuvre Collective</h1>
       <p>
         Pourquoi ce nom ? Car l’architecture est avant tout une aventure collective.
       </p>

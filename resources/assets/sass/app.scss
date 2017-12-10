@@ -1,39 +1,7 @@
-$default-browser-font-size: 16px;
+@import 'util/media-queries';
 
-@function fontSizePercentage($value, $base: $default-browser-font-size) {
-  @return percentage($value / $base);
-}
+@import 'app/mobile-and-desktop';
 
-html {
-  font-family: 'Roboto', sans-serif;
-  font-size: fontSizePercentage(15px);
-  font-weight: 400;
-  line-height: 1.9;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 100;
-  margin: 1.9rem 0;
-}
-
-em, strong {
-  font-weight: inherit;
-}
-
-p {
-  margin: 1.9rem 0;
-}
-
-.oeco-article {
-  &__title {
-    font-size: 1.7em;
-    text-transform: uppercase;
-  }
-}
-
-/* Medium devices (desktops, 992px and up) */
-@media screen and (min-width: 992px) {
-  html {
-    font-size: fontSizePercentage(13px);
-  }
+@include media-up(large) {
+  @import 'app/only-desktop';
 }

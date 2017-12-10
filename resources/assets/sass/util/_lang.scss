@@ -1,0 +1,12 @@
+/// Get the next value of a given one in a list
+/// @param {list} $list A list
+/// @param {mixed} $value A value in the list
+/// @return {mixed}  The value at the next index of $value's index.
+/// @throw If $value does not exist in $list
+@function next($list, $value) {
+  $index: index($list, $value);
+  @if $index == null {
+    @error "Cannot find '#{$value}' in: #{$list}";
+  }
+  @return nth($list, $index + 1);
+}
