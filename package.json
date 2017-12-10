@@ -11,6 +11,7 @@
         "lint": "eslint ."
     },
     "devDependencies": {
+        "bootstrap": "^4.0.0-beta.2",
         "cross-env": "^5.1",
         "eslint": "^4.11.0",
         "eslint-config-airbnb": "^16.1.0",
