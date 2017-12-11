@@ -7,6 +7,7 @@
 
     <!-- Metadata -->
     <title>{{ config('app.name') }}</title>
+    @include('layouts/favicon')
 
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,400" rel="stylesheet">

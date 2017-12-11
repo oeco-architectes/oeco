@@ -4,7 +4,11 @@
 /public/fonts
 /public/hot
 /public/js
-/public/mix-manifest.json
+/public/*.ico
+/public/*.json
+/public/*.png
+/public/*.webapp
+/public/*.xml
 /temp
 /vendor
 /.idea
