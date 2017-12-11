@@ -37,7 +37,7 @@ p {
 .oeco-site-navigation {
   padding-top: 2 * $text-vertical-spacing;
   width: 80%;
-  margin: 0 auto;
+  margin: 0 auto $text-vertical-spacing auto;
 
   &__logo {
     display: block;

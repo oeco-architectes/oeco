@@ -2,6 +2,7 @@
 @import 'util/media-queries';
 
 @import 'app/mobile-and-desktop';
+@import 'app/news';
 
 @include media-up(large) {
   @import 'app/only-desktop';

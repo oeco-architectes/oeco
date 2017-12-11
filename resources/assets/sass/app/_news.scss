@@ -1,0 +1,24 @@
+.oeco-news {
+  list-style: none;
+  padding: 0;
+
+  &__item {
+    margin-bottom: 2 * $text-vertical-spacing;
+
+    &-picture {
+      display: block;
+      width: 100%;
+      margin-bottom: $text-vertical-spacing/2;
+    }
+
+    &-title {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      margin-bottom: $text-vertical-spacing/2;
+    }
+
+    &-summary {
+      margin-bottom: $text-vertical-spacing/2;
+    }
+  }
+}
