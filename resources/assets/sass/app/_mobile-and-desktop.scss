@@ -5,17 +5,23 @@ $text-vertical-spacing: 1rem * $text-line-height;
 
 html {
   font-family: 'Roboto', sans-serif;
-  font-size: fontSizePercentage(15px);
+  font-size: font-size-percentage(15px);
   font-weight: 400;
   line-height: $text-line-height;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 100;
   margin-bottom: $text-vertical-spacing;
 }
 
-em, strong {
+em,
+strong {
   font-weight: inherit;
 }
 

@@ -23,6 +23,7 @@ $device-sizes: join(extra-small, map-keys($breakpoints));
   @if $size == 'extra-small' {
     @error "Cannot use 'extra-small' as size in media-up mixin, as it includes all devices.";
   }
+
   @media screen and (min-width: #{map-get($breakpoints, $size)}) {
     @content;
   }
@@ -35,6 +36,7 @@ $device-sizes: join(extra-small, map-keys($breakpoints));
   @if $size == 'extra-large' {
     @error "Cannot use 'extra-large' as size in media-down mixin, as it includes all devices.";
   }
+
   @media screen and (max-width: #{map-get($breakpoints, next($device-sizes, $size)) - 1}) {
     @content;
   }
