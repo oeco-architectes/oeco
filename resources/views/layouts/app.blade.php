@@ -17,6 +17,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
   </head>
   <body>
+    <!-- Site navigation -->
+    <nav class="oeco-site-navigation">
+      <a href="/" class="oeco-site-navigation__logo">
+        <img src="img/oeco-logo.svg" alt="oeco architectes">
+      </a>
+      {!! $navigationMenu->asUl(['class' => 'oeco-site-navigation__menu']) !!}
+    </nav>
+
     @yield('content')
 
     <!-- Scripts -->
