@@ -50,7 +50,7 @@ class NewsTableSeeder extends Seeder
                     echo 'Generating ' . $c($relativePath)->yellow() . ' ';
                     file_put_contents(
                         $path,
-                        file_get_contents('http://kitten.amercier.com/kitten.jpg')
+                        file_get_contents('http://kitten.amercier.com/kitten-huge.jpg')
                     );
                     echo $c("✔\n")->green();
                 } else {
