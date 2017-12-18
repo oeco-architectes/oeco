@@ -88,11 +88,11 @@ order:
 
 Each commit to `master` branch, after having passed all tests, is automatically
 deployed (when build passes) to the **staging platform**
-(https://staging.oeco-architectes.com).
+(https://staging.oeco-architectes.com, behind basic auth).
 
 Each tagged commit on `master` branch, after having passed all tests, is
 automatically deployed (when build passes) to the **production platform**
-(https://www.oeco-architectes.com, behind basic auth).
+(https://www.oeco-architectes.com).
 
 
 License
