@@ -117,7 +117,7 @@
             "axy-htpasswd -cb public/.htpasswd \"$DEPLOY_STAGING_USERNAME\" \"$DEPLOY_STAGING_PASSWORD\"",
             "DEPLOY_PATH=staging DEPLOY_ENVIRONMENT=staging composer deploy",
             "rm -rf public/.htpasswd",
-            "@composer remote \"~/php artisan db:seed\"",
+            "DEPLOY_PATH=staging composer remote \"~/php artisan db:seed\"",
             "curl --fail --silent --show-error https://${DEPLOY_STAGING_USERNAME}:${DEPLOY_STAGING_PASSWORD}@staging.oeco-architectes.com/ >/dev/null"
         ],
         "deploy-production": [
