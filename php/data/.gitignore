@@ -1,0 +1,8 @@
+/cache/news/*
+/cache/projects/*
+/img/news/*
+/img/projects/*
+!/cache/news/.gitkeep
+!/cache/projects/.gitkeep
+!/img/news/.gitkeep
+!/img/projects/.gitkeep

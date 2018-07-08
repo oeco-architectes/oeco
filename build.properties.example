@@ -1,0 +1,5 @@
+# FTP Server Settings
+ftp.server=ftp.oeco-architectes.com
+ftp.user=
+ftp.password=
+ftp.dir=/www

@@ -1,0 +1,235 @@
+@import url(bootstrap.css);
+@import url(fonts.css);
+
+body {
+  font-family: Helvetica Neue Roman, Helvetica Neue, Helvetica, sans-serif;
+}
+
+section,aside {
+  margin-top: 40px;
+  margin-bottom: 100px;
+}
+
+header {
+  margin: 40px 0;
+  font-size: 18px;
+}
+
+.title {
+  font-size: 1em;
+}
+
+.inline-list {
+  margin: 0;
+  padding: 0;
+}
+
+.inline-list li {
+  display: inline;
+}
+
+.inline-list li {
+  margin-left: 20px;
+}
+
+.inline-list li:first-child {
+  margin-left: 0;
+  margin-left: 0;
+}
+
+.inline-list.pull-right li {
+  margin-left: 0;
+  margin-right: 20px;
+}
+
+a {
+  color: #555;
+}
+
+a:hover {
+  color: #333;
+}
+
+a.active {
+  color: #000;
+  font-weight: bold;
+}
+
+#navigation {
+  margin-bottom: -40px;
+  position: relative;
+  top: -40px;
+}
+
+#navigation ul {
+  text-align: right;
+  margin: 20px 0;
+}
+
+#navigation li {
+  margin-left: 40px;
+}
+
+#navigation li:first-child {
+  margin-left: 0;
+}
+
+.home {
+  width: 800px;
+}
+
+.home section {
+  margin-top: 80px;
+}
+
+.news-title,.project-title,.agency h1 {
+  font-family: Helvetica Neue Thin,Helvetica Neue,Helvetica,sans-serif;
+  font-size: 1.3em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin: 1em 0 .5em 0;
+}
+
+.news-summary,.project-summary {
+  font-size: 1em;
+  line-height: 1.2;
+}
+
+.home .carousel {
+  height: 500px;
+}
+
+.home .carousel img {
+  height: 500px;
+  max-width: 800px;
+}
+
+.description {
+  text-align: justify;
+  line-height: 1.6;
+  margin: 2em 0;
+}
+
+.description p {
+  margin: 1.5em 0;
+}
+
+.agency section a {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.people img {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.people figcaption {
+  font-size: 24px;
+  font-family: Helvetica Neue Thin,Helvetica Neue,Helvetica,sans-serif;
+  color: #999;
+  line-height: 1em;
+  margin-top: .5em;
+}
+
+.people h2 {
+  font-family: Helvetica Neue Thin,Helvetica Neue,Helvetica,sans-serif;
+  font-size: 24px;
+  color: #999;
+  margin-top: 40px;
+}
+
+.people h3 {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 1em 0 .5em 0;
+  line-height: 2em;
+}
+
+.people p {
+  margin: .5em 0;
+}
+
+#geolocalisation {
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+}
+
+.agency.publications article img {
+  width: 100%;
+  height: auto;
+}
+
+#project-categories {
+  text-align: right;
+  margin-top: 60px;
+  margin-bottom: 40px;
+}
+
+#project-categories a.active,#projects a.active {
+  pointer-events: auto;
+}
+
+#projects .pic-high {
+  margin-bottom: -200px;
+}
+
+.pic-large img {
+  width: 570px;
+}
+
+.pic {
+  -webkit-transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  -o-transition: opacity 1s;
+  transition: opacity 1s;
+  opacity: .3;
+}
+
+.pic.active {
+  opacity: 1;
+}
+
+#projects .row {
+  margin-bottom: 10px;
+  margin-right: -5px;
+  margin-left: -5px;
+}
+
+#projects .pic {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#projects figure {
+  position: relative;
+  overflow: hidden;
+}
+
+#projects figcaption {
+  position: absolute;
+  display: block;
+  left: 0;
+  right: 0;
+  bottom: -30%;
+  color: #fff;
+  background: -webkit-linear-gradient(top,rgba(0,0,0,.5),rgba(0,0,0,.7));
+  background: linear-gradient(top,rgba(0,0,0,.5),rgba(0,0,0,.7));
+  font-size: 85%;
+  padding: .5em 1em;
+  opacity: 0;
+  -webkit-transition: opacity .5s,bottom .5s;
+  -moz-transition: opacity .5s,bottom .5s;
+  -o-transition: opacity .5s,bottom .5s;
+  transition: opacity .5s,bottom .5s;
+}
+
+#projects figure:hover figcaption {
+  bottom: 0;
+  opacity: 1;
+}
+
+.project-details img {
+  max-width: 100%;
+}

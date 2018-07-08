@@ -1,0 +1,5 @@
+/css/fonts/*.ttf
+/css/fonts/*.tar.gz
+/php/vendor/
+/build.properties
+*.min.css

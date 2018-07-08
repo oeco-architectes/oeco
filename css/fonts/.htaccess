@@ -1,0 +1,5 @@
+AddType image/svg+xml svf
+AddType application/x-font-ttf ttf
+AddType application/x-font-opentype otf
+AddType application/x-font-woff woff
+AddType application/vnd.ms-fontobject eot

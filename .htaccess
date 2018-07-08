@@ -1,0 +1,36 @@
+RewriteEngine On
+
+# SetEnv APPLICATION_ENV production
+
+# img, css, js
+
+#RewriteCond %{REQUEST_FILENAME} -l [OR]
+#RewriteCond %{REQUEST_FILENAME} -d [OR]
+#RewriteCond %{REQUEST_FILENAME} -s
+RewriteRule ^(css|js|img)/.*$ - [L]
+
+
+# services
+
+RewriteRule ^services/(.*)$ php/services/$1 [L]
+
+
+# url rewriting
+
+RewriteRule ^/?$                      php/views/home.php [L]
+RewriteRule ^agence/?$                php/views/agency.php [L]
+RewriteRule ^agence/publications/?$   php/views/publications.php [L]
+RewriteRule ^projets/?$               php/views/projects.php [L]
+RewriteRule ^projets/(.+)$            php/views/project.php?id=$1 [L]
+RewriteRule ^admin/?$                 php/views/admin/index.php [L]
+RewriteRule ^admin/login$             php/views/admin/login.php [L]
+RewriteRule ^admin/logout$            php/views/admin/logout.php [L]
+RewriteRule ^admin/project/new$       php/views/admin/project.php?new=true [L]
+RewriteRule ^admin/project/(.+)/edit$ php/views/admin/project.php?new=false&id=$1 [L]
+
+#RewriteCond %{REQUEST_FILENAME} -l
+#RewriteCond %{REQUEST_FILENAME} -d
+#RewriteCond %{REQUEST_FILENAME} -s
+RewriteRule ^php(/|/config/.*)$ php/views/404.php?page=$1 [L]
+
+ErrorDocument 404 /php/views/404.php

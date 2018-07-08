@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<!DOCTYPE project>
+<project name="www.oeco-architectes.com" default="deploy" basedir=".">
+
+  <!--
+  ===========================================================================
+  Build settings
+
+  You must create a file names build.properties containing:
+
+      # FTP Server Settings
+      ftp.server=ftp.oeco-architectes.com
+      ftp.user=...
+      ftp.password=...
+      ftp.dir=/www
+
+  ===========================================================================
+  -->
+  <property file="build.properties" />
+
+
+  <!--
+  ===========================================================================
+  JAR Dependencies
+
+  See https://issues.apache.org/bugzilla/show_bug.cgi?id=45860 for details
+  ===========================================================================
+  -->
+  <path id="wptg.classpath">
+    <fileset dir="lib/ant" includes="commons-net-3.1.jar" />
+    <fileset dir="lib/ant" includes="jakarta-oro-2.0.8.jar" />
+    <fileset dir="lib/ant" includes="ant-commons-net-1.7.0.jar" />
+  </path>
+  <classloader classpathref="wptg.classpath" parentFirst="false" />
+  <taskdef name="ftp" classname="org.apache.tools.ant.taskdefs.optional.net.FTP" loaderref="ant.coreLoader" />
+
+
+  <!--
+  ===========================================================================
+  CSS Minification
+  ===========================================================================
+  -->
+  <target name="css-minification">
+    <exec executable="bash">
+      <arg value="-c" />
+      <arg value="php lib/csscrush/cli.php -f=css/website.css -o=css/website.min.css" />
+    </exec>
+  </target>
+
+  <!--
+  ===========================================================================
+  Deployment
+  ===========================================================================
+  -->
+  <target name="deploy">
+    <ftp server="${ftp.server}"
+         userid="${ftp.user}"
+         password="${ftp.password}"
+         remotedir="${ftp.dir}"
+         verbose="true"
+         passive="yes">
+      <fileset dir=".">
+        <include name=".htaccess"/>
+        <include name="php/**"/>
+        <include name="css/**/*.min.css"/>
+        <include name="css/**/fonts/.htaccess"/>
+        <include name="css/**/fonts/*.ttf"/>
+        <include name="img/**"/>
+        <include name="js/**/*.min.js" />
+        <exclude name="**/.gitignore"/>
+        <exclude name="php/composer.phar"/>
+        <exclude name="php/composer.lock"/>
+        <exclude name="php/config/**/*.local.*"/>
+        <exclude name="php/data/**"/>
+        <exclude name="php/vendor/**"/>
+      </fileset>
+    </ftp>
+    <ftp server="${ftp.server}"
+         userid="${ftp.user}"
+         password="${ftp.password}"
+         remotedir="${ftp.dir}"
+         verbose="true"
+         passive="yes"
+         chmod="707">
+      <fileset dir=".">
+        <include name="php/data/cache/*"/>
+        <exclude name="php/data/cache/**/.*"/>
+        <exclude name="php/data/cache/**/*.*"/>
+      </fileset>
+    </ftp>
+  </target>
+
+  <!--
+  ===========================================================================
+  Deployment (php/data)
+  ===========================================================================
+  -->
+  <target name="deploy-data">
+    <ftp server="${ftp.server}"
+         userid="${ftp.user}"
+         password="${ftp.password}"
+         remotedir="${ftp.dir}"
+         verbose="true"
+         passive="yes">
+      <fileset dir=".">
+        <include name="php/data/img/"/>
+        <exclude name="php/data/img/**/.*"/>
+        <exclude name="php/data/img/**/*.db"/>
+        <exclude name="php/data/img/**/*.docx"/>
+        <exclude name="php/data/cache/**"/>
+      </fileset>
+    </ftp>
+  </target>
+
+  <!--
+  ===========================================================================
+  Deployment (php/vendor)
+  ===========================================================================
+  -->
+  <target name="deploy-vendor">
+    <ftp server="${ftp.server}"
+         userid="${ftp.user}"
+         password="${ftp.password}"
+         remotedir="${ftp.dir}"
+         verbose="true"
+         passive="yes">
+      <fileset dir=".">
+        <include name="php/vendor/**"/>
+      </fileset>
+    </ftp>
+  </target>
+
+</project>
