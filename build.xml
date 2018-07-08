@@ -52,7 +52,7 @@
   Deployment
   ===========================================================================
   -->
-  <target name="deploy">
+  <target name="deploy" depends="css-minification">
     <ftp server="${ftp.server}"
          userid="${ftp.user}"
          password="${ftp.password}"
