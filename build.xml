@@ -64,7 +64,7 @@
         <include name="php/**"/>
         <include name="css/**/*.min.css"/>
         <include name="css/**/fonts/.htaccess"/>
-        <include name="css/**/fonts/*.ttf"/>
+        <include name="css/**/fonts/*.woff"/>
         <include name="img/**"/>
         <include name="js/**/*.min.js" />
         <exclude name="**/.gitignore"/>
