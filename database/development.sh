@@ -74,5 +74,5 @@ mysql_create_user oeco_dev
 mysql_create_db oeco_dev
 mysql_grant_db oeco_dev oeco_dev
 mysql_show_grants oeco_dev
-{ echo 'SET FOREIGN_KEY_CHECKS=0;'; cat "$DIR/database-structure.sql"; echo 'SET FOREIGN_KEY_CHECKS=1;'; } | mysql -v -u oeco_dev oeco_dev
-{ echo 'SET FOREIGN_KEY_CHECKS=0;'; cat "$DIR/database-data.sql"; echo 'SET FOREIGN_KEY_CHECKS=1;'; } | mysql -v -u oeco_dev oeco_dev
+mysql -vv --init-command 'SET SESSION FOREIGN_KEY_CHECKS=0;' -u oeco_dev oeco_dev < "$DIR/database-structure.sql"
+mysql -vv --init-command 'SET SESSION FOREIGN_KEY_CHECKS=0;' -u oeco_dev oeco_dev < "$DIR/database-data.sql"
