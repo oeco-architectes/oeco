@@ -1,6 +1,9 @@
 <?php
 define('PAGE', 'projects');
 require_once realpath(__DIR__ . '/../bootstrap.php');
+
+use League\CommonMark\CommonMarkConverter;
+$converter = new CommonMarkConverter();
 ?>
 <!doctype html>
 <html lang="fr">
@@ -50,7 +53,9 @@ require_once realpath(__DIR__ . '/../bootstrap.php');
 
         <?php foreach(explode("\r\n\r\n", $project['project']['content']) as $i => $paragraph): ?>
 
-          <p class="description"><?= implode('<br />', explode("\r\n", $paragraph)) ?></p>
+          <div class="description">
+            <?= $converter->convertToHtml(str_replace("\r\n", '<br/>', $paragraph)); ?>
+          </div>
 
           <?php if (array_key_exists($i, $project['project']['images'])): ?>
             <?php $image = $project['project']['images'][$i]; ?>
@@ -72,7 +77,7 @@ require_once realpath(__DIR__ . '/../bootstrap.php');
             <?php foreach($properties['properties'] as $property): ?>
               <?php if (array_key_exists($property['id'], $project['project']['properties'])): ?>
                 <dt><?= $property['name'] ?></dt>
-                <dd><?= $project['project']['properties'][ $property['id'] ] ?></dd>
+                <dd><?= $converter->convertToHtml($project['project']['properties'][ $property['id'] ]); ?></dd>
               <?php endif; ?>
             <?php endforeach; ?>
           </dl>

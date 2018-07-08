@@ -1,4 +1,5 @@
-/css/fonts/*.ttf
+/css/fonts/*.otf
+/css/fonts/*.woff
 /css/fonts/*.tar.gz
 /php/vendor/
 /build.properties
