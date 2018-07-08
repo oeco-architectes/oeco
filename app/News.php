@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Storage;
 use RuntimeException;
 use InvalidArgumentException;
 use Cocur\Slugify\Slugify;
@@ -52,9 +53,24 @@ class News extends Model
         return self::imagePath($this->slug);
     }
 
+    public function getImageUrl()
+    {
+        return self::imageUrl($this->slug);
+    }
+
+    public function hasSummary()
+    {
+        return $this->summary !== null;
+    }
+
     public static function imagePath($slug, $extension = 'jpg')
     {
         return storage_path('app/img/news/' . $slug . '.' . $extension);
+    }
+
+    public static function imageUrl($slug, $extension = 'jpg')
+    {
+        return Storage::url('img/news/' . $slug . '.' . $extension);
     }
 
     /**

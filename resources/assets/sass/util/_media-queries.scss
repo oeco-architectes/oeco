@@ -1,0 +1,43 @@
+@import 'util/lang';
+
+// Breakpoints
+$breakpoints: (
+  small: 544px,
+  medium: 768px,
+  large: 992px,
+  extra-large: 1200px
+);
+
+/// Devices
+/// - extra-small: portrait phones
+/// - small: landscape phones
+/// - medium: tablets
+/// - large: desktops
+/// - extra-large: large desktops
+$device-sizes: join(extra-small, map-keys($breakpoints));
+
+/// Media query including for a given device size, and all bigger ones
+/// @param {number} $size Device size: small, medium, large, extra-large
+/// @output Output content inside a @media clause
+@mixin media-up($size) {
+  @if $size == 'extra-small' {
+    @error "Cannot use 'extra-small' as size in media-up mixin, as it includes all devices.";
+  }
+
+  @media screen and (min-width: #{map-get($breakpoints, $size)}) {
+    @content;
+  }
+}
+
+/// Media query including for a given device size, and all smaller ones
+/// @param {number} $size Device size: extra-small, small, medium, large
+/// @output Output content inside a @media clause
+@mixin media-down($size) {
+  @if $size == 'extra-large' {
+    @error "Cannot use 'extra-large' as size in media-down mixin, as it includes all devices.";
+  }
+
+  @media screen and (max-width: #{map-get($breakpoints, next($device-sizes, $size)) - 1}) {
+    @content;
+  }
+}

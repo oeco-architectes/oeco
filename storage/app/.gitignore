@@ -1,2 +1,9 @@
 *.*
 !.*
+!img
+!img/oeco-*.png
+!public
+!public/img
+!public/img/*.png
+!public/img/*.svg
+!public/img/news

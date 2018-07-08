@@ -1,0 +1,85 @@
+@import 'util/math';
+
+$text-line-height: 1.9;
+$text-vertical-spacing: 1rem * $text-line-height;
+
+html {
+  font-family: 'Roboto', sans-serif;
+  font-size: font-size-percentage(15px);
+  font-weight: 400;
+  line-height: $text-line-height;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 90vw;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 100;
+  margin-bottom: $text-vertical-spacing;
+}
+
+em,
+strong {
+  font-weight: inherit;
+}
+
+p {
+  margin-bottom: $text-vertical-spacing;
+}
+
+.oeco-site-navigation {
+  padding-top: 2 * $text-vertical-spacing;
+  width: 80%;
+  margin: 0 auto $text-vertical-spacing auto;
+
+  &__logo {
+    display: block;
+    margin-bottom: 2 * $text-vertical-spacing;
+
+    > img {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  &__menu {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    display: table;
+    width: 100%;
+
+    > li {
+      margin-bottom: $text-vertical-spacing;
+      font-size: 1.2rem;
+      // font-weight: 100;
+      display: table-cell;
+
+      > a:link,
+      > a:visited {
+        color: inherit;
+        display: block;
+        text-decoration: none;
+        text-align: center;
+      }
+
+      img {
+        @include size(2.5rem, 2.5rem);
+      }
+    }
+  }
+}
+
+.oeco-article {
+  &__title {
+    font-size: 1.7em;
+    text-transform: uppercase;
+  }
+}

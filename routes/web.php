@@ -1,5 +1,7 @@
 <?php
 
+use App\News;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,5 +14,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $news = News::whereNotNull('order')->orderBy('order', 'asc')->get();
+    return view('home', ['news' => $news]);
+});
+
+Route::get('/agence', function () {
+    return view('agency');
 });

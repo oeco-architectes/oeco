@@ -2,6 +2,7 @@
     "name": "oeco-architectes/oeco",
     "description": "Oeco Architectes website",
     "keywords": ["oeco", "architecture", "website"],
+    "version": "0.1.0",
     "license": "proprietary",
     "type": "project",
     "authors": [
@@ -21,6 +22,7 @@
         "fzaninotto/faker": "^1.7",
         "kevinlebrun/colors.php": "^1.0",
         "laravel/framework": "5.5.*",
+        "lavary/laravel-menu": "^1.7",
         "spatie/laravel-artisan-dd": "^2.0"
     },
     "require-dev": {
@@ -57,7 +59,8 @@
     "scripts": {
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.development.example', '.env');\"",
-            "@php -r \"file_exists('.env.testing') || copy('.env.testing.example', '.env.testing');\""
+            "@php -r \"file_exists('.env.testing') || copy('.env.testing.example', '.env.testing');\"",
+            "@php -r \"file_exists('public/storage') || symlink('../storage/app/public', 'public/storage');\""
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate",
@@ -107,7 +110,7 @@
           "@composer set-env .env.${DEPLOY_ENVIRONMENT} DB_DATABASE $DEPLOY_DB_DATABASE DEPLOY_DB_DATABASE",
           "@composer set-env .env.${DEPLOY_ENVIRONMENT} DB_USERNAME $DEPLOY_DB_USERNAME DEPLOY_DB_USERNAME",
           "@composer set-env .env.${DEPLOY_ENVIRONMENT} DB_PASSWORD $DEPLOY_DB_PASSWORD DEPLOY_DB_PASSWORD",
-          "npm run production",
+          "yarn run production",
           "deployment .deployment.php",
           "@composer remote \"[[ -f composer.phar ]] || curl -s https://getcomposer.org/installer | ~/php\"",
           "@composer remote \"~/php composer.phar install --no-dev\"",
