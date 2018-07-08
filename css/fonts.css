@@ -1,19 +1,29 @@
 @font-face {
-	font-family: Helvetica Neue Roman;
-	src: url(fonts/HelveticaNeueLTCom-Roman.ttf);
+  font-family: HelveticaNeue;
+  font-weight: bold;
+  src: url(fonts/HelveticaNeueLTPro-Bd.woff);
 }
 
 @font-face {
-	font-family: Helvetica Neue Light;
-	src: url(fonts/HelveticaNeueLTCom-Lt.ttf);
+  font-family: HelveticaNeue;
+  font-weight: normal;
+  src: url(fonts/HelveticaNeueLTPro-Roman.woff);
 }
 
-@font-face {
-	font-family: Helvetica Neue Ultra Thin;
-	src: url(fonts/HelveticaNeueLTCom-UltLt.ttf);
-}
+/* @font-face {
+  font-family: HelveticaNeue;
+  font-weight: 600;
+  src: url(fonts/HelveticaNeueLTPro-Md.woff);
+} */
 
 @font-face {
-	font-family: Helvetica Neue Thin;
-	src: url(fonts/HelveticaNeueLTCom-Th.ttf);
-} 
+  font-family: HelveticaNeue;
+  font-weight: 200;
+  src: url(fonts/HelveticaNeueLTPro-Th.woff);
+}
+
+/* @font-face {
+  font-family: HelveticaNeue;
+  font-weight: 100;
+  src: url(fonts/HelveticaNeueLTPro-UltLt.woff);
+} */

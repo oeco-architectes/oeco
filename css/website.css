@@ -2,7 +2,7 @@
 @import url(fonts.css);
 
 body {
-  font-family: Helvetica Neue Roman, Helvetica Neue, Helvetica, sans-serif;
+  font-family: HelveticaNeue, Helvetica, sans-serif;
 }
 
 section,aside {
@@ -83,8 +83,9 @@ a.active {
 }
 
 .news-title,.project-title,.agency h1 {
-  font-family: Helvetica Neue Thin,Helvetica Neue,Helvetica,sans-serif;
-  font-size: 1.3em;
+  font-family: HelveticaNeue, Helvetica, sans-serif;
+  font-weight: 200;
+  font-size: 1.5em;
   text-transform: uppercase;
   line-height: 1.2;
   margin: 1em 0 .5em 0;
@@ -106,8 +107,7 @@ a.active {
 
 .description {
   text-align: justify;
-  line-height: 1.6;
-  margin: 2em 0;
+  line-height: 1.8;
 }
 
 .description p {
@@ -126,14 +126,16 @@ a.active {
 
 .people figcaption {
   font-size: 24px;
-  font-family: Helvetica Neue Thin,Helvetica Neue,Helvetica,sans-serif;
+  font-family: HelveticaNeue, sans-serif;
+  font-weight: 200;
   color: #999;
   line-height: 1em;
   margin-top: .5em;
 }
 
 .people h2 {
-  font-family: Helvetica Neue Thin,Helvetica Neue,Helvetica,sans-serif;
+  font-family: HelveticaNeue, sans-serif;
+  font-weight: 200;
   font-size: 24px;
   color: #999;
   margin-top: 40px;
@@ -212,25 +214,34 @@ a.active {
   display: block;
   left: 0;
   right: 0;
-  bottom: -30%;
+  top: 100%;
   color: #fff;
-  background: -webkit-linear-gradient(top,rgba(0,0,0,.5),rgba(0,0,0,.7));
-  background: linear-gradient(top,rgba(0,0,0,.5),rgba(0,0,0,.7));
+  background: -webkit-linear-gradient(top, rgba(0,0,0,.5), rgba(0,0,0,.7));
+  background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.7));
   font-size: 85%;
+  font-weight: normal;
   padding: .5em 1em;
   opacity: 0;
-  -webkit-transition: opacity .5s,bottom .5s;
-  -moz-transition: opacity .5s,bottom .5s;
-  -o-transition: opacity .5s,bottom .5s;
-  transition: opacity .5s,bottom .5s;
+  -webkit-transition: opacity .5s, transform .3s;
+  -moz-transition: opacity .5s, transform .3s;
+  -o-transition: opacity .5s, transform .3s;
+  transition: opacity .5s, transform .3s;
 }
 
 #projects figure:hover figcaption {
-  bottom: 0;
+  transform: translateY(-100%);
   opacity: 1;
 }
 
 .project-details img {
   max-width: 100%;
-  margin: 2rem;
+}
+
+.project-details .description,
+.project-details .image {
+  margin: 2em 0;
+}
+
+.project-details dd p {
+  margin: 0;
 }
