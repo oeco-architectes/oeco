@@ -1,6 +1,6 @@
 <figure class="image">
   <a href="#<?=$image['id']?>" data-toggle="lightbox">
-    <img src="<?=BASEURL?>/services/image.php?path=<?=$image['path']?>&amp;width=<?=$width?>" width="<?=$width?>" alt="<?=$image['legend']?>" title="<?=$image['legend']?>" />
+    <img src="<?=BASEURL?>/img/<?=preg_replace('/.jpg$/', '', $image['path'])?>@<?=$width?>x.jpg" width="<?=$width?>" alt="<?=$image['legend']?>" title="<?=$image['legend']?>" />
   </a>
   <?php if(isset($image['legend'])): ?>
     <figcaption>

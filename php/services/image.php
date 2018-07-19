@@ -1,4 +1,5 @@
 <?php
+
 try {
   require_once realpath(__DIR__ . '/../bootstrap.php');
 
@@ -92,5 +93,6 @@ catch(Exception $e) {
     break; case 404: header('HTTP/1.0 404 Not Found');
     break; default : header('HTTP/1.0 500 Internal Server Error');
   }
+  echo '<pre>' . print_r($_GET, true) . '</pre>';
   echo $e->getMessage();
 }

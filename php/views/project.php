@@ -46,9 +46,7 @@ $converter = new CommonMarkConverter();
         <?php endif ?>
 
         <?php
-          // $width = 650;
-          $width = 948;
-          // $height = 600;
+          $width = 945;
         ?>
 
         <?php foreach(explode("\r\n\r\n", $project['project']['content']) as $i => $paragraph): ?>

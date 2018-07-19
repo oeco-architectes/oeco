@@ -2,18 +2,24 @@ RewriteEngine On
 
 # SetEnv APPLICATION_ENV production
 
-# img, css, js
+# Project/news URLs: try cache first
+RewriteRule ^img/projects/(.*)$ php/data/cache/projects/$1
+RewriteRule ^img/news/(.*)$ php/data/cache/news/$1
 
-#RewriteCond %{REQUEST_FILENAME} -l [OR]
-#RewriteCond %{REQUEST_FILENAME} -d [OR]
-#RewriteCond %{REQUEST_FILENAME} -s
-RewriteRule ^(css|js|img)/.*$ - [L]
+# Existing files
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d [OR]
+RewriteCond %{REQUEST_FILENAME} -s
+RewriteRule ^(css|js|img|php/data/cache)/.*$ - [L]
 
+# Uncached project/news URLs
+RewriteRule ^php/data/cache/([^/]+)/([^@]+)@(\d+)x(\d+).jpg /services/image.php?path=$1/$2.jpg&width=$3&height=$4
+RewriteRule ^php/data/cache/([^/]+)/([^@]+)@(\d+)x.jpg$ /services/image.php?path=$1/$2.jpg&width=$3
+RewriteRule ^php/data/cache/([^/]+)/([^@]+)@x(\d+).jpg$ /services/image.php?path=$1/$2.jpg&height=$3
+RewriteRule ^php/data/cache/([^/]+)/([^@]+).jpg$ /services/image.php?path=$1/$2.jpg
 
-# services
-
+# Services
 RewriteRule ^services/(.*)$ php/services/$1 [L]
-
 
 # url rewriting
 
@@ -28,9 +34,5 @@ RewriteRule ^admin/logout$            php/views/admin/logout.php [L]
 RewriteRule ^admin/project/new$       php/views/admin/project.php?new=true [L]
 RewriteRule ^admin/project/(.+)/edit$ php/views/admin/project.php?new=false&id=$1 [L]
 
-#RewriteCond %{REQUEST_FILENAME} -l
-#RewriteCond %{REQUEST_FILENAME} -d
-#RewriteCond %{REQUEST_FILENAME} -s
 RewriteRule ^php(/|/config/.*)$ php/views/404.php?page=$1 [L]
-
 ErrorDocument 404 /php/views/404.php
