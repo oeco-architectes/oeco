@@ -6,10 +6,10 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 mysql_create_user() {
   if [ "$#" = 1 ]
   then
-    mysql -ve "CREATE USER '$1'@'localhost'"
+    mysql -u root -ve "CREATE USER '$1'@'localhost'"
   elif [ "$#" = 2 ]
   then
-    mysql -ve "CREATE USER '$1'@'localhost' IDENTIFIED BY '$2'"
+    mysql -u root -ve "CREATE USER '$1'@'localhost' IDENTIFIED BY '$2'"
   else
     echo "Usage: mysql_create_user USER [PASSWORD]" >&2
     return 1
@@ -23,7 +23,7 @@ mysql_drop_user() {
     echo "Usage: mysql_drop_user USER" >&2
     return 1
   fi
-  mysql -ve "DROP USER '$1'@'localhost';"
+  mysql -u root -ve "DROP USER '$1'@'localhost';"
 }
 
 # Create new database in MySQL/MariaDB.
@@ -33,7 +33,7 @@ mysql_create_db() {
     echo "Usage: mysql_create_db DATABASE" >&2
     return 1
   fi
-  mysql -ve "CREATE DATABASE IF NOT EXISTS $1"
+  mysql -u root -ve "CREATE DATABASE IF NOT EXISTS $1"
 }
 
 # Drop database in MySQL/MariaDB.
@@ -43,7 +43,7 @@ mysql_drop_db() {
     echo "Usage: mysql_drop_db DATABASE" >&2
     return 1
   fi
-  mysql -ve "DROP DATABASE IF EXISTS $1"
+  mysql -u root -ve "DROP DATABASE IF EXISTS $1"
 }
 
 # Grant all permissions for user for given database.
@@ -53,8 +53,8 @@ mysql_grant_db() {
     echo "Usage: mysql_grand_db USER DATABASE" >&2
     return 1
   fi
-  mysql -ve "GRANT ALL ON $2.* TO '$1'@'localhost'"
-  mysql -ve "FLUSH PRIVILEGES"
+  mysql -u root -ve "GRANT ALL ON $2.* TO '$1'@'localhost'"
+  mysql -u root -ve "FLUSH PRIVILEGES"
 }
 
 # Show current user permissions.
@@ -64,7 +64,7 @@ mysql_show_grants() {
     echo "Usage: mysql_show-grants USER" >&2
     return 1
   fi
-  mysql -ve "SHOW GRANTS FOR '$1'@'localhost'"
+  mysql -u root -ve "SHOW GRANTS FOR '$1'@'localhost'"
 }
 
 mysql_drop_db oeco_dev
