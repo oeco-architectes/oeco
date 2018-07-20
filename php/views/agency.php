@@ -69,28 +69,7 @@ Nous nous intéressons à toutes les échelles de projet, aussi bien urbaines qu
       </div>
       <div class="row-fluid">
         <div class="col-sm-11">
-          <h2 itemprop="name">ŒCO Architectes</h2>
-
-          <h3>Adresse</h3>
-          <p itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-            <span itemprop="streetAddress">13 Rue Delpy</span>,<br />
-            <span itemprop="postalCode">31000</span>
-            <span itemprop="addressLocality">Toulouse</span>.<br />
-          </p>
-
-          <h3>Téléphone</h3>
-          <p class="telephone" itemprop="phone">05 31 98 98 42</p>
-
-          <h3>Adresse électronique</h3>
-          <p>
-            <a href="mailto:agence@oeco-architectes.com" itemprop="email">agence@oeco-architectes.com</a>
-          </p>
-
-          <span id="geolocalisation" itemprop="geo" itemscope itemtype="http://data-vocabulary.org/Geo">
-            Coordonnées GPS:
-            <span itemprop="latitude">43.59731</span>,
-            <span itemprop="longitude">1.45402</span>
-          </span>
+          <?php include __DIR__ . '/parts/agency.phtml'; ?>
         </div>
       </div>
     </aside>
