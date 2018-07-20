@@ -8,10 +8,11 @@ chdir(__DIR__);
 $loader = require_once 'vendor/autoload.php';
 
 // Constants
-if(!defined('APPLICATION_ENV')) {
+if (!defined('APPLICATION_ENV')) {
 	define('APPLICATION_ENV', getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production');
 }
-if(APPLICATION_ENV === 'development') {
+
+if (APPLICATION_ENV === 'development') {
 	define('BASEURL', $_SERVER['HTTP_HOST'] === 'localhost' ? '/www.oeco-architectes.com' : '');
 	define('MIN', '');
 }
@@ -40,10 +41,24 @@ function get_server_origin($server) {
   return get_server_scheme($server) . '://' .get_server_host($_SERVER);
 }
 
+function includeWithVariables($filePath, $variables = array()) {
+  $output = NULL;
+  if (file_exists($filePath)) {
+    extract($variables);
+    ob_start();
+    include $filePath;
+    $output = ob_get_clean();
+
+  } else {
+    $output = $filePath . ' does not exist';
+  }
+  return $output;
+}
+
 // Config
 $config = new Zend\Config\Config(include 'config/application.config.php', true);
 foreach(array_diff(scandir('config/autoload'), array('.','..')) as $filename) {
-	if(preg_match('/\.php$/', $filename)) {
+	if (preg_match('/\.php$/', $filename)) {
 		$config->merge(new Zend\Config\Config(include 'config/autoload/' . $filename));
 	}
 }

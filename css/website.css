@@ -169,7 +169,8 @@ a.active {
   margin-bottom: 40px;
 }
 
-#project-categories a.active,#projects a.active {
+#project-categories a.active,
+#projects a.active {
   pointer-events: auto;
 }
 
@@ -181,7 +182,7 @@ a.active {
   width: 570px;
 }
 
-.pic {
+.pic-desktop {
   -webkit-transition: opacity 1s;
   -moz-transition: opacity 1s;
   -o-transition: opacity 1s;
@@ -189,7 +190,7 @@ a.active {
   opacity: .3;
 }
 
-.pic.active {
+.pic-desktop.active {
   opacity: 1;
 }
 
@@ -197,20 +198,23 @@ a.active {
   margin-bottom: 10px;
   margin-right: -5px;
   margin-left: -5px;
-  height: 190px;
 }
 
-#projects .pic {
+#projects .pic-desktop {
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#projects figure {
+#projects .pic-placeholder {
+  height: 190px;
+}
+
+#projects .pic-desktop figure {
   position: relative;
   overflow: hidden;
 }
 
-#projects figcaption {
+#projects .pic-desktop figcaption {
   position: absolute;
   display: block;
   left: 0;
@@ -229,7 +233,7 @@ a.active {
   transition: opacity .5s, transform .3s;
 }
 
-#projects figure:hover figcaption {
+#projects .pic-desktop figure:hover figcaption {
   transform: translateY(-100%);
   opacity: 1;
 }
@@ -245,4 +249,25 @@ a.active {
 
 .project-details dd p {
   margin: 0;
+}
+
+.pic-mobile {
+  margin-bottom: 16px;
+}
+
+.pic-mobile figcaption {
+  margin: 1rem 0;
+  font-family: HelveticaNeue, sans-serif;
+  font-weight: 200;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.pic-mobile img {
+  max-width: 100%;
+  height: auto;
+}
+
+#projects .pic-mobile:not(.active) {
+  display: none !important;
 }

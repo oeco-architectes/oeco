@@ -1,6 +1,24 @@
 <?php
 define('PAGE', 'projects');
 require_once realpath(__DIR__ . '/../bootstrap.php');
+
+function projectFigure($project, $images) {
+  $output = '';
+  foreach ($images as [$width, $height, $classes]) {
+    $output .= includeWithVariables(__DIR__ . '/parts/figure.phtml', array(
+      'classes' => $classes . ' active ' . implode(' ', array_map(function($c) { return 'pic-' . $c; }, $project['categories'])),
+      'href' => BASEURL . '/projets/' . $project['id'],
+      'caption' => $project['title'],
+      'image' => array(
+        'width' => $width,
+        'height' => $height,
+        'src' => BASEURL . '/img/projects/' . $project['id'] . '/' . $project['id'] . '-01@' . $width . 'x' . $height . '.jpg',
+        'alt' => $project['title']
+      ),
+    ));
+  }
+  return $output;
+}
 ?>
 <!doctype html>
 <html lang="fr">
@@ -56,11 +74,11 @@ require_once realpath(__DIR__ . '/../bootstrap.php');
       <?php foreach($line as $item): ?>
         <?php
           switch($item) {
-                   case MozaicLayout::ITEM_SMALL:       $i++; ?><a class="pic pic-small col-sm-3 active <?='pic-' . implode(' pic-',$projects[$i]['categories'])?>" href="<?=BASEURL?>/projets/<?=$projects[$i]['id']?>"><figure><img src="<?=BASEURL?>/img/projects/<?=$projects[$i]['id']?>/<?=$projects[$i]['id']?>-01@290x190.jpg" width="290" height="190" alt="<?=$projects[$i]['title']?>" title="<?=$projects[$i]['title']?>" /><figcaption><?=$projects[$i]['title']?></figcaption></figure></a><?php
-            break; case MozaicLayout::ITEM_HIGH_TOP:    $i++; ?><a class="pic pic-high  col-sm-3 active <?='pic-' . implode(' pic-',$projects[$i]['categories'])?>" href="<?=BASEURL?>/projets/<?=$projects[$i]['id']?>"><figure><img src="<?=BASEURL?>/img/projects/<?=$projects[$i]['id']?>/<?=$projects[$i]['id']?>-01@290x390.jpg" width="290" height="390" alt="<?=$projects[$i]['title']?>" title="<?=$projects[$i]['title']?>" /><figcaption><?=$projects[$i]['title']?></figcaption></figure></a><?php
-            break; case MozaicLayout::ITEM_HIGH_BOTTOM:       ?><div class="col-sm-3">&nbsp;</div><?php
-            break; case MozaicLayout::ITEM_LARGE_LEFT : $i++; ?><a class="pic pic-large col-sm-6 active <?='pic-' . implode(' pic-',$projects[$i]['categories'])?>" href="<?=BASEURL?>/projets/<?=$projects[$i]['id']?>"><figure><img src="<?=BASEURL?>/img/projects/<?=$projects[$i]['id']?>/<?=$projects[$i]['id']?>-01@590x190.jpg" width="590" height="190" alt="<?=$projects[$i]['title']?>" title="<?=$projects[$i]['title']?>" /><figcaption><?=$projects[$i]['title']?></figcaption></figure></a><?php
-            break; case MozaicLayout::ITEM_LARGE_RIGHT:       ?><?php
+                   case MozaicLayout::ITEM_SMALL      : print projectFigure($projects[++$i], [[290, 190, 'hidden-xs pic pic-desktop pic-small col-sm-3'], [768, false, 'pic pic-mobile visible-xs-block col-xs-12']]);
+            break; case MozaicLayout::ITEM_HIGH_TOP   : print projectFigure($projects[++$i], [[290, 390, 'hidden-xs pic pic-desktop pic-high col-sm-3'], [768, false, 'pic pic-mobile visible-xs-block col-xs-12']]);
+            break; case MozaicLayout::ITEM_HIGH_BOTTOM: print '<div class="hidden-xs col-sm-3"><div class="pic-placeholder"></div></div>';
+            break; case MozaicLayout::ITEM_LARGE_LEFT : print projectFigure($projects[++$i], [[590, 190, 'hidden-xs pic pic-desktop pic-large col-sm-6'], [768, false, 'pic pic-mobile visible-xs-block col-xs-12']]);
+            break; case MozaicLayout::ITEM_LARGE_RIGHT: // nothing
           }
         ?>
       <?php endforeach; ?>
