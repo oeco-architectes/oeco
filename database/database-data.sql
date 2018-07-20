@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 INSERT INTO `categories` (`id`, `name`) VALUES
 ('cultural', 'Culturel'),
-('academic', 'éducation'),
+('academic', 'Éducation'),
 ('dwelling', 'Logement'),
 ('health', 'Santé'),
 ('sport', 'Sport'),

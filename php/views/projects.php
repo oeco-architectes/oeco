@@ -30,7 +30,7 @@ require_once realpath(__DIR__ . '/../bootstrap.php');
     <?php $categories = include 'services/categories.php'; ?>
     <?php if($categories['ok']): ?>
       <?php foreach($categories['categories'] as $category): ?>
-        <li class="project-category-<?=$category['id']?>"><a href="#" data-id="<?=$category['id']?>"><?=strtolower($category['name'])?></a></li>
+        <li class="project-category-<?=$category['id']?>"><a href="#" data-id="<?=$category['id']?>"><?=mb_strtolower($category['name'], 'UTF-8')?></a></li>
       <?php endforeach; ?>
     <?php endif; ?>
   </ul>
