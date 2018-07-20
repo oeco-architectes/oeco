@@ -30,7 +30,9 @@ require_once realpath(__DIR__ . '/../bootstrap.php');
 
       <h1 class="title">Prix &amp; publications</h1>
       <article class="description">
-        <img src="<?=BASEURL?>/img/publications.jpg" alt="Prix &amp; publications d'oeco" width="661" height="437" />
+        <p>
+          <img src="<?=BASEURL?>/img/publications.jpg" alt="Prix &amp; publications d'oeco" width="661" height="437" />
+        </p>
       </article>
 
       <p class="actions">
