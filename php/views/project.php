@@ -2,6 +2,12 @@
 define('PAGE', 'projects');
 require_once realpath(__DIR__ . '/../bootstrap.php');
 
+$href = get_server_origin($_SERVER) . BASEURL;
+$projectId = $_GET['id'];
+$project = include 'services/project.php';
+$properties = include 'services/properties.php';
+$title = $project['ok'] ? $project['project']['title'] : 'Article inconnu';
+
 use League\CommonMark\CommonMarkConverter;
 $converter = new CommonMarkConverter();
 ?>
@@ -9,7 +15,17 @@ $converter = new CommonMarkConverter();
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
-  <title>oeco architectes</title>
+  <title><?= $title ?> - OECO Architectes</title>
+  <link rel="canonical" href="<?= $href ?>/projets/<?= $project['project']['id'] ?>">
+
+  <meta property="og:url" content="<?= $href ?>/projets/<?= $project['project']['id'] ?>">
+  <meta property="og:title" content="<?= $title ?>">
+  <meta property="og:site_name" content="OECO Architectes">
+  <meta property="og:image" content="<?= $href ?>/img/projects/<?= $project['project']['id'] ?>/<?= $project['project']['id'] ?>-01@1200x600.jpg">
+  <meta property="og:description" content="<?= str_replace("\r\n", ' ', explode("\r\n\r\n", $project['project']['content'])[0]) ?>">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_FR">
+
   <link rel="stylesheet" href="<?=BASEURL?>/css/website<?=MIN?>.css" />
 </head>
 <body>
@@ -28,12 +44,6 @@ $converter = new CommonMarkConverter();
       </nav>
     </header>
   </div>
-
-  <?php
-    $projectId = $_GET['id'];
-    $project = include 'services/project.php';
-    $properties = include 'services/properties.php';
-  ?>
 
   <?php if($project['ok']): ?>
     <div class="project-details row">
