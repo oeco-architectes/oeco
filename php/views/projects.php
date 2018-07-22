@@ -1,5 +1,4 @@
 <?php
-define('PAGE', 'projects');
 require_once realpath(__DIR__ . '/../bootstrap.php');
 
 function projectFigure($project, $images) {
@@ -19,29 +18,16 @@ function projectFigure($project, $images) {
   }
   return $output;
 }
+
+// Render layout
+$this->layout('layout', [
+  'view' => $view,
+  'config' => $config,
+  'baseUrl' => $baseUrl,
+  'min' => $min,
+  'title' => 'Projets',
+]);
 ?>
-<!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8" />
-  <title>Projets - oeco architectes</title>
-  <link rel="stylesheet" href="<?=BASEURL?>/css/website<?=MIN?>.css" />
-</head>
-<body>
-
-<div class="projects container">
-
-  <header>
-    <a href="<?=BASEURL?>/"><img class="logo" src="<?=BASEURL?>/img/oeco-architectes-logo.jpg" width="280" height="127" alt="oeco architectes" /></a>
-    <nav id="navigation">
-      <ul class="inline-list">
-        <li><a href="<?=BASEURL?>/projets" class="active">projets</a></li>
-        <li><a href="<?=BASEURL?>/agence">agence</a></li>
-        <li><a href="<?=$config->facebook?>" title="Facebook page" target="_blank"><img src="<?=BASEURL?>/img/facebook.png" /></a></li>
-      </ul>
-    </nav>
-  </header>
-
 <section>
 
   <ul id="project-categories" class="inline-list">
@@ -87,8 +73,3 @@ function projectFigure($project, $images) {
 </div>
 
 </section>
-</div>
-
-<?php include __DIR__ . '/parts/scripts.phtml'; ?>
-</body>
-</html>

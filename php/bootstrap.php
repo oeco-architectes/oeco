@@ -56,9 +56,9 @@ function includeWithVariables($filePath, $variables = array()) {
 }
 
 // Config
-$config = new Zend\Config\Config(include 'config/application.config.php', true);
+$GLOBALS['config'] = new Zend\Config\Config(include 'config/application.config.php', true);
 foreach(array_diff(scandir('config/autoload'), array('.','..')) as $filename) {
 	if (preg_match('/\.php$/', $filename)) {
-		$config->merge(new Zend\Config\Config(include 'config/autoload/' . $filename));
+		$GLOBALS['config']->merge(new Zend\Config\Config(include 'config/autoload/' . $filename));
 	}
 }

@@ -45,11 +45,11 @@ RewriteRule ^php/data/cache/([^/]*)/([^@]+)@(\d+)x.jpg$ services/image.php?path=
 RewriteRule ^services/(.*)$ php/services/$1 [L]
 
 # Views
-RewriteRule ^/?$                      php/views/home.php [L]
-RewriteRule ^agence/?$                php/views/agency.php [L]
-RewriteRule ^agence/publications/?$   php/views/publications.php [L]
-RewriteRule ^projets/?$               php/views/projects.php [L]
-RewriteRule ^projets/(.+)$            php/views/project.php?id=$1 [L]
+RewriteRule ^/?$                      php/view.php?view=home [L]
+RewriteRule ^agence/?$                php/view.php?view=agency [L]
+RewriteRule ^agence/publications/?$   php/view.php?view=publications [L]
+RewriteRule ^projets/?$               php/view.php?view=projects [L]
+RewriteRule ^projets/(.+)$            php/view.php?view=project-details&id=$1 [L]
 RewriteRule ^admin/?$                 php/views/admin/index.php [L]
 RewriteRule ^admin/login$             php/views/admin/login.php [L]
 RewriteRule ^admin/logout$            php/views/admin/logout.php [L]

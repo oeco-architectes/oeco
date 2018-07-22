@@ -8,7 +8,7 @@ function isPasswordCorrect($config, $username, $password) {
     return false;
   }
 
-  $adapter = new Zend\Db\Adapter\Adapter($config->db->toArray());
+  $adapter = new Zend\Db\Adapter\Adapter($GLOBALS['config']->db->toArray());
   $sql = 'SELECT * FROM `users` WHERE `id` =  \'' . $username . '\' AND `password` = \'' . md5($password) . '\'';
   $result = $adapter->query($sql)->execute();
   $result->buffer();

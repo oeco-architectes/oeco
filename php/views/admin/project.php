@@ -92,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
 
-      $adapter = new Zend\Db\Adapter\Adapter($config->db->toArray());
+      $adapter = new Zend\Db\Adapter\Adapter($GLOBALS['config']->db->toArray());
       $platform = $adapter->platform;
       $connection = $adapter->getDriver()->getConnection();
 

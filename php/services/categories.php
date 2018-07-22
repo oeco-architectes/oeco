@@ -2,7 +2,7 @@
 try {
 	require_once realpath(__DIR__ . '/../bootstrap.php');
 	
-	$adapter = new Zend\Db\Adapter\Adapter($config->db->toArray());
+	$adapter = new Zend\Db\Adapter\Adapter($GLOBALS['config']->db->toArray());
 	
 	$categories = array();
 	foreach($adapter->query('SELECT * FROM `categories`')->execute() as $category) {

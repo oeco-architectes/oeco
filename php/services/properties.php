@@ -1,9 +1,9 @@
 <?php
 try {
 	require_once realpath(__DIR__ . '/../bootstrap.php');
-	
-	$adapter = new Zend\Db\Adapter\Adapter($config->db->toArray());
-	
+
+	$adapter = new Zend\Db\Adapter\Adapter($GLOBALS['config']->db->toArray());
+
 	$properties = array();
 	foreach($adapter->query('SELECT * FROM `properties` ORDER BY `order` ASC')->execute() as $category) {
 		$item = array();
@@ -14,7 +14,7 @@ try {
 		}
 		$properties[ $item['id'] ] = $item;
 	}
-	
+
 	$output = array(
 		'ok' => true,
 		'properties' => $properties,

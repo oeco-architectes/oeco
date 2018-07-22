@@ -4,7 +4,8 @@
     "zendframework/zend-db": "2.*",
     "zendframework/zend-http": "2.*",
     "zendframework/zend-json": "2.*",
-    "league/commonmark": "^0.17.5"
+    "league/commonmark": "^0.17.5",
+    "league/plates": "^3.3"
   },
   "autoload": {
     "psr-0": {

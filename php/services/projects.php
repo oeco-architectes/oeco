@@ -1,9 +1,9 @@
 <?php
 try {
 	require_once realpath(__DIR__ . '/../bootstrap.php');
-	
-	$adapter = new Zend\Db\Adapter\Adapter($config->db->toArray());
-	
+
+	$adapter = new Zend\Db\Adapter\Adapter($GLOBALS['config']->db->toArray());
+
 	$projects = array();
 	foreach($adapter->query('SELECT * FROM `projects`')->execute() as $project) {
 		$item = array();
@@ -20,7 +20,7 @@ try {
 			$projects[$i]['categories'][] = $projectCategory['category_id'];
 		}
 	}
-		
+
 	$output = array(
 		'ok' => true,
 		'projects' => $projects,
