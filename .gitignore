@@ -1,6 +1,6 @@
 /css/fonts/*.otf
 /css/fonts/*.woff
 /css/fonts/*.tar.gz
-/php/vendor/
+/vendor/
 /build.properties
 *.min.css

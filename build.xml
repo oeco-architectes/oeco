@@ -61,18 +61,18 @@
          passive="yes">
       <fileset dir=".">
         <include name=".htaccess"/>
-        <include name="php/**"/>
+        <include name="application/**"/>
+        <include name="config/**"/>
+        <exclude name="config/**/*.local.*"/>
+        <include name="services/**"/>
+        <include name="views/**"/>
+        <include name="*.php"/>
         <include name="css/**/*.min.css"/>
         <include name="css/**/fonts/.htaccess"/>
         <include name="css/**/fonts/*.woff"/>
         <include name="img/**"/>
         <include name="js/**/*.min.js" />
         <exclude name="**/.gitignore"/>
-        <exclude name="php/composer.phar"/>
-        <exclude name="php/composer.lock"/>
-        <exclude name="php/config/**/*.local.*"/>
-        <exclude name="php/data/**"/>
-        <exclude name="php/vendor/**"/>
       </fileset>
     </ftp>
     <ftp server="${ftp.server}"
@@ -83,16 +83,16 @@
          passive="yes"
          chmod="707">
       <fileset dir=".">
-        <include name="php/data/cache/*"/>
-        <exclude name="php/data/cache/**/.*"/>
-        <exclude name="php/data/cache/**/*.*"/>
+        <include name="data/cache/*"/>
+        <exclude name="data/cache/**/.*"/>
+        <exclude name="data/cache/**/*.*"/>
       </fileset>
     </ftp>
   </target>
 
   <!--
   ===========================================================================
-  Deployment (php/data)
+  Deployment (data)
   ===========================================================================
   -->
   <target name="deploy-data">
@@ -103,18 +103,18 @@
          verbose="true"
          passive="yes">
       <fileset dir=".">
-        <include name="php/data/img/"/>
-        <exclude name="php/data/img/**/.*"/>
-        <exclude name="php/data/img/**/*.db"/>
-        <exclude name="php/data/img/**/*.docx"/>
-        <exclude name="php/data/cache/**"/>
+        <include name="data/img/"/>
+        <exclude name="data/img/**/.*"/>
+        <exclude name="data/img/**/*.db"/>
+        <exclude name="data/img/**/*.docx"/>
+        <exclude name="data/cache/**"/>
       </fileset>
     </ftp>
   </target>
 
   <!--
   ===========================================================================
-  Deployment (php/vendor)
+  Deployment (vendor)
   ===========================================================================
   -->
   <target name="deploy-vendor">
@@ -125,7 +125,7 @@
          verbose="true"
          passive="yes">
       <fileset dir=".">
-        <include name="php/vendor/**"/>
+        <include name="vendor/**"/>
       </fileset>
     </ftp>
   </target>

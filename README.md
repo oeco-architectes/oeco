@@ -7,7 +7,7 @@ Setup
 -----
 
 - setup MySQL database: `sudo sudo database/development.sh`
-- create php/config/local.php with MySQL credentials
+- create config/local.php with MySQL credentials
 - create apache virtual host with / as document root
 - create `build.properties`:
 ```properties

@@ -26,10 +26,10 @@ RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L]
 # -------------
 
 # Project/news URLs: try cache first
-RewriteRule ^img/projects/(.*)$ php/data/cache/projects/$1 [L]
-RewriteRule ^img/news/(.*)$ php/data/cache/news/$1 [L]
+RewriteRule ^img/projects/(.*)$ data/cache/projects/$1 [L]
+RewriteRule ^img/news/(.*)$ data/cache/news/$1 [L]
 RewriteCond %{REQUEST_FILENAME} -f
-RewriteRule ^php/data/cache/.*$ - [L]
+RewriteRule ^data/cache/.*$ - [L]
 
 # Favicon
 RewriteRule ^favicon.ico$ img/favicon.ico
@@ -38,28 +38,28 @@ RewriteRule ^favicon.ico$ img/favicon.ico
 RewriteRule ^(css|js|img)/.*$ - [L]
 
 # Redirect to image service when file does't exist
-RewriteRule ^php/data/cache/([^/]*)/([^@]+)@(\d+)x(\d+).jpg services/image.php?path=$1/$2.jpg&width=$3&height=$4
-RewriteRule ^php/data/cache/([^/]*)/([^@]+)@(\d+)x.jpg$ services/image.php?path=$1/$2.jpg&width=$3
+RewriteRule ^data/cache/([^/]*)/([^@]+)@(\d+)x(\d+).jpg services/image.php?path=$1/$2.jpg&width=$3&height=$4
+RewriteRule ^data/cache/([^/]*)/([^@]+)@(\d+)x.jpg$ services/image.php?path=$1/$2.jpg&width=$3
 
 # Services
-RewriteRule ^services/(.*)$ php/services/$1 [L]
+RewriteRule ^services/(.*)$ services/$1 [L]
 
 # Views
-RewriteRule ^/?$                      php/view.php?view=home [L]
-RewriteRule ^agence/?$                php/view.php?view=agency [L]
-RewriteRule ^agence/publications/?$   php/view.php?view=publications [L]
-RewriteRule ^projets/?$               php/view.php?view=projects [L]
-RewriteRule ^projets/(.+)$            php/view.php?view=project-details&id=$1 [L]
-RewriteRule ^admin/?$                 php/views/admin/index.php [L]
-RewriteRule ^admin/login$             php/views/admin/login.php [L]
-RewriteRule ^admin/logout$            php/views/admin/logout.php [L]
-RewriteRule ^admin/project/new$       php/views/admin/project.php?new=true [L]
-RewriteRule ^admin/project/(.+)/edit$ php/views/admin/project.php?new=false&id=$1 [L]
+RewriteRule ^/?$                      view.php?view=home [L]
+RewriteRule ^agence/?$                view.php?view=agency [L]
+RewriteRule ^agence/publications/?$   view.php?view=publications [L]
+RewriteRule ^projets/?$               view.php?view=projects [L]
+RewriteRule ^projets/(.+)$            view.php?view=project-details&id=$1 [L]
+RewriteRule ^admin/?$                 views/admin/index.php [L]
+RewriteRule ^admin/login$             views/admin/login.php [L]
+RewriteRule ^admin/logout$            views/admin/logout.php [L]
+RewriteRule ^admin/project/new$       views/admin/project.php?new=true [L]
+RewriteRule ^admin/project/(.+)/edit$ views/admin/project.php?new=false&id=$1 [L]
 
 RewriteCond %{ENV:REDIRECT_STATUS} !=200
-RewriteRule ^(.*) php/views/404.php?page=$1 [L]
+RewriteRule ^(.*) views/404.php?page=$1 [L]
 
-ErrorDocument 404 /php/views/404.php
+ErrorDocument 404 /views/404.php
 
 # Caching
 # -------
