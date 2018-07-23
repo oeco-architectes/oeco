@@ -1,6 +1,6 @@
 <?php
 define('PAGE', 'projects');
-require_once realpath(__DIR__ . '/../../bootstrap.php');
+require_once realpath(__DIR__ . '/../../../bootstrap.php');
 
 session_start();
 if (!isset($_SESSION['username'])) {

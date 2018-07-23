@@ -1,6 +1,6 @@
 <?php
 define('PAGE', 'projects');
-require_once realpath(__DIR__ . '/../../bootstrap.php');
+require_once realpath(__DIR__ . '/../../../bootstrap.php');
 
 function isPasswordCorrect($config, $username, $password) {
 

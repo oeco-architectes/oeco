@@ -49,16 +49,16 @@ RewriteRule ^agence/?$                view.php?view=agency [L]
 RewriteRule ^agence/publications/?$   view.php?view=publications [L]
 RewriteRule ^projets/?$               view.php?view=projects [L]
 RewriteRule ^projets/(.+)$            view.php?view=project-details&id=$1 [L]
-RewriteRule ^admin/?$                 views/admin/index.php [L]
-RewriteRule ^admin/login$             views/admin/login.php [L]
-RewriteRule ^admin/logout$            views/admin/logout.php [L]
-RewriteRule ^admin/project/new$       views/admin/project.php?new=true [L]
-RewriteRule ^admin/project/(.+)/edit$ views/admin/project.php?new=false&id=$1 [L]
+RewriteRule ^admin/?$                 application/views/admin/index.php [L]
+RewriteRule ^admin/login$             application/views/admin/login.php [L]
+RewriteRule ^admin/logout$            application/views/admin/logout.php [L]
+RewriteRule ^admin/project/new$       application/views/admin/project.php?new=true [L]
+RewriteRule ^admin/project/(.+)/edit$ application/views/admin/project.php?new=false&id=$1 [L]
 
 RewriteCond %{ENV:REDIRECT_STATUS} !=200
-RewriteRule ^(.*) views/404.php?page=$1 [L]
+RewriteRule ^(.*) application/views/404.php?page=$1 [L]
 
-ErrorDocument 404 /views/404.php
+ErrorDocument 404 /application/views/404.php
 
 # Caching
 # -------

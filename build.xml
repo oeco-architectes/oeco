@@ -64,7 +64,6 @@
         <include name="application/**"/>
         <exclude name="application/config/**/*.local.*"/>
         <include name="services/**"/>
-        <include name="views/**"/>
         <include name="*.php"/>
         <include name="public/css/**/*.min.css"/>
         <include name="public/css/**/fonts/.htaccess"/>
