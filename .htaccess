@@ -41,7 +41,7 @@ RewriteRule ^favicon.ico$ public/img/favicon.ico
 RewriteRule ^public/.*$ - [L]
 
 # Services
-RewriteRule ^services/(.*)$ services/$1 [L]
+RewriteRule ^services/(.*)$ application/services/$1 [L]
 
 # Views
 RewriteRule ^/?$                      view.php?view=home [L]

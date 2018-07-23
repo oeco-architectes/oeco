@@ -1,9 +1,9 @@
 <?php
 try {
-	require_once realpath(__DIR__ . '/../bootstrap.php');
-	
+	require_once realpath(__DIR__ . '/../../bootstrap.php');
+
 	$adapter = new Zend\Db\Adapter\Adapter($GLOBALS['config']->db->toArray());
-	
+
 	$news = array();
 	foreach($adapter->query('SELECT * FROM `news` ORDER BY `order`')->execute() as $new) {
 		$item = array();
@@ -16,7 +16,7 @@ try {
 		}
 		$news[] = $item;
 	}
-	
+
 	$output = array(
 		'ok' => true,
 		'news' => $news,

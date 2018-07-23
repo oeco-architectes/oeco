@@ -32,7 +32,7 @@ $this->layout('layout', [
 <section>
 
   <ul id="project-categories" class="inline-list">
-    <?php $categories = include 'services/categories.php'; ?>
+    <?php $categories = include 'application/services/categories.php'; ?>
     <?php if($categories['ok']): ?>
       <?php foreach($categories['categories'] as $category): ?>
         <li class="project-category-<?=$category['id']?>"><a href="#" data-id="<?=$category['id']?>"><?=mb_strtolower($category['name'], 'UTF-8')?></a></li>
@@ -42,7 +42,7 @@ $this->layout('layout', [
 
 <div id="projects">
   <?php
-    $projects = include 'services/projects.php';
+    $projects = include 'application/services/projects.php';
     $projects = $projects['projects'];
     foreach ($projects as $i => $project) {
       if (!$project['published']) {

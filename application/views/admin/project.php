@@ -8,10 +8,10 @@ if (!isset($_SESSION['username'])) {
   exit(0);
 }
 
-$properties = include 'services/properties.php';
+$properties = include 'application/services/properties.php';
 $properties = $properties['properties'];
 
-$categories = include 'services/categories.php';
+$categories = include 'application/services/categories.php';
 $categories = $categories['categories'];
 
 $new = $_GET['new'] === 'true';
@@ -29,7 +29,7 @@ if ($new) {
 }
 else {
   $projectId = $_GET['id'];
-  $project = include 'services/project.php';
+  $project = include 'application/services/project.php';
   $project = $project['project'];
   $project['date'] = $project['date']->format('d/m/Y');
 }

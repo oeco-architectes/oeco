@@ -1,23 +1,23 @@
 <?php
 try {
-	require_once realpath(__DIR__ . '/../bootstrap.php');
-	
+	require_once realpath(__DIR__ . '/../../bootstrap.php');
+
 	$adapter = new Zend\Db\Adapter\Adapter($GLOBALS['config']->db->toArray());
-	
-	$categories = array();
-	foreach($adapter->query('SELECT * FROM `categories`')->execute() as $category) {
+
+	$properties = array();
+	foreach($adapter->query('SELECT * FROM `properties` ORDER BY `order` ASC')->execute() as $category) {
 		$item = array();
 		foreach($category as $key => $value) {
 			switch($key) {
 				default: $item[$key] = $value;
 			}
 		}
-		$categories[] = $item;
+		$properties[ $item['id'] ] = $item;
 	}
-	
+
 	$output = array(
 		'ok' => true,
-		'categories' => $categories,
+		'properties' => $properties,
 	);
 }
 catch(Exception $e) {

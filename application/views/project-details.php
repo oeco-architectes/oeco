@@ -2,8 +2,8 @@
 // Fetch project
 $origin = get_server_origin($_SERVER) . $baseUrl;
 $projectId = $_GET['id'];
-$project = include 'services/project.php';
-$properties = include 'services/properties.php';
+$project = include 'application/services/project.php';
+$properties = include 'application/services/properties.php';
 $title = $project['ok'] ? $project['project']['title'] : 'Article inconnu';
 $canonicalUrl = $origin . '/projets/' . $project['project']['id'];
 
