@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "lint": "echo 'Linting not implemented!'",
+    "test": "echo 'Testing not implemented!'"
+  },
   "require": {
     "zendframework/zend-config": "2.*",
     "zendframework/zend-db": "2.*",
