@@ -43,7 +43,7 @@
   <target name="css-minification">
     <exec executable="bash">
       <arg value="-c" />
-      <arg value="php lib/csscrush/cli.php -f=css/website.css -o=css/website.min.css" />
+      <arg value="php lib/csscrush/cli.php -f=public/css/website.css -o=public/css/website.min.css" />
     </exec>
   </target>
 
@@ -67,11 +67,11 @@
         <include name="services/**"/>
         <include name="views/**"/>
         <include name="*.php"/>
-        <include name="css/**/*.min.css"/>
-        <include name="css/**/fonts/.htaccess"/>
-        <include name="css/**/fonts/*.woff"/>
-        <include name="img/**"/>
-        <include name="js/**/*.min.js" />
+        <include name="public/css/**/*.min.css"/>
+        <include name="public/css/**/fonts/.htaccess"/>
+        <include name="public/css/**/fonts/*.woff"/>
+        <include name="public/img/**"/>
+        <include name="public/js/**/*.min.js" />
         <exclude name="**/.gitignore"/>
       </fileset>
     </ftp>

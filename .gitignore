@@ -1,6 +1,6 @@
-/css/fonts/*.otf
-/css/fonts/*.woff
-/css/fonts/*.tar.gz
+/public/css/fonts/*.otf
+/public/css/fonts/*.woff
+/public/css/fonts/*.tar.gz
 /vendor/
 /build.properties
 *.min.css

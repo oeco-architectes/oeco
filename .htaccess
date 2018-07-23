@@ -31,15 +31,14 @@ RewriteRule ^img/news/(.*)$ data/cache/news/$1 [L]
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteRule ^data/cache/.*$ - [L]
 
-# Favicon
-RewriteRule ^favicon.ico$ img/favicon.ico
-
-# Public files
-RewriteRule ^(css|js|img)/.*$ - [L]
-
 # Redirect to image service when file does't exist
 RewriteRule ^data/cache/([^/]*)/([^@]+)@(\d+)x(\d+).jpg services/image.php?path=$1/$2.jpg&width=$3&height=$4
 RewriteRule ^data/cache/([^/]*)/([^@]+)@(\d+)x.jpg$ services/image.php?path=$1/$2.jpg&width=$3
+
+# Favicon
+RewriteRule ^(css|js|img)/(.*)$ public/$1/$2
+RewriteRule ^favicon.ico$ public/img/favicon.ico
+RewriteRule ^public/.*$ - [L]
 
 # Services
 RewriteRule ^services/(.*)$ services/$1 [L]
