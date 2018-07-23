@@ -1,6 +1,5 @@
 <?php
-
-namespace Model;
+namespace App\Models;
 
 class Image {
 

@@ -1,4 +1,5 @@
 <?php
+use \App\Models\Image;
 
 try {
   require_once realpath(__DIR__ . '/../bootstrap.php');
@@ -56,7 +57,7 @@ try {
     $rawData = file_get_contents($cachePath);
   }
   else {
-    $image = new Model\Image($realPath, $width, $height);
+    $image = new Image($realPath, $width, $height);
     $rawData = $image->getRawData();
 
     if ($cachingEnabled) {

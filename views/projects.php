@@ -1,5 +1,6 @@
 <?php
 require_once realpath(__DIR__ . '/../bootstrap.php');
+use \App\Models\MozaicLayout;
 
 function projectFigure($project, $images) {
   $output = '';
@@ -50,7 +51,6 @@ $this->layout('layout', [
     }
     shuffle($projects);
 
-    use \Model\MozaicLayout;
     $layout = new MozaicLayout(count($projects), 4);
   ?>
 

@@ -8,9 +8,8 @@
     "league/plates": "^3.3"
   },
   "autoload": {
-    "psr-0": {
-      "Model": "application/",
-      "Util" : "application/"
+    "psr-4": {
+      "App\\": "application/"
     }
   }
 }
