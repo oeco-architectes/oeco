@@ -1,6 +1,6 @@
 <?php
 try {
-	require_once realpath(__DIR__ . '/../../bootstrap.php');
+	require_once realpath(__DIR__ . '/../Bootstrap.php');
 
 	$adapter = new Zend\Db\Adapter\Adapter($GLOBALS['config']->db->toArray());
 

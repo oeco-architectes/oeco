@@ -1,6 +1,6 @@
 <?php
 try {
-	require_once realpath(__DIR__ . '/../../bootstrap.php');
+	require_once realpath(__DIR__ . '/../Bootstrap.php');
 
 	// Check path
 
@@ -38,7 +38,7 @@ try {
 
 	// Images
 	$project['images'] = array();
-	foreach(array_diff(scandir('data/img/projects/' . $id), array('.','..')) as $filename) {
+	foreach(array_diff(scandir($config->data->imgDir . '/projects/' . $id), array('.','..')) as $filename) {
 		if(preg_match('/^' . preg_quote($id) . '-([0-9]+)\.jpg$/', $filename, $matches)) {
 			$image = array(
 				'path' => 'projects/'. $id . '/' . $filename,

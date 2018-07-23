@@ -2,7 +2,7 @@
 use \App\Models\Image;
 
 try {
-  require_once realpath(__DIR__ . '/../../bootstrap.php');
+  require_once realpath(__DIR__ . '/../Bootstrap.php');
 
   // Check path
 
@@ -15,11 +15,11 @@ try {
     throw new Exception('Invalid image path "' . $path . '"', 400);
   }
 
-  $realPath = 'data/img/' . $path;
+  $realPath = $config->data->imgDir . '/' . $path;
   $cachingEnabled = true;
 
   if(!file_exists($realPath)) {
-     $realPath = 'data/img/1x1.png';
+     $realPath = $config->data->imgDir . '/1x1.png';
      $cachingEnabled = false;
   }
 
@@ -46,14 +46,11 @@ try {
   }
 
   // Cache
-  $cachePath = 'data/cache/' . preg_replace('/\.jpg$/', '', $path) . '@' . $width . 'x' . $height . '.jpg';
+  $cachePath = $config->data->cacheDir . '/' . preg_replace('/\.jpg$/', '', $path) . '@' . $width . 'x' . $height . '.jpg';
 
 
   // Generate image
-  /*if (!$height && !$width) {
-    $rawData = file_get_contents($realPath);
-  }
-  else*/if ($cachingEnabled && file_exists($cachePath)) {
+  if ($cachingEnabled && file_exists($cachePath)) {
     $rawData = file_get_contents($cachePath);
   }
   else {
@@ -62,7 +59,7 @@ try {
 
     if ($cachingEnabled) {
       // Create directory structure
-      $currentDir = 'data/cache';
+      $currentDir = $realPath = $config->data->cacheDir;
       $folders = explode('/', $path);
       array_pop($folders);
       foreach($folders as $folder) {

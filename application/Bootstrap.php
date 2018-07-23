@@ -4,8 +4,7 @@
  */
 
 // Bootstrapping
-chdir(__DIR__);
-$loader = require_once 'vendor/autoload.php';
+$loader = require_once __DIR__ . '/../vendor/autoload.php';
 
 // Constants
 if (!defined('APPLICATION_ENV')) {
@@ -56,9 +55,9 @@ function includeWithVariables($filePath, $variables = array()) {
 }
 
 // Config
-$GLOBALS['config'] = new Zend\Config\Config(include 'application/config/application.config.php', true);
-foreach(array_diff(scandir('application/config/autoload'), array('.','..')) as $filename) {
+$GLOBALS['config'] = new Zend\Config\Config(include __DIR__ . '/config/application.config.php', true);
+foreach(array_diff(scandir(__DIR__ . '/config/autoload'), array('.','..')) as $filename) {
 	if (preg_match('/\.php$/', $filename)) {
-		$GLOBALS['config']->merge(new Zend\Config\Config(include 'application/config/autoload/' . $filename));
+		$GLOBALS['config']->merge(new Zend\Config\Config(include __DIR__ . '/config/autoload/' . $filename));
 	}
 }
