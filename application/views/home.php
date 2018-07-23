@@ -9,7 +9,7 @@ $this->layout('layout', [
 ?>
 
 <section>
-  <?php $news = include 'application/services/news.php'; ?>
+  <?php $news = include __DIR__ . '/../services/news.php'; ?>
   <?php if($news['ok']): ?>
     <div id="news" class="carousel slide">
 

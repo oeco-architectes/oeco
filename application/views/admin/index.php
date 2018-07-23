@@ -45,7 +45,7 @@ if (!isset($_SESSION['username'])) {
     <div class="col col-md-12">
       <h2>Projets</h2>
       <?php
-        $projects = include 'application/services/projects.php';
+        $projects = include __DIR__ . '/../../services/projects.php';
         $projects = $projects['projects'];
       ?>
       <table class="table table-condensed">
@@ -83,7 +83,7 @@ if (!isset($_SESSION['username'])) {
     <div class="col col-md-12">
       <h2>News</h2>
       <?php
-        $news = include 'application/services/news.php';
+        $news = include __DIR__ . '/../../services/news.php';
         $news = $news['news'];
       ?>
       <table class="table table-condensed">

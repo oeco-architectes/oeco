@@ -70,6 +70,7 @@
         <include name="public/css/**/fonts/*.woff"/>
         <include name="public/img/**"/>
         <include name="public/js/**/*.min.js" />
+        <include name="public/*" />
         <exclude name="**/.gitignore"/>
       </fileset>
     </ftp>
