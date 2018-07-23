@@ -62,8 +62,7 @@
       <fileset dir=".">
         <include name=".htaccess"/>
         <include name="application/**"/>
-        <include name="config/**"/>
-        <exclude name="config/**/*.local.*"/>
+        <exclude name="application/config/**/*.local.*"/>
         <include name="services/**"/>
         <include name="views/**"/>
         <include name="*.php"/>
