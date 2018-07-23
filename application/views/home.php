@@ -22,7 +22,7 @@ $this->layout('layout', [
       <div class="carousel-inner">
         <?php foreach($news['news'] as $i => $new): ?>
           <figure class="item<?= $i == 0 ? ' active' : ''?>">
-            <img src="<?=BASEURL?>/services/image.php?path=news/<?=$new['id']?>.jpg&amp;width=800&amp;height=500" width="800" height="500" alt="<?=$new['title']?>" />
+            <img src="<?=BASEURL?>/img/news/<?=$new['id']?>@800x500.jpg" width="800" height="500" alt="<?=$new['title']?>" />
             <figcaption>
               <p class="news-title"><?=$new['title']?></p>
               <p class="news-summary"><?=$new['summary']?></p>
