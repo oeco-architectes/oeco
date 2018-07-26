@@ -2,5 +2,6 @@
 /public/css/fonts/*.woff
 /public/css/fonts/*.tar.gz
 /vendor/
+/.phpcs-*-cache
 /build.properties
 *.min.css
