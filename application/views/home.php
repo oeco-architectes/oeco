@@ -9,18 +9,18 @@ $this->layout('layout', [
 ?>
 
 <section>
-  <?php $news = include __DIR__ . '/../services/news.php'; ?>
-  <?php if($news['ok']): ?>
+    <?php $news = include __DIR__ . '/../services/news.php'; ?>
+    <?php if ($news['ok']) : ?>
     <div id="news" class="carousel slide">
 
       <ol class="carousel-indicators">
-        <?php foreach($news['news'] as $i => $new): ?>
+        <?php foreach ($news['news'] as $i => $new) : ?>
           <li data-target="#news" data-slide-to="<?php echo $i; ?>" class="<?= $i == 0 ? 'active ' : ''?>"></li>
         <?php endforeach; ?>
       </ol>
 
       <div class="carousel-inner">
-        <?php foreach($news['news'] as $i => $new): ?>
+        <?php foreach ($news['news'] as $i => $new) : ?>
           <figure class="item<?= $i == 0 ? ' active' : ''?>">
             <img src="<?=BASEURL?>/img/news/<?=$new['id']?>@800x500.jpg" width="800" height="500" alt="<?=$new['title']?>" />
             <figcaption>
@@ -39,5 +39,5 @@ $this->layout('layout', [
       </a>
 
     </div>
-  <?php endif; ?>
+    <?php endif; ?>
 </section>

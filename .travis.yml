@@ -1,0 +1,8 @@
+language: php
+php: 7.2
+install: composer install
+before_script: composer lint
+script: composer test
+cache:
+  directories:
+    - $HOME/.composer/cache/files

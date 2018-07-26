@@ -3,8 +3,12 @@
     <img
       src="<?= $image['src'] ?>"
       width="<?= $image['width'] ?>"
-      <?php if ($image['height']): ?>height="<?= $image['height'] ?>"<?php endif ?>
-      <?php if ($image['alt']): ?>alt="<?= $image['alt'] ?>"<?php endif ?>
+      <?php if ($image['height']) :
+            ?>height="<?= $image['height'] ?>"<?php
+      endif ?>
+        <?php if ($image['alt']) :
+            ?>alt="<?= $image['alt'] ?>"<?php
+        endif ?>
     />
     <figcaption><?= $caption ?></figcaption>
   </figure>

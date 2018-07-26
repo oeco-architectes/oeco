@@ -1,7 +1,9 @@
 www.oeco-architectes.com
 ========================
 
-ŒCO Architectes website
+> ŒCO Architectes website
+
+[![Build Status](https://travis-ci.org/oeco-architectes/oeco.svg?branch=master)](https://travis-ci.org/oeco-architectes/oeco)
 
 Setup
 -----

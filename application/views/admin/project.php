@@ -4,8 +4,8 @@ require_once realpath(__DIR__ . '/../../Bootstrap.php');
 
 session_start();
 if (!isset($_SESSION['username'])) {
-  header('Location: /admin/login');
-  exit(0);
+    header('Location: /admin/login');
+    exit(0);
 }
 
 $properties = include __DIR__ . '/../../services/properties.php';
@@ -16,7 +16,7 @@ $categories = $categories['categories'];
 
 $new = $_GET['new'] === 'true';
 if ($new) {
-  $project = array(
+    $project = array(
     'id' => null,
     'title' => '',
     'summary' => '',
@@ -25,13 +25,12 @@ if ($new) {
     'date' => date('d/m/Y'),
     'properties' => array(),
     'categories' => array(),
-  );
-}
-else {
-  $projectId = $_GET['id'];
-  $project = include __DIR__ . '/../../services/project.php';
-  $project = $project['project'];
-  $project['date'] = $project['date']->format('d/m/Y');
+    );
+} else {
+    $projectId = $_GET['id'];
+    $project = include __DIR__ . '/../../services/project.php';
+    $project = $project['project'];
+    $project['date'] = $project['date']->format('d/m/Y');
 }
 
 // Actions
@@ -40,127 +39,115 @@ $fieldMessages = array();
 $queries = array();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $project['id'] = $_POST['id'];
+    $project['title'] = $_POST['title'];
+    $project['summary'] = $_POST['summary'];
+    $project['content'] = $_POST['content'];
+    $project['published'] = array_key_exists('published', $_POST);
+    $project['date'] = $_POST['date'];
+    foreach ($properties as $id => $property) {
+        if (empty($_POST['properties'][$id])) {
+            unset($project['properties'][$id]);
+        } else {
+            $project['properties'][ $property['id'] ] = $_POST['properties'][$id];
+        }
+    }
+    foreach ($categories as $category) {
+        $key = array_search($category['id'], $project['categories']);
+        if (!array_key_exists('categories', $_POST) || !array_key_exists($category['id'], $_POST['categories'])) {
+            if ($key !== false) {
+                unset($project['categories'][$key]);
+            }
+        } elseif ($key === false) {
+            $project['categories'][] = $category['id'];
+        }
+    }
 
-  $project['id'] = $_POST['id'];
-  $project['title'] = $_POST['title'];
-  $project['summary'] = $_POST['summary'];
-  $project['content'] = $_POST['content'];
-  $project['published'] = array_key_exists('published', $_POST);
-  $project['date'] = $_POST['date'];
-  foreach ($properties as $id => $property) {
-    if (empty($_POST['properties'][$id])) {
-      unset($project['properties'][$id]);
+    if ($project['id'] === '') {
+        $fieldMessages['id'] = array('danger', 'L\'identifiant est obligatoire.');
+    } elseif (!preg_match('/^[a-z0-9]+(-[a-z0-9]+)*$/', $project['id'])) {
+        $fieldMessages['id'] = array('danger', 'L\'identifiant doit contenir uniquement des caractères minuscules (pas d\'accents), des chiffres et des tirets. Il ne doit ni commencer ni terminer par un tiret. Il ne doit pas contenir deux tirets consécutifs.');
     }
-    else {
-      $project['properties'][ $property['id'] ] = $_POST['properties'][$id];
-    }
-  }
-  foreach ($categories as $category) {
-    $key = array_search($category['id'], $project['categories']);
-    if (!array_key_exists('categories', $_POST) || !array_key_exists($category['id'], $_POST['categories'])) {
-      if ($key !== false) {
-        unset($project['categories'][$key]);
-      }
-    }
-    elseif ($key === false) {
-      $project['categories'][] = $category['id'];
-    }
-  }
-
-  if ($project['id'] === '') {
-    $fieldMessages['id'] = array('danger', 'L\'identifiant est obligatoire.');
-  }
-  else if (!preg_match('/^[a-z0-9]+(-[a-z0-9]+)*$/', $project['id'])) {
-    $fieldMessages['id'] = array('danger', 'L\'identifiant doit contenir uniquement des caractères minuscules (pas d\'accents), des chiffres et des tirets. Il ne doit ni commencer ni terminer par un tiret. Il ne doit pas contenir deux tirets consécutifs.');
-  }
 
   // if ($project['title'] === '') {
   //   $fieldMessages['title'] = array('danger', 'Le titre est obligatoire.');
   // }
 
-  if ($project['date'] === '') {
-    $fieldMessages['date'] = array('danger', 'La date est obligatoire.');
-  }
-  else if (!preg_match('/^([0-9]{2})\/([0-9]{2})\/([0-9]{4})$/', $project['date'], $matches)) {
-    $fieldMessages['date'] = array('danger', 'La date doit être au format JJ/MM/AAAA.');
-  }
-  else if (!checkdate($matches[2], $matches[1], $matches[3])) {
-    $fieldMessages['date'] = array('danger', 'Cette date n\'existe pas.');
-  }
-
-  if (count($fieldMessages) === 0) {
-
-    try {
-
-      $adapter = new Zend\Db\Adapter\Adapter($GLOBALS['config']->db->toArray());
-      $platform = $adapter->platform;
-      $connection = $adapter->getDriver()->getConnection();
-
-      // Project
-      if ($new) {
-        $queries[] = 'INSERT INTO `projects` (`id`, `title`, `summary`, `content`, `date`, `published`) VALUES ('
-          . $platform->quoteValueList(array(
-            $project['id'],
-            $project['title'],
-            empty($project['summary']) ? null : $project['summary'],
-            $project['content'],
-            DateTime::createFromFormat('d/m/Y H:i:s', $project['date'] . ' 00:00:00')->format('Y-m-d H:i:s')
-          ))
-          . ', ' . intval($project['published'])
-          . ')';
-      }
-      else {
-        $queries[] = 'UPDATE `projects` SET'
-          . ' `title` = '     . $platform->quoteValue($project['title']) . ','
-          . ' `summary` = '   . $platform->quoteValue(empty($project['summary']) ? null : $project['summary']) . ','
-          . ' `content` = '   . $platform->quoteValue($project['content']) . ','
-          . ' `published` = ' . intval($project['published']) . ','
-          . ' `date` = '      . $platform->quoteValue( DateTime::createFromFormat('d/m/Y H:i:s', $project['date'] . ' 00:00:00')->format('Y-m-d H:i:s') )
-          . ' WHERE `id` = ' . $platform->quoteValue($project['id']);
-      }
-
-      // Categories
-      $queries[] = 'DELETE FROM `project_categories` WHERE `project_id` = ' . $platform->quoteValue($project['id']);
-      foreach ($categories as $id => $category) {
-        if (in_array($category['id'], $project['categories'])) {
-          $queries[] = 'INSERT INTO `project_categories` (`project_id`, `category_id`) VALUES (' . $platform->quoteValueList(array($project['id'], $category['id'])) . ')';
-        }
-      }
-
-      // Properties
-      $queries[] = 'DELETE FROM `project_properties` WHERE `project_id` = ' . $platform->quoteValue($project['id']) . '';
-      foreach ($properties as $id => $property) {
-        if (array_key_exists($property['id'], $project['properties'])) {
-          $queries[] = 'INSERT INTO `project_properties` (`project_id`, `property_id`, `value`) VALUES (' . $platform->quoteValueList(array($project['id'], $property['id'], $project['properties'][ $property['id'] ])) . ')';
-        }
-      }
-
-      // Send queries to DB
-      $connection->beginTransaction();
-      foreach ($queries as $query) {
-        $adapter->query($query)->execute();
-      }
-      $connection->commit();
-
-      if ($new) {
-        mkdir('data/img/projects/' . $project['id']);
-        $new = false;
-        $messages[] = array('success', '<a class="btn btn-success pull-right" href="' . BASEURL . '/admin">Retour à l\'accueil</a> <p class="clearfix">Le projet a été créé avec succès.</p>');
-      }
-      else {
-        $messages[] = array('success', '<a class="btn btn-success pull-right" href="' . BASEURL . '/admin">Retour à l\'accueil</a> <p class="clearfix">Le projet a été modifié avec succès.</p>');
-      }
+    if ($project['date'] === '') {
+        $fieldMessages['date'] = array('danger', 'La date est obligatoire.');
+    } elseif (!preg_match('/^([0-9]{2})\/([0-9]{2})\/([0-9]{4})$/', $project['date'], $matches)) {
+        $fieldMessages['date'] = array('danger', 'La date doit être au format JJ/MM/AAAA.');
+    } elseif (!checkdate($matches[2], $matches[1], $matches[3])) {
+        $fieldMessages['date'] = array('danger', 'Cette date n\'existe pas.');
     }
-    catch (Exception $e) {
-      $messages[] = array('danger', $e->getMessage());
-      try {
-        $connection->rollback();
-      }
-      catch (Exception $e) {
-        $messages[] = array('danger', $e->getMessage());
-      }
+
+    if (count($fieldMessages) === 0) {
+        try {
+            $adapter = new Zend\Db\Adapter\Adapter($GLOBALS['config']->db->toArray());
+            $platform = $adapter->platform;
+            $connection = $adapter->getDriver()->getConnection();
+
+          // Project
+            if ($new) {
+                $queries[] = 'INSERT INTO `projects` (`id`, `title`, `summary`, `content`, `date`, `published`) VALUES ('
+                . $platform->quoteValueList(array(
+                $project['id'],
+                $project['title'],
+                empty($project['summary']) ? null : $project['summary'],
+                $project['content'],
+                DateTime::createFromFormat('d/m/Y H:i:s', $project['date'] . ' 00:00:00')->format('Y-m-d H:i:s')
+                ))
+                  . ', ' . intval($project['published'])
+                  . ')';
+            } else {
+                $queries[] = 'UPDATE `projects` SET'
+                . ' `title` = '     . $platform->quoteValue($project['title']) . ','
+                . ' `summary` = '   . $platform->quoteValue(empty($project['summary']) ? null : $project['summary']) . ','
+                . ' `content` = '   . $platform->quoteValue($project['content']) . ','
+                . ' `published` = ' . intval($project['published']) . ','
+                . ' `date` = '      . $platform->quoteValue(DateTime::createFromFormat('d/m/Y H:i:s', $project['date'] . ' 00:00:00')->format('Y-m-d H:i:s'))
+                . ' WHERE `id` = ' . $platform->quoteValue($project['id']);
+            }
+
+          // Categories
+            $queries[] = 'DELETE FROM `project_categories` WHERE `project_id` = ' . $platform->quoteValue($project['id']);
+            foreach ($categories as $id => $category) {
+                if (in_array($category['id'], $project['categories'])) {
+                    $queries[] = 'INSERT INTO `project_categories` (`project_id`, `category_id`) VALUES (' . $platform->quoteValueList(array($project['id'], $category['id'])) . ')';
+                }
+            }
+
+          // Properties
+            $queries[] = 'DELETE FROM `project_properties` WHERE `project_id` = ' . $platform->quoteValue($project['id']) . '';
+            foreach ($properties as $id => $property) {
+                if (array_key_exists($property['id'], $project['properties'])) {
+                    $queries[] = 'INSERT INTO `project_properties` (`project_id`, `property_id`, `value`) VALUES (' . $platform->quoteValueList(array($project['id'], $property['id'], $project['properties'][ $property['id'] ])) . ')';
+                }
+            }
+
+          // Send queries to DB
+            $connection->beginTransaction();
+            foreach ($queries as $query) {
+                $adapter->query($query)->execute();
+            }
+            $connection->commit();
+
+            if ($new) {
+                mkdir('data/img/projects/' . $project['id']);
+                $new = false;
+                $messages[] = array('success', '<a class="btn btn-success pull-right" href="' . BASEURL . '/admin">Retour à l\'accueil</a> <p class="clearfix">Le projet a été créé avec succès.</p>');
+            } else {
+                $messages[] = array('success', '<a class="btn btn-success pull-right" href="' . BASEURL . '/admin">Retour à l\'accueil</a> <p class="clearfix">Le projet a été modifié avec succès.</p>');
+            }
+        } catch (Exception $e) {
+            $messages[] = array('danger', $e->getMessage());
+            try {
+                $connection->rollback();
+            } catch (Exception $e) {
+                $messages[] = array('danger', $e->getMessage());
+            }
+        }
     }
-  }
 }
 
 ?>
@@ -189,15 +176,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </ul>
     </nav>
 
-    <?php if (!$new && $_GET['new'] === 'true'): ?>
+    <?php if (!$new && $_GET['new'] === 'true') : ?>
       <script>
         window.history && window.history.replaceState(null, 'Agence - oeco architectes', '<?=BASEURL?>/admin/project/<?= $project['id'] ?>/edit');
       </script>
     <?php endif; ?>
 
-    <?php if (APPLICATION_ENV === 'development'): ?>
+    <?php if (APPLICATION_ENV === 'development') : ?>
       <script>
-        <?php foreach ($queries as $query): ?>
+        <?php foreach ($queries as $query) : ?>
           console.info('SQL', '<?= str_replace("'", "\\'", str_replace("\r", '\\r', str_replace("\n", '\\n', htmlentities($query)))) ?>');
         <?php endforeach; ?>
       </script>
@@ -211,7 +198,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <br/>
   <form role="form" method="post" action="<?=BASEURL?>/admin/project/<?= $new ? 'new' : $project['id'] . '/edit' ?>">
 
-    <?php foreach ($messages as $message): ?>
+    <?php foreach ($messages as $message) : ?>
       <div class="row">
         <div class="col col-sm-6 col-sm-offset-3">
           <div class="alert alert-<?= $message[0] ?>"><?= $message[1] ?></div>
@@ -236,19 +223,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             Attention: il n'est pas possible de modifier ce champ une fois le projet créé !
           </small>
           <input id="id" name="id" type="text" class="form-control" value="<?= $project['id']; ?>" placeholder="Ex: regie-eaux-dax" <?= $new ? '' : ' readonly' ?> />
-          <?php if (array_key_exists('id', $fieldMessages)): ?>
+            <?php if (array_key_exists('id', $fieldMessages)) : ?>
             <br/>
             <div class="alert alert-<?= $fieldMessages['id'][0] ?>"><?= $fieldMessages['id'][1] ?></div>
-          <?php endif; ?>
+            <?php endif; ?>
         </div>
 
         <div class="form-group <?= array_key_exists('title', $fieldMessages) ? 'has-error' : '' ?>">
           <label for="title">Titre</label>
           <input id="title" name="title" type="text" class="form-control" value="<?= $project['title']; ?>" placeholder="Ex: Bureaux L, bureaux pour des agriculteurs à Liposthey" />
-          <?php if (array_key_exists('title', $fieldMessages)): ?>
+            <?php if (array_key_exists('title', $fieldMessages)) : ?>
             <br/>
             <div class="alert alert-<?= $fieldMessages['title'][0] ?>"><?= $fieldMessages['title'][1] ?></div>
-          <?php endif; ?>
+            <?php endif; ?>
         </div>
 
         <div class="form-group">
@@ -271,10 +258,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <label for="date">Date</label>
           <small class="help-block">Date du projet au format JJ/MM/AAAA</small>
           <input id="date" name="date" type="text" class="form-control" value="<?= $project['date']; ?>" placeholder="Ex: 1985-02-18" />
-          <?php if (array_key_exists('date', $fieldMessages)): ?>
+            <?php if (array_key_exists('date', $fieldMessages)) : ?>
             <br/>
             <div class="alert alert-<?= $fieldMessages['date'][0] ?>"><?= $fieldMessages['date'][1] ?></div>
-          <?php endif; ?>
+            <?php endif; ?>
         </div>
 
         <br />
@@ -290,7 +277,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <br />
         <div class="form-group">
           <label>Catégories</label>
-          <?php foreach ($categories as $category): ?>
+            <?php foreach ($categories as $category) : ?>
             <div class="checkbox">
               <label>
                 <input id="categories[<?= $category['id'] ?>]"
@@ -301,11 +288,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?= $category['name'] ?>
               </label>
             </div>
-          <?php endforeach; ?>
+            <?php endforeach; ?>
         </div>
 
         <br />
-        <?php foreach ($properties as $id => $property): ?>
+        <?php foreach ($properties as $id => $property) : ?>
           <div class="form-group">
             <label for="properties[<?= $id ?>]"><?= $property['name']; ?></label>
             <input id="properties[<?= $id ?>]"
