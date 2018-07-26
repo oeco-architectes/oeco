@@ -100,7 +100,7 @@ class MozaicLayout
                          * Determine if item is large
                          */
                         if ($lastLine) {
-                            $large = $remaining < $this->spaces && $row != ($ROWS - 1) && !$previousIsHigh[$row+1] // large if spaces too many (but not large if next is taken, or if last row)
+                            $large = $remaining < $this->spaces && $row != ($ROWS - 1) && !$previousIsHigh[$row + 1] // large if spaces too many (but not large if next is taken, or if last row)
                             && rand(0, 100) >= 100 * $remaining / $this->spaces ; // highers chances while spaces left are too many
                         } else {
                             $shouldBeLarge =
@@ -108,7 +108,7 @@ class MozaicLayout
                                 ? rand(0, 99) < 100 * ($currentItems[self::REQUIRED_LARGE] / $remaining)
                                 : rand(0, 99) < 100 * $PROBABILITY_LARGE;
                             //echo '$shouldBeLarge = ' . ($currentItems[self::REQUIRED_LARGE] / $remaining) . "\n";
-                            $large = $row != ($ROWS - 1) && ($line % 2 == 0 || !$previousIsHigh[$row+1]) && $shouldBeLarge; // not large if next is taken (even lines only), or if last row
+                            $large = $row != ($ROWS - 1) && ($line % 2 == 0 || !$previousIsHigh[$row + 1]) && $shouldBeLarge; // not large if next is taken (even lines only), or if last row
                         }
 
                         /**
@@ -134,7 +134,7 @@ class MozaicLayout
                         }
 
                         if ($large) {
-                            $this->lines[$line][$row+1] = -3; // RESULT: -3 == empty space (cause: previous item is large)
+                            $this->lines[$line][$row + 1] = -3; // RESULT: -3 == empty space (cause: previous item is large)
                             $row++;
                             $this->spaces--; // bicrement if large;
                         }

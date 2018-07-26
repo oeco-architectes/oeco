@@ -41,7 +41,7 @@ try {
     foreach (array_diff(scandir($config->data->imgDir . '/projects/' . $id), array('.','..')) as $filename) {
         if (preg_match('/^' . preg_quote($id) . '-([0-9]+)\.jpg$/', $filename, $matches)) {
             $image = array(
-                'path' => 'projects/'. $id . '/' . $filename,
+                'path' => 'projects/' . $id . '/' . $filename,
             );
 
             // Image legend, etc...

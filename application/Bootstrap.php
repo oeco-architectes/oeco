@@ -43,7 +43,7 @@ function get_server_scheme($server)
 
 function get_server_origin($server)
 {
-    return get_server_scheme($server) . '://' .get_server_host($_SERVER);
+    return get_server_scheme($server) . '://' . get_server_host($_SERVER);
 }
 
 function includeWithVariables($filePath, $variables = array())
