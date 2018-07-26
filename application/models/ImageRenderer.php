@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 
-class Image
+class ImageRenderer
 {
 
     public $path;
@@ -72,7 +72,7 @@ class Image
         $this->srcHeight = $this->srcHeightOriginal - 2 * $this->srcY;
     }
 
-    public function display()
+    public function render()
     {
         $this->dstImage = ImageCreateTrueColor($this->dstWidth, $this->dstHeight);
         if (is_resource($this->dstImage) === true) {
@@ -99,7 +99,7 @@ class Image
     public function getRawData()
     {
         ob_start();
-        $this->display();
+        $this->render();
         return ob_get_clean();
     }
 }

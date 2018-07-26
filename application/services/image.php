@@ -1,5 +1,5 @@
 <?php
-use \App\Models\Image;
+use \App\Models\ImageRenderer;
 
 try {
     require_once realpath(__DIR__ . '/../Bootstrap.php');
@@ -51,8 +51,8 @@ try {
     if ($cachingEnabled && file_exists($cachePath)) {
         $rawData = file_get_contents($cachePath);
     } else {
-        $image = new Image($realPath, $width, $height);
-        $rawData = $image->getRawData();
+        $renderer = new ImageRenderer($realPath, $width, $height);
+        $rawData = $renderer->getRawData();
 
         if ($cachingEnabled) {
           // Create directory structure
@@ -73,7 +73,7 @@ try {
 
             foreach (array('path', 'scale', 'srcRatio', 'srcX', 'srcY', 'srcWidthOriginal', 'srcHeightOriginal', 'srcWidth',
             'srcHeight', 'dstRatio', 'dstX', 'dstY', 'dstWidth', 'dstHeight') as $property) {
-                header('X-Image-' . ucfirst($property) . ': ' . $image->$property);
+                header('X-Image-' . ucfirst($property) . ': ' . $renderer->$property);
             }
         }
     }
