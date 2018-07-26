@@ -71,6 +71,7 @@
         <include name="public/js/**/*.min.js" />
         <include name="public/*" />
         <exclude name="**/.gitignore"/>
+        <exclude name="**/*.test.php"/>
       </fileset>
     </ftp>
     <ftp server="${ftp.server}"

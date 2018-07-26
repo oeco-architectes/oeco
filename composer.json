@@ -12,7 +12,7 @@
             "phpcbf -p --standard=PSR2 --extensions=php,phtml --cache=.phpcs-psr2-cache --parallel=16 --colors --ignore=vendor/*,lib/* .",
             "phpcbf -p --standard=PSR12 --extensions=php,phtml --cache=.phpcs-psr12-cache --parallel=16 --colors --ignore=vendor/*,lib/* ."
         ],
-        "test": "echo 'Testing not implemented!'"
+        "test": "phpunit --colors=always"
     },
     "require": {
         "zendframework/zend-config": "2.*",
@@ -23,7 +23,8 @@
         "league/plates": "^3.3"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "^3.3"
+        "squizlabs/php_codesniffer": "^3.3",
+        "phpunit/phpunit": "^7.2"
     },
     "autoload": {
         "psr-4": {
