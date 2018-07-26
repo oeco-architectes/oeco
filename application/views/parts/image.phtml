@@ -1,10 +1,10 @@
 <figure class="image">
-  <a href="#<?=$image['id']?>" data-toggle="lightbox">
-    <img src="<?=BASEURL?>/img/<?=preg_replace('/.jpg$/', '', $image['path'])?>@<?=$width?>x.jpg" width="<?=$width?>" alt="<?=$image['legend']?>" title="<?=$image['legend']?>" />
-  </a>
-  <?php if(isset($image['legend'])): ?>
-    <figcaption>
-      <p><?=$image['legend']?></p>
-    </figcaption>
-  <?php endif; ?>
+    <a href="#<?=$image['id']?>" data-toggle="lightbox">
+        <img src="<?=BASEURL?>/img/<?=preg_replace('/.jpg$/', '', $image['path'])?>@<?=$width?>x.jpg" width="<?=$width?>" alt="<?=$image['legend']?>" title="<?=$image['legend']?>" />
+    </a>
+    <?php if (isset($image['legend'])) : ?>
+        <figcaption>
+            <p><?=$image['legend']?></p>
+        </figcaption>
+    <?php endif; ?>
 </figure>

@@ -2,11 +2,13 @@
     "scripts": {
         "lint": [
             "phpcs --config-set ignore_warnings_on_exit 1",
-            "phpcs -p --standard=PSR1 --extensions=php,phtml --cache=.phpcs-psr1-cache --parallel=16 --colors --ignore=vendor/*,lib/* ."
+            "phpcs -p --standard=PSR1 --extensions=php,phtml --cache=.phpcs-psr1-cache --parallel=16 --colors --ignore=vendor/*,lib/* .",
+            "phpcs -p --standard=PSR2 --extensions=php,phtml --cache=.phpcs-psr2-cache --parallel=16 --colors --ignore=vendor/*,lib/* ."
         ],
         "lint:fix": [
             "phpcbf --config-set ignore_warnings_on_exit 1",
-            "phpcbf -p --standard=PSR1 --extensions=php,phtml --cache=.phpcs-psr1-cache --parallel=16 --colors --ignore=vendor/*,lib/* ."
+            "phpcbf -p --standard=PSR1 --extensions=php,phtml --cache=.phpcs-psr1-cache --parallel=16 --colors --ignore=vendor/*,lib/* .",
+            "phpcbf -p --standard=PSR2 --extensions=php,phtml --cache=.phpcs-psr2-cache --parallel=16 --colors --ignore=vendor/*,lib/* ."
         ],
         "test": "echo 'Testing not implemented!'"
     },

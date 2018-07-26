@@ -34,10 +34,10 @@
     <?= $this->section('content') ?>
   </div>
 
-  <?php
+    <?php
     // Scripts
     // -------
-  ?>
+    ?>
   <script src="<?= $baseUrl ?>/js/jquery-1.12.4<?= $min ?>.js"></script>
   <script src="<?= $baseUrl ?>/js/bootstrap<?= $min ?>.js"></script>
   <script src="<?= $baseUrl ?>/js/website<?= $min ?>.js"></script>

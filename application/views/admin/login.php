@@ -2,19 +2,20 @@
 define('PAGE', 'projects');
 require_once realpath(__DIR__ . '/../../Bootstrap.php');
 
-function isPasswordCorrect($config, $username, $password) {
+function isPasswordCorrect($config, $username, $password)
+{
 
-  if (!preg_match('/^[a-z0-9\\.-]+$/', $username)) {
-    return false;
-  }
+    if (!preg_match('/^[a-z0-9\\.-]+$/', $username)) {
+        return false;
+    }
 
-  $adapter = new Zend\Db\Adapter\Adapter($GLOBALS['config']->db->toArray());
-  $sql = 'SELECT * FROM `users` WHERE `id` =  \'' . $username . '\' AND `password` = \'' . md5($password) . '\'';
-  $result = $adapter->query($sql)->execute();
-  $result->buffer();
-  if($result->count() === 1) {
-    return true;
-  }
+    $adapter = new Zend\Db\Adapter\Adapter($GLOBALS['config']->db->toArray());
+    $sql = 'SELECT * FROM `users` WHERE `id` =  \'' . $username . '\' AND `password` = \'' . md5($password) . '\'';
+    $result = $adapter->query($sql)->execute();
+    $result->buffer();
+    if ($result->count() === 1) {
+        return true;
+    }
 }
 
 $username = isset($_POST['username']) ? $_POST['username'] : '';
@@ -22,19 +23,18 @@ $password = isset($_POST['password']) ? $_POST['password'] : '';
 
 if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username']) && isset($_POST['password'])) {
     if (isPasswordCorrect(
-      $config,
-      ($username = $_POST['username']),
-      ($password = $_POST['password'])
+        $config,
+        ($username = $_POST['username']),
+        ($password = $_POST['password'])
     )) {
-      session_start();
-      $_SESSION['username'] = $username;
-      header('Location: /admin');
-      exit(0);
+        session_start();
+        $_SESSION['username'] = $username;
+        header('Location: /admin');
+        exit(0);
     }
     $wrongPassword = true;
-}
-else {
-  $wrongPassword = false;
+} else {
+    $wrongPassword = false;
 }
 
 ?>
@@ -64,9 +64,9 @@ else {
     <form role="form" method="post" class="col col-sm-4 col-sm-offset-4">
       <h1>Identification requise</h1>
       <br/>
-      <?php if ($wrongPassword): ?>
+        <?php if ($wrongPassword) : ?>
         <p class="alert alert-danger">Votre nom d'utilisateur ou votre mot de passe est incorrect.</p>
-      <?php endif; ?>
+        <?php endif; ?>
       <div class="form-group">
         <label for="username">Nom d'utilisateur</label>
         <input type="text" class="form-control" id="username" name="username" value="<?= $username ?>" />

@@ -5,7 +5,7 @@ require_once realpath(__DIR__ . '/../../Bootstrap.php');
 session_start();
 if (!isset($_SESSION['username'])) {
     header('Location: /admin/login');
-  exit(0);
+    exit(0);
 }
 
 ?>
@@ -44,10 +44,10 @@ if (!isset($_SESSION['username'])) {
     <br/>
     <div class="col col-md-12">
       <h2>Projets</h2>
-      <?php
+        <?php
         $projects = include __DIR__ . '/../../services/projects.php';
         $projects = $projects['projects'];
-      ?>
+        ?>
       <table class="table table-condensed">
         <thead>
           <tr>
@@ -57,7 +57,7 @@ if (!isset($_SESSION['username'])) {
           </tr>
         </thead>
         <tbody>
-        <?php foreach ($projects as $project): ?>
+        <?php foreach ($projects as $project) : ?>
           <tr>
             <td>
               <?= $project['title'] ?>
@@ -82,10 +82,10 @@ if (!isset($_SESSION['username'])) {
     <br/>
     <div class="col col-md-12">
       <h2>News</h2>
-      <?php
+        <?php
         $news = include __DIR__ . '/../../services/news.php';
         $news = $news['news'];
-      ?>
+        ?>
       <table class="table table-condensed">
         <thead>
           <tr>
@@ -94,7 +94,7 @@ if (!isset($_SESSION['username'])) {
           </tr>
         </thead>
         <tbody>
-        <?php foreach ($news as $new): ?>
+        <?php foreach ($news as $new) : ?>
           <tr>
             <td>
               <?= $new['title'] ?>
