@@ -12,7 +12,9 @@
             "phpcbf -p --standard=PSR2 --extensions=php,phtml --cache=.phpcs-psr2-cache --parallel=16 --colors --ignore=vendor/*,lib/* .",
             "phpcbf -p --standard=PSR12 --extensions=php,phtml --cache=.phpcs-psr12-cache --parallel=16 --colors --ignore=vendor/*,lib/* ."
         ],
-        "test": "phpunit --colors=always"
+        "test": "phpunit --colors=always",
+        "test:ci": "@composer test -- --coverage-clover .coverage/clover.xml",
+        "test:coverage": "@composer test -- --coverage-html .coverage"
     },
     "require": {
         "zendframework/zend-config": "2.*",
