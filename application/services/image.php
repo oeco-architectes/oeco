@@ -1,11 +1,11 @@
 <?php
 use \App\Models\ImageRenderer;
+use \App\Models\ImageServerFactory;
 
 try {
     require_once realpath(__DIR__ . '/../Bootstrap.php');
 
-  // Check path
-
+    // Check path
     if (!isset($_GET['path'])) {
         throw new Exception('Missing parameter path', 400);
     }
@@ -15,72 +15,33 @@ try {
         throw new Exception('Invalid image path "' . $path . '"', 400);
     }
 
-    $realPath = $config->data->imgDir . '/' . $path;
-    $cachingEnabled = true;
-
-    if (!file_exists($realPath)) {
-        $realPath = $config->data->imgDir . '/1x1.png';
-        $cachingEnabled = false;
-    }
-
-  // Check width
+    // Check width
     if (isset($_GET['width'])) {
         $width = $_GET['width'];
         if (!preg_match('/^[1-9][0-9]*$/', $width)) {
             throw new Exception('Invalid width "' . $width . '"', 400);
         }
     } else {
-        $width = false;
+        $width = null;
     }
 
-  // Check height
+    // Check height
     if (isset($_GET['height'])) {
         $height = $_GET['height'];
         if (!preg_match('/^[1-9][0-9]*$/', $height)) {
-            throw new Exception('Invalid width "' . $height . '"', 400);
+            throw new Exception('Invalid height "' . $height . '"', 400);
         }
     } else {
-        $height = false;
+        $height = null;
     }
 
-  // Cache
-    $cachePath = $config->data->cacheDir . '/' . preg_replace('/\.jpg$/', '', $path) . '@' . $width . 'x' . $height . '.jpg';
-
-
-  // Generate image
-    if ($cachingEnabled && file_exists($cachePath)) {
-        $rawData = file_get_contents($cachePath);
-    } else {
-        $renderer = new ImageRenderer($realPath, $width, $height);
-        $rawData = $renderer->getRawData();
-
-        if ($cachingEnabled) {
-          // Create directory structure
-            $currentDir = $realPath = $config->data->cacheDir;
-            $folders = explode('/', $path);
-            array_pop($folders);
-            foreach ($folders as $folder) {
-                $currentDir .= '/' . $folder;
-                if (!file_exists($currentDir)) {
-                    if (!mkdir($currentDir)) {
-                        throw new Exception('Can\'t create directory "' . $currentDir . '"');
-                    }
-                }
-            }
-            if (file_put_contents($cachePath, $rawData) === false) {
-                throw new Exception('Can\'t write "' . $cachePath . '"');
-            }
-
-            foreach (array('path', 'scale', 'srcRatio', 'srcX', 'srcY', 'srcWidthOriginal', 'srcHeightOriginal', 'srcWidth',
-            'srcHeight', 'dstRatio', 'dstX', 'dstY', 'dstWidth', 'dstHeight') as $property) {
-                header('X-Image-' . ucfirst($property) . ': ' . $renderer->$property);
-            }
-        }
-    }
-
-  // Show image
-    header('Content-Type: image/jpeg');
-    echo $rawData;
+    // Serve image using Glide
+    $server = ImageServerFactory::create([
+        'source' => $config->data->imgDir,
+        'cache' => $config->data->cacheDir,
+        'cache_with_file_extensions' => true,
+    ]);
+    $server->outputImage($path, ['w' => $width, 'h' => $height, 'fit' => 'crop', 'fm' => 'pjpg']);
 } catch (Exception $e) {
     switch ($e->getCode()) {
         case 400:
