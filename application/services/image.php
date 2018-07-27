@@ -39,7 +39,7 @@ try {
         'source' => $config->data->imgDir,
         'cache' => $config->data->cacheDir,
     ]);
-    $server->outputImage($path, ['w' => $width, 'h' => $height, 'fit' => 'crop']);
+    $server->outputImage($path, ['w' => $width, 'h' => $height, 'fit' => 'crop', 'fm' => 'pjpg']);
 } catch (Exception $e) {
     switch ($e->getCode()) {
         case 400:
