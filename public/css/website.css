@@ -238,8 +238,10 @@ a.active {
   opacity: 1;
 }
 
-.project-details img {
-  max-width: 100%;
+.project-details section img {
+  width: 100%;
+  display: block;
+  height: auto;
 }
 
 .project-details .description,
