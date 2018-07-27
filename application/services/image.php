@@ -1,5 +1,6 @@
 <?php
 use \App\Models\ImageRenderer;
+use \App\Models\ImageServerFactory;
 
 try {
     require_once realpath(__DIR__ . '/../Bootstrap.php');
@@ -35,9 +36,10 @@ try {
     }
 
     // Serve image using Glide
-    $server = League\Glide\ServerFactory::create([
+    $server = ImageServerFactory::create([
         'source' => $config->data->imgDir,
         'cache' => $config->data->cacheDir,
+        'cache_with_file_extensions' => true,
     ]);
     $server->outputImage($path, ['w' => $width, 'h' => $height, 'fit' => 'crop', 'fm' => 'pjpg']);
 } catch (Exception $e) {
