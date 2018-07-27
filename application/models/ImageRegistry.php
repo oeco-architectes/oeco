@@ -10,38 +10,53 @@ class ImageRegistry
 {
     public $imageDir;
     public $cacheDir;
+    public $fallback;
 
-    public function __construct($imageDir, $cacheDir)
+    public function __construct($imageDir, $cacheDir, $fallback = null)
     {
         $this->imageDir = $imageDir;
         $this->cacheDir = $cacheDir;
+        $this->fallback = $fallback;
+    }
+
+    public function getAbsolutePath($relativePath)
+    {
+        return $this->imageDir . DIRECTORY_SEPARATOR . $relativePath;
     }
 
     public function getImageHeight($relativePath, $width)
     {
-        [$naturalWidth, $naturalHeight] = getimagesize($this->imageDir . DIRECTORY_SEPARATOR . $relativePath);
+        [$naturalWidth, $naturalHeight] = getimagesize($this->getAbsolutePath($relativePath));
         return round($width * $naturalHeight / $naturalWidth);
     }
 
     public function getImageWidth($relativePath, $height)
     {
-        [$naturalWidth, $naturalHeight] = getimagesize($this->imageDir . DIRECTORY_SEPARATOR . $relativePath);
+        [$naturalWidth, $naturalHeight] = getimagesize($this->getAbsolutePath($relativePath));
         return round($height * $naturalWidth / $naturalHeight);
     }
 
     public function get($relativePath, $width, $height)
     {
-        if (!isset($width) && !isset($height)) {
-            throw new \InvalidArgumentException('Either width or height must be set');
+        $absolutePath = $this->getAbsolutePath($relativePath);
+        if (!file_exists($absolutePath)) {
+            if (!isset($this->fallback) || $relativePath === $this->fallback) {
+                throw new \InvalidArgumentException('File does not exist: ' . $absolutePath);
+            }
+            return new Image($this->fallback, $width, $height);
         }
-        if (!isset($height)) {
+
+        if (!isset($height) && isset($width)) {
             $height = $this->getImageHeight($relativePath, $width);
         }
-        if (!isset($width)) {
+        if (!isset($width) && isset($height)) {
             $width = $this->getImageWidth($relativePath, $height);
         }
 
         $pathInfo = self::imagePathInfo($relativePath);
+        if (!isset($pathInfo['directory'])) {
+            die(print_r($pathInfo));
+        }
         $path = self::imagePath([
             'directory' => $pathInfo['directory'],
             'basename' => $pathInfo['basename'],
@@ -58,7 +73,7 @@ class ImageRegistry
         $slash = str_replace('/', '\\/', preg_quote(DIRECTORY_SEPARATOR));
         $imagePathRegExp = implode('', [
             '/^',
-            '(?<directory>.*)' . $slash,
+            '((?<directory>.*)' . $slash . ')?',
             '(?<basename>[^' . $slash . '@.]*)',
             '(@(?<width>\\d*)x(?<height>\\d*))?',
             '.' . '(?<extension>[^' . $slash . '@.]*)',

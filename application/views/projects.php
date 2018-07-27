@@ -1,24 +1,32 @@
 <?php
+
 require_once realpath(__DIR__ . '/../Bootstrap.php');
-use \App\Models\MozaicLayout;
+use App\Models\ImageRegistry;
+use App\Models\MozaicLayout;
 
 function projectFigure($project, $images)
 {
+    global $config;
+    $registry = new ImageRegistry(
+        $config->data->imgDir,
+        $config->data->cacheDir,
+        '1x1.png'
+    );
+
     $output = '';
     foreach ($images as [$width, $height, $classes]) {
-        $output .= includeWithVariables(__DIR__ . '/parts/figure.phtml', array(
-        'classes' => $classes . ' active ' . implode(' ', array_map(function ($c) {
-            return 'pic-' . $c;
-        }, $project['categories'])),
-        'href' => BASEURL . '/projets/' . $project['id'],
-        'caption' => $project['title'],
-        'image' => array(
-        'width' => $width,
-        'height' => $height,
-        'src' => BASEURL . '/img/projects/' . $project['id'] . '/' . $project['id'] . '-01@' . $width . 'x' . $height . '.jpg',
-        'alt' => $project['title']
-        ),
-        ));
+        $output .= includeWithVariables(__DIR__ . '/parts/figure.phtml', [
+            'classes' => $classes . ' active ' . implode(' ', array_map(function ($c) use ($registry) {
+                return 'pic-' . $c;
+            }, $project['categories'])),
+            'href' => BASEURL . '/projets/' . $project['id'],
+            'caption' => $project['title'],
+            'image' => $registry->get(
+                'projects/' . $project['id'] . '/' . $project['id'] . '-01.jpg',
+                $width,
+                $height
+            )
+        ]);
     }
     return $output;
 }
@@ -64,16 +72,16 @@ $this->layout('layout', [
             <?php
             switch ($item) {
                 case MozaicLayout::ITEM_SMALL:
-                    print projectFigure($projects[++$i], [[290, 190, 'hidden-xs pic pic-desktop pic-small col-sm-3'], [768, false, 'pic pic-mobile visible-xs-block col-xs-12']]);
+                    print projectFigure($projects[++$i], [[290, 190, 'hidden-xs pic pic-desktop pic-small col-sm-3'], [768, null, 'pic pic-mobile visible-xs-block col-xs-12']]);
                     break;
                 case MozaicLayout::ITEM_HIGH_TOP:
-                                  print projectFigure($projects[++$i], [[290, 390, 'hidden-xs pic pic-desktop pic-high col-sm-3'], [768, false, 'pic pic-mobile visible-xs-block col-xs-12']]);
+                                  print projectFigure($projects[++$i], [[290, 390, 'hidden-xs pic pic-desktop pic-high col-sm-3'], [768, null, 'pic pic-mobile visible-xs-block col-xs-12']]);
                     break;
                 case MozaicLayout::ITEM_HIGH_BOTTOM:
                                   print '<div class="hidden-xs col-sm-3"><div class="pic-placeholder"></div></div>';
                     break;
                 case MozaicLayout::ITEM_LARGE_LEFT:
-                                  print projectFigure($projects[++$i], [[590, 190, 'hidden-xs pic pic-desktop pic-large col-sm-6'], [768, false, 'pic pic-mobile visible-xs-block col-xs-12']]);
+                                  print projectFigure($projects[++$i], [[590, 190, 'hidden-xs pic pic-desktop pic-large col-sm-6'], [768, null, 'pic pic-mobile visible-xs-block col-xs-12']]);
                     break; case MozaicLayout::ITEM_LARGE_RIGHT: // nothing
             }
             ?>

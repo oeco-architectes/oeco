@@ -1,15 +1,6 @@
 <a class="<?= $classes ?>" href="<?= $href ?>">
   <figure>
-    <img
-      src="<?= $image['src'] ?>"
-      width="<?= $image['width'] ?>"
-      <?php if ($image['height']) :
-            ?>height="<?= $image['height'] ?>"<?php
-      endif ?>
-        <?php if ($image['alt']) :
-            ?>alt="<?= $image['alt'] ?>"<?php
-        endif ?>
-    />
+    <?= $image->toHtmlImgTag('/img', $caption) ?>
     <figcaption><?= $caption ?></figcaption>
   </figure>
 </a>
