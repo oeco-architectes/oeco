@@ -1,6 +1,11 @@
 @import url(bootstrap.css);
 @import url(fonts.css);
 
+.container {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 body {
   font-family: HelveticaNeue, Helvetica, sans-serif;
 }
@@ -174,7 +179,91 @@ a.active {
   pointer-events: auto;
 }
 
-#projects .pic-high {
+#projects .pic {
+  display: block;
+  padding: 0;
+}
+
+#projects .pic img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .pic:not(.pic-placeholder) {
+    margin-bottom: 16px;
+  }
+
+  .pic figcaption {
+    margin: 1rem 0;
+    font-family: HelveticaNeue, sans-serif;
+    font-weight: 200;
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  #projects .row {
+    margin-bottom: 10px;
+    margin-right: -5px;
+    margin-left: -5px;
+  }
+
+  #projects .col {
+    padding: 0 5px;
+  }
+
+  #projects .pic {
+    height: 190px;
+    transition: opacity 1s;
+    opacity: .3;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #projects .pic.active {
+    opacity: 1;
+  }
+
+  #projects .pic-high {
+    height: 390px;
+    margin-bottom: -200px;
+    z-index: 1;
+  }
+
+  #projects .pic-placeholder {
+    z-index: -1;
+  }
+
+  #projects .pic img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #projects .pic figcaption {
+    position: absolute;
+    display: block;
+    left: 0;
+    right: 0;
+    top: 100%;
+    color: #fff;
+    background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.7));
+    font-size: 85%;
+    font-weight: normal;
+    padding: .5em 1em;
+    opacity: 0;
+    transition: opacity .5s, transform .3s;
+  }
+
+  #projects .pic:hover figcaption {
+    transform: translateY(-100%);
+    opacity: 1;
+  }
+}
+
+/* #projects .pic-high {
   margin-bottom: -200px;
 }
 
@@ -192,9 +281,9 @@ a.active {
 
 .pic-desktop.active {
   opacity: 1;
-}
+} */
 
-#projects .row {
+/* #projects .row {
   margin-bottom: 10px;
   margin-right: -5px;
   margin-left: -5px;
@@ -236,7 +325,7 @@ a.active {
 #projects .pic-desktop figure:hover figcaption {
   transform: translateY(-100%);
   opacity: 1;
-}
+} */
 
 .project-details section img {
   width: 100%;
@@ -253,7 +342,7 @@ a.active {
   margin: 0;
 }
 
-.pic-mobile {
+/* .pic-mobile {
   margin-bottom: 16px;
 }
 
@@ -272,4 +361,14 @@ a.active {
 
 #projects .pic-mobile:not(.active) {
   display: none !important;
+} */
+
+/* #projects picture {
+  display: none;
 }
+
+@media (max-width: 768px) {
+  #projects picture {
+    display: block;
+  }
+} */
