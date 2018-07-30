@@ -1,0 +1,16 @@
+<phpunit>
+    <testsuites>
+        <testsuite name="Unit Tests">
+            <directory suffix=".test.php">.</directory>
+            <exclude>vendor/</exclude>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">.</directory>
+            <exclude>
+                <directory suffix=".php">vendor/</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>

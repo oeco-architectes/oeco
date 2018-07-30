@@ -1,26 +1,25 @@
 <?php
-require_once realpath(__DIR__ . '/../Bootstrap.php');
-use \App\Models\MozaicLayout;
 
-function projectFigure($project, $images)
+require_once realpath(__DIR__ . '/../Bootstrap.php');
+use App\Models\ImageRegistry;
+use App\Models\MozaicLayout;
+
+$registry = new ImageRegistry(
+    $config->data->imgDir,
+    $config->data->cacheDir,
+    '1x1.png'
+);
+
+function tiles($type)
 {
-    $output = '';
-    foreach ($images as [$width, $height, $classes]) {
-        $output .= includeWithVariables(__DIR__ . '/parts/figure.phtml', array(
-        'classes' => $classes . ' active ' . implode(' ', array_map(function ($c) {
-            return 'pic-' . $c;
-        }, $project['categories'])),
-        'href' => BASEURL . '/projets/' . $project['id'],
-        'caption' => $project['title'],
-        'image' => array(
-        'width' => $width,
-        'height' => $height,
-        'src' => BASEURL . '/img/projects/' . $project['id'] . '/' . $project['id'] . '-01@' . $width . 'x' . $height . '.jpg',
-        'alt' => $project['title']
-        ),
-        ));
+    switch ($type) {
+        case MozaicLayout::ITEM_SMALL:
+            return [290, 190, 'pic-small', 'col-sm-3'];
+        case MozaicLayout::ITEM_HIGH_TOP:
+            return [290, 390, 'pic-high', 'col-sm-3'];
+        case MozaicLayout::ITEM_LARGE_LEFT:
+            return [570, 190, 'pic-large', 'col-sm-6'];
     }
-    return $output;
 }
 
 // Render layout
@@ -50,6 +49,8 @@ $this->layout('layout', [
     foreach ($projects as $i => $project) {
         if (!$project['published']) {
             unset($projects[$i]);
+        } else {
+            $projects[$i]['image'] = 'projects/' . $project['id'] . '/' . $project['id'] . '-01.jpg';
         }
     }
     shuffle($projects);
@@ -61,22 +62,30 @@ $this->layout('layout', [
     <?php foreach ($layout->getLines() as $line) : ?>
     <div class="row">
         <?php foreach ($line as $item) : ?>
-            <?php
-            switch ($item) {
-                case MozaicLayout::ITEM_SMALL:
-                    print projectFigure($projects[++$i], [[290, 190, 'hidden-xs pic pic-desktop pic-small col-sm-3'], [768, false, 'pic pic-mobile visible-xs-block col-xs-12']]);
-                    break;
-                case MozaicLayout::ITEM_HIGH_TOP:
-                                  print projectFigure($projects[++$i], [[290, 390, 'hidden-xs pic pic-desktop pic-high col-sm-3'], [768, false, 'pic pic-mobile visible-xs-block col-xs-12']]);
-                    break;
-                case MozaicLayout::ITEM_HIGH_BOTTOM:
-                                  print '<div class="hidden-xs col-sm-3"><div class="pic-placeholder"></div></div>';
-                    break;
-                case MozaicLayout::ITEM_LARGE_LEFT:
-                                  print projectFigure($projects[++$i], [[590, 190, 'hidden-xs pic pic-desktop pic-large col-sm-6'], [768, false, 'pic pic-mobile visible-xs-block col-xs-12']]);
-                    break; case MozaicLayout::ITEM_LARGE_RIGHT: // nothing
-            }
-            ?>
+            <?php if ($item === MozaicLayout::ITEM_LARGE_RIGHT) : ?>
+                <?php // Nothing ?>
+            <?php elseif ($item === MozaicLayout::ITEM_HIGH_BOTTOM) : ?>
+                <div class="col col-xs-12 col-sm-3">
+                    <div class="pic pic-placeholder"></div>
+                </div>
+            <?php else : ?>
+                <?php
+                    $project = $projects[++$i];
+                    [$width, $height, $picClass, $containerClass] = tiles($item);
+                ?>
+                <a href="<?= BASEURL . '/projets/' . $project['id'] ?>" class="col col-xs-12 <?= $containerClass ?>">
+                    <figure class="pic <?= $picClass ?> active">
+                        <img
+                            srcset="
+                                <?= BASEURL . '/img/' . $registry->get($project['image'], 768, null)->path ?> 768w,
+                                <?= BASEURL . '/img/' . $registry->get($project['image'], $width, $height)->path ?> <?= $width ?>w
+                            "
+                            sizes="(min-width: 769px) <?= $width ?>px, 768px"
+                        >
+                        <figcaption><?= $this->e($project['title']) ?></figcaption>
+                    </figure>
+                </a>
+            <?php endif ?>
         <?php endforeach; ?>
     </div>
     <?php endforeach; ?>

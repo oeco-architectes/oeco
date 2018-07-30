@@ -2,7 +2,9 @@ language: php
 php: 7.2
 install: composer install
 before_script: composer lint
-script: composer test
+script: composer test:ci
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 cache:
   directories:
     - $HOME/.composer/cache/files

@@ -1,23 +1,38 @@
 <?php
-    // Fetch project
-    $origin = get_server_origin($_SERVER) . $baseUrl;
-    $projectId = $_GET['id'];
-    $project = include __DIR__ . '/../services/project.php';
-    $properties = include __DIR__ . '/../services/properties.php';
-    $title = $project['ok'] ? $project['project']['title'] : 'Article inconnu';
-    $canonicalUrl = $origin . '/projets/' . $project['project']['id'];
+use App\Models\ImageRegistry;
 
-    // Render layout
-    $this->layout('layout', [
-        'view' => $view,
-        'config' => $config,
-        'baseUrl' => $baseUrl,
-        'min' => $min,
-        'title' => $title,
-        'wide' => false,
-    ]);
+// Fetch project
+$origin = get_server_origin($_SERVER) . $baseUrl;
+$projectId = $_GET['id'];
+$project = include __DIR__ . '/../services/project.php';
+$properties = include __DIR__ . '/../services/properties.php';
+$title = $project['ok'] ? $project['project']['title'] : 'Article inconnu';
+$canonicalUrl = $origin . '/projets/' . $project['project']['id'];
 
-    ?>
+$registry = new ImageRegistry(
+    $config->data->imgDir,
+    $config->data->cacheDir
+);
+if ($project['ok']) {
+    $project['project']['images'] = array_map(
+        function ($image) use ($project, $registry) {
+            return $registry->get($image['path'], 945, null);
+        },
+        $project['project']['images']
+    );
+}
+
+// Render layout
+$this->layout('layout', [
+    'view' => $view,
+    'config' => $config,
+    'baseUrl' => $baseUrl,
+    'min' => $min,
+    'title' => $title,
+    'wide' => false,
+]);
+
+?>
 
 <?php
 // Meta
@@ -54,7 +69,7 @@
         <?php endif ?>
 
         <?php
-            $width = 945;
+            $title = $project['project']['title'] . ' #';
         ?>
 
         <?php foreach (explode("\r\n\r\n", $project['project']['content']) as $i => $paragraph) : ?>
@@ -63,16 +78,12 @@
             </div>
 
             <?php if (array_key_exists($i, $project['project']['images'])) : ?>
-                <?php $image = $project['project']['images'][$i]; ?>
-                <?php $image['id'] = preg_replace('/^.*\/([^\/]+)\.jpg$/', '$1', $image['path']); ?>
-                <?php include __DIR__ . '/parts/image.phtml'; ?>
+                <?= $project['project']['images'][$i]->toHtmlImgTag('/img', $title . ($i + 1)) ?>
             <?php endif; ?>
         <?php endforeach; ?>
 
         <?php for ($i++; $i < count($project['project']['images']); $i++) : ?>
-            <?php $image = $project['project']['images'][$i]; ?>
-            <?php $image['id'] = preg_replace('/^.*\/([^\/]+)\.jpg$/', '$1', $image['path']); ?>
-            <?php include __DIR__ . '/parts/image.phtml'; ?>
+            <?= $project['project']['images'][$i]->toHtmlImgTag('/img', $title . ($i + 1)) ?>
         <?php endfor; ?>
 
         <?php if (count($project['project']['properties']) > 0) : ?>
