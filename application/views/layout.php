@@ -19,8 +19,8 @@
         <a id="logo" href="<?= $baseUrl ?>/"><img src="<?= $baseUrl ?>/img/oeco-architectes-logo.jpg" width="280" height="127" alt="oeco architectes" /></a>
         <nav id="navigation">
           <ul class="inline-list">
-            <li><a href="<?= $baseUrl ?>/projets" class="active">projets</a></li>
-            <li><a href="<?= $baseUrl ?>/agence">agence</a></li>
+            <li><a href="<?= $baseUrl ?>/projets" <?= in_array($view, ['projects', 'project-details']) ? ' class="active"' : '' ?>>projets</a></li>
+            <li><a href="<?= $baseUrl ?>/agence" <?= $view === 'agency' ? ' class="active"' : '' ?>>agence</a></li>
             <li><a href="<?= $config->facebook ?>" title="Facebook page" target="_blank"><img src="<?= $baseUrl ?>/img/facebook.png" /></a></li>
           </ul>
         </nav>
