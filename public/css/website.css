@@ -79,7 +79,7 @@ header,
   font-size: 18px;
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
   header {
     display: flex;
     align-items: flex-end;
@@ -112,7 +112,7 @@ header,
   margin-top: 40px;
 }
 
-.news-title,.project-title,.agency h1 {
+.news-title, .project-title, .agency h1 {
   font-family: HelveticaNeue, Helvetica, sans-serif;
   font-weight: 200;
   font-size: 1.5em;
@@ -121,8 +121,11 @@ header,
   margin: 1em 0 .5em 0;
 }
 
-.news-summary,.project-summary {
+.news-summary, .project-summary {
+  font-family: HelveticaNeue, Helvetica, sans-serif;
+  font-weight: normal;
   font-size: 1em;
+  text-transform: uppercase;
   line-height: 1.2;
 }
 
@@ -147,6 +150,11 @@ header,
 .actions a {
   font-weight: bold;
   text-transform: uppercase;
+}
+
+.people {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .people img {
@@ -223,7 +231,7 @@ header,
   }
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
   #projects .row {
     margin-bottom: 10px;
     margin-right: -5px;
