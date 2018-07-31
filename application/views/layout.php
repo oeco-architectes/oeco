@@ -16,7 +16,7 @@
     ?>
     <?= $narrow ? '<div class="row">' : '' ?>
       <header<?= $narrow ? ' class="col-sm-10 col-sm-offset-1"' : '' ?>>
-        <a href="<?= $baseUrl ?>/"><img class="logo" src="<?= $baseUrl ?>/img/oeco-architectes-logo.jpg" width="280" height="127" alt="oeco architectes" /></a>
+        <a id="logo" href="<?= $baseUrl ?>/"><img src="<?= $baseUrl ?>/img/oeco-architectes-logo.jpg" width="280" height="127" alt="oeco architectes" /></a>
         <nav id="navigation">
           <ul class="inline-list">
             <li><a href="<?= $baseUrl ?>/projets" class="active">projets</a></li>
