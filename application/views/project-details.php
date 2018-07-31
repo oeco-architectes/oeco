@@ -78,12 +78,12 @@ $this->layout('layout', [
             </div>
 
             <?php if (array_key_exists($i, $project['project']['images'])) : ?>
-                <?= $project['project']['images'][$i]->toHtmlImgTag('/img', $title . ($i + 1)) ?>
+                <?= $project['project']['images'][$i]->toHtmlImgTag('/img', $title . ($i + 1), 'image') ?>
             <?php endif; ?>
         <?php endforeach; ?>
 
         <?php for ($i++; $i < count($project['project']['images']); $i++) : ?>
-            <?= $project['project']['images'][$i]->toHtmlImgTag('/img', $title . ($i + 1)) ?>
+            <?= $project['project']['images'][$i]->toHtmlImgTag('/img', $title . ($i + 1), 'image') ?>
         <?php endfor; ?>
 
         <?php if (count($project['project']['properties']) > 0) : ?>

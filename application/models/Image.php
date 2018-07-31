@@ -41,12 +41,13 @@ class Image
         $this->height = $height;
     }
 
-    public function toHtmlImgTag($baseUrl, $title = '')
+    public function toHtmlImgTag($baseUrl, $title = '', $class = null)
     {
         return '<img src="' . $baseUrl . '/' . \htmlentities($this->path)
             . '" alt="' . \htmlentities($title)
             . '" width="' . $this->width
             . '" height="' . $this->height
+            . (isset($class) ? '" class="' . $class : '')
             . '">';
     }
 }
