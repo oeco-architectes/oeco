@@ -10,14 +10,8 @@ body {
   font-family: HelveticaNeue, Helvetica, sans-serif;
 }
 
-section,aside {
-  margin-top: 40px;
-  margin-bottom: 100px;
-}
-
-header {
-  margin: 40px 0;
-  font-size: 18px;
+section, aside {
+  margin-bottom: 5rem;
 }
 
 .title {
@@ -60,31 +54,62 @@ a.active {
   font-weight: bold;
 }
 
+header,
+#logo,
+#navigation,
+#project-categories {
+  margin: 3.6rem auto;
+}
+
+#logo {
+  text-align: center;
+}
+
+#logo img {
+  display: block;
+  margin: 0 auto;
+}
+
+#navigation,
+#project-categories {
+  text-align: center;
+}
+
 #navigation {
-  margin-bottom: -40px;
-  position: relative;
-  top: -40px;
+  font-size: 18px;
 }
 
-#navigation ul {
-  text-align: right;
-  margin: 20px 0;
-}
+@media screen and (min-width: 769px) {
+  header {
+    display: flex;
+    align-items: flex-end;
+  }
 
-#navigation li {
-  margin-left: 40px;
-}
+  #logo,
+  #navigation {
+    margin: 0;
+  }
 
-#navigation li:first-child {
-  margin-left: 0;
+  #logo {
+    margin-bottom: 10px; /* Fixes alignment */
+  }
+
+  #navigation {
+    flex-grow: 1;
+  }
+
+  #navigation,
+  #project-categories {
+    text-align: right;
+  }
 }
 
 .home {
-  width: 800px;
+  max-width: 800px;
 }
 
 .home section {
-  margin-top: 80px;
+  margin-top: 40px;
 }
 
 .news-title,.project-title,.agency h1 {
@@ -166,12 +191,6 @@ a.active {
 .agency.publications article img {
   width: 100%;
   height: auto;
-}
-
-#project-categories {
-  text-align: right;
-  margin-top: 60px;
-  margin-bottom: 40px;
 }
 
 #project-categories a.active,
