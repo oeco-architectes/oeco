@@ -22,6 +22,16 @@ function tiles($type)
     }
 }
 
+function projectPictureClasses($project)
+{
+    return array_map(
+        function ($category) {
+            return 'pic-' . $category;
+        },
+        $project['categories']
+    );
+}
+
 // Render layout
 $this->layout('layout', [
   'view' => $view,
@@ -72,6 +82,7 @@ $this->layout('layout', [
                 <?php
                     $project = $projects[++$i];
                     [$width, $height, $picClass, $containerClass] = tiles($item);
+                    $picClass .= ' ' . implode(' ', projectPictureClasses($project));
                 ?>
                 <a href="<?= BASEURL . '/projets/' . $project['id'] ?>" class="col col-xs-12 <?= $containerClass ?>">
                     <figure class="pic <?= $picClass ?> active">
