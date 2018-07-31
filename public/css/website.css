@@ -2,8 +2,15 @@
 @import url(fonts.css);
 
 .container {
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 
 body {
@@ -217,7 +224,7 @@ header,
   height: auto;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .pic:not(.pic-placeholder) {
     margin-bottom: 16px;
   }
@@ -228,6 +235,14 @@ header,
     font-weight: 200;
     font-size: 16px;
     text-transform: uppercase;
+  }
+
+  #projects .pic {
+    display: none;
+  }
+
+  #projects .pic.active {
+    display: block;
   }
 }
 
