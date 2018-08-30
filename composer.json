@@ -46,6 +46,19 @@
         ],
         "post-install-cmd": [
             "npm install"
+        ],
+        "start": [
+            "@composer clear-cache",
+            "@composer dump-autoload --apcu",
+            "cat .composer-watch.txt",
+            "@php artisan serve"
+        ],
+        "watch": [
+            "npm run watch"
+        ],
+        "build": [
+            "npm run production",
+            "@composer dump-autoload --optimize --classmap-authoritative"
         ]
     },
     "config": {
