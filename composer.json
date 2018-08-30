@@ -69,6 +69,7 @@
             "@composer dump-autoload --optimize --classmap-authoritative"
         ],
         "lint": [
+            "npm run --silent lint"
         ],
         "test": [
         ]
