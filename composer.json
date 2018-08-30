@@ -67,6 +67,10 @@
         "build": [
             "npm run production",
             "@composer dump-autoload --optimize --classmap-authoritative"
+        ],
+        "lint": [
+        ],
+        "test": [
         ]
     },
     "config": {
