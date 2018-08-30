@@ -1,4 +1,12 @@
 {
+    "name": "oeco-architectes/oeco",
+    "description": "Oeco Architectes wrbsite",
+    "keywords": [
+        "oeco",
+        "architecture",
+        "website"
+    ],
+    "license": "proprietary",
     "type": "project",
     "require": {
         "php": "^7.1.3",
