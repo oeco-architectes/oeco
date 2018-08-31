@@ -74,7 +74,10 @@
             "phpcs --extensions=php --standard=.phpcs.xml ."
         ],
         "test": [
-            "phpunit --colors=always"
+            "cat .composer-phpunit.txt",
+            "phpunit --colors=always",
+            "cat .composer-npm-test.txt",
+            "npm run test:run -- --color"
         ]
     },
     "config": {
