@@ -74,6 +74,7 @@
             "phpcs --extensions=php --standard=.phpcs.xml ."
         ],
         "test": [
+            "phpunit --colors=always"
         ]
     },
     "config": {
