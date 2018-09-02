@@ -17,10 +17,12 @@
     "require-dev": {
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",
+        "laravel/dusk": "^4.0",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^2.0",
         "phpunit/phpunit": "^7.0",
-        "squizlabs/php_codesniffer": "^3.3"
+        "squizlabs/php_codesniffer": "^3.3",
+        "symfony/process": "^4.1"
     },
     "autoload": {
         "classmap": [
@@ -74,10 +76,21 @@
             "phpcs --extensions=php --standard=.phpcs.xml ."
         ],
         "test": [
+            "@composer test:assets",
+            "@composer test:php",
+            "@composer test:e2e"
+        ],
+        "test:php": [
             "cat .composer-phpunit.txt",
-            "phpunit --colors=always",
+            "phpunit --colors=always"
+        ],
+        "test:assets": [
             "cat .composer-npm-test.txt",
             "npm run test:run -- --color"
+        ],
+        "test:e2e": [
+            "cat .composer-dusk.txt",
+            "@php artisan dusk"
         ]
     },
     "config": {
