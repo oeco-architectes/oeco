@@ -12,8 +12,6 @@ before_script:
   - php artisan serve & # Laravel Dusk
 script:
   - composer test
-after_script:
-  - killall php
 cache:
   directories:
     - $HOME/.composer/cache
