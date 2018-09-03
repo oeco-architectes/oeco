@@ -10,10 +10,20 @@ install:
 before_script:
   - composer lint
   - php artisan serve & # Laravel Dusk
+  - |
+    curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+    chmod +x ./cc-test-reporter
+    ./cc-test-reporter before-build
 script:
   - composer test
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+after_script:
+  - |
+    ./cc-test-reporter format-coverage coverage/php/clover.xml --input-type clover --output coverage/codeclimate.php.json
+    ./cc-test-reporter format-coverage coverage/js/lcov.info --input-type lcov --output coverage/codeclimate.js.json
+    ./cc-test-reporter sum-coverage coverage/codeclimate.*.json
+    ./cc-test-reporter upload-coverage
 cache:
   directories:
     - $HOME/.composer/cache
