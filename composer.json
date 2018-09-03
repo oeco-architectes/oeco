@@ -82,11 +82,11 @@
         ],
         "test:php": [
             "cat .composer-phpunit.txt",
-            "phpunit --colors=always"
+            "phpunit --colors=always $([ \"$COVERAGE\" = '' ] || echo '--coverage-html coverage/php') $([ \"$CI\" = '' ] || echo '--coverage-clover coverage/php/clover.xml')"
         ],
         "test:assets": [
             "cat .composer-npm-test.txt",
-            "npm run test:run -- --color"
+            "npm run test:run"
         ],
         "test:e2e": [
             "cat .composer-dusk.txt",
