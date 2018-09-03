@@ -6,7 +6,7 @@
         "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore --color .",
         "lint:md": "markdownlint *.md .github/*.md doc*/*.md",
         "lint:scss": "sass-lint -i 'coverage/**, node_modules/**, vendor/**' '**/*.scss' -v -q",
-        "test:run": "cross-env NODE_ENV=test jest",
+        "test:run": "cross-env NODE_ENV=test jest --color $([ \"$CI\" = '' ] && [ \"$COVERAGE\" = '' ] || echo '--coverage')",
         "test": "npm run test:run -- --watch",
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
@@ -101,6 +101,12 @@
         },
         "snapshotSerializers": [
             "jest-serializer-vue"
+        ],
+        "coverageDirectory": "coverage/js",
+        "coverageReporters": [
+            "lcov",
+            "text",
+            "html"
         ]
     }
 }

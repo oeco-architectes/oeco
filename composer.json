@@ -86,7 +86,7 @@
         ],
         "test:assets": [
             "cat .composer-npm-test.txt",
-            "npm run test:run -- --color"
+            "npm run test:run"
         ],
         "test:e2e": [
             "cat .composer-dusk.txt",
