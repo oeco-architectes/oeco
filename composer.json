@@ -15,6 +15,7 @@
         "laravel/tinker": "^1.0"
     },
     "require-dev": {
+        "dg/ftp-deployment": "^3.0",
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",
         "laravel/dusk": "^4.0",
@@ -92,6 +93,9 @@
         "test:e2e": [
             "cat .composer-dusk.txt",
             "@php artisan dusk"
+        ],
+        "deploy": [
+            "deployment .deployment.php"
         ]
     },
     "config": {
