@@ -70,8 +70,7 @@
             "npm run watch"
         ],
         "build": [
-            "npm run production",
-            "@composer dump-autoload --optimize --classmap-authoritative"
+            "npm run production"
         ],
         "lint": [
             "npm run --silent lint",
@@ -96,6 +95,16 @@
         ],
         "deploy": [
             "deployment .deployment.php"
+        ],
+        "migrate": [
+            "@php artisan down --no-interaction",
+            "@php artisan cache:clear --no-interaction",
+            "@php artisan config:cache --no-interaction",
+            "@php artisan migrate --force --no-interaction",
+            "@php artisan up --no-interaction"
+        ],
+        "optimize": [
+            "@composer dump-autoload --optimize --classmap-authoritative"
         ]
     },
     "config": {
