@@ -43,11 +43,7 @@ Development environment
 composer create-project
 ```
 
-### Run tests
-
-TODO
-
-### Start a local server
+### Development server
 
 Run in two separate terminals:
 
@@ -59,6 +55,34 @@ composer start
 ```bash
 # Build client-side assets and watch for changes
 composer watch
+```
+
+Open <http://localhost:8000/>.
+
+### Testing
+
+#### PHP unit tests
+
+```bash
+composer test:php
+```
+
+#### Javascript unit tests
+
+```bash
+composer test:js
+```
+
+### End-to-end tests
+
+Run in two separate terminals:
+
+```bash
+composer start
+```
+
+```bash
+composer test:e2e
 ```
 
 Production environment
