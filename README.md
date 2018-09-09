@@ -1,6 +1,10 @@
 Oeco Architectes website
 ========================
 
+[![Build Status](https://travis-ci.org/oeco-architectes/oeco.svg?branch=master)](https://travis-ci.org/oeco-architectes/oeco)
+[![Test Coverage](https://img.shields.io/codecov/c/github/oeco-architectes/oeco/master.svg)](https://codecov.io/github/oeco-architectes/oeco?branch=master)
+[![Technical Debt](https://img.shields.io/codeclimate/tech-debt/oeco-architectes/oeco.svg)](https://codeclimate.com/github/oeco-architectes/oeco)
+
 Requirements
 ------------
 
@@ -43,11 +47,7 @@ Development environment
 composer create-project
 ```
 
-### Run tests
-
-TODO
-
-### Start a local server
+### Development server
 
 Run in two separate terminals:
 
@@ -59,6 +59,34 @@ composer start
 ```bash
 # Build client-side assets and watch for changes
 composer watch
+```
+
+Open <http://localhost:8000/>.
+
+### Testing
+
+#### PHP unit tests
+
+```bash
+composer test:php
+```
+
+#### Javascript unit tests
+
+```bash
+composer test:js
+```
+
+### End-to-end tests
+
+Run in two separate terminals:
+
+```bash
+composer start
+```
+
+```bash
+composer test:e2e
 ```
 
 Production environment
@@ -87,10 +115,15 @@ composer build # Optimize Composer autoloader, and generate public/{css,fonts,js
 
 Serve `public/` directory.
 
-Continuous Integration
-----------------------
+Continuous Delivery
+-------------------
 
-TODO
+Continuous delivery is setup as follows:
+1. Each commit triggers a build on [Travis CI], which runs linting (`composer test`) and all tests (`composer test`)
+2. If the commit belongs to the `master` branch, deployment is done on the **staging** platform.
+3. If the commit is a `tag`, deployment is done on the **production** platform.
+
+See [.travis.yml] for details.
 
 License
 -------
@@ -106,3 +139,5 @@ Copyright © 2018 Alex Mercier and Oeco Architectes. All rights reserved.
 [Latest Node.JS]: https://nodejs.org/en/download/current/
 [Apache]: https://www.apache.org/
 [composer.json]: composer.json
+[Travis CI]: https://travis-ci.org/oeco-architectes/oeco
+[.travis.yml]: ./.travis.yml

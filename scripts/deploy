@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+
+# FTP Deployment script
+# =====================
+#
+# Deploys on a FTP server and execute `post-deploy` script using [WebConsole].
+#
+# Usage
+# -----
+#
+#     scripts/deploy [staging|production]
+#
+# Requirements
+# ------------
+#
+# - [WebConsole] installed on server
+# - [webconsole-cli] installed globally: `composer global require webconsole-cli`
+# - Environment variables (<ENV> represents either "STAGING" or "PRODUCTION") set:
+#   - `<ENV>_FTP_USERNAME`: FTP username
+#   - `<ENV>_FTP_PASSWORD`: FTP password
+#   - `<ENV>_FTP_HOST`:
+#   - `<ENV>_FTP_PATH`:
+#   - `<ENV>_SSH_USERNAME`: WebConsole username
+#   - `<ENV>_SSH_PASSWORD`: WebConsole password
+#   - `<ENV>_SSH_URL`: WebConsole URL
+#
+# [WebConsole]: http://web-console.org/
+# [webconsole-cli]: https://github.com/amercier/webconsole-cli
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+# Uppercase stdin to stdout
+uppercase() {
+    tr '[:lower:]' '[:upper:]'
+}
+
+# Get an environment variable for a given deployment environment.
+# @param 1 Environment. Ex: staging
+# @param 2 Variable. Ex: FTP_PASSWORD
+# @returns $<ENV>_<VARIABLE>. Ex: $(getenv $1 FTP_PASSWOR)D
+getenv() {
+    name="$(echo "${1}_${2}" | uppercase)"
+    value="${!name-}"
+    if [ "$value" = "" ]
+    then
+        echo "Error: variable $name is not set." >&2
+        return 1
+    fi
+    echo "$value"
+}
+
+# Check argument
+if [ "$#" != 1 ] || [ "$1" != "staging" ] && [ "$1" != "production" ]
+then
+    echo "Usage: scripts/deploy [staging|production]" >&2
+    exit 1
+fi
+
+# Disallow robots on staging
+if [ "$1" = staging ]
+then
+    sed -i'' 's/Disallow:$/Disallow: \//' public/robots.txt
+fi
+
+# Deploy
+FTP_USERNAME="$(getenv "$1" FTP_USERNAME)" || exit 1
+FTP_PASSWORD="$(getenv "$1" FTP_PASSWORD)" || exit 1
+FTP_HOST="$(getenv "$1" FTP_HOST)" || exit 1
+FTP_PATH="$(getenv "$1" FTP_PATH)" || exit 1
+export FTP_USERNAME
+export FTP_PASSWORD
+export FTP_HOST
+export FTP_PATH
+composer deploy
+
+# Run post-deploy script remotely
+SSH_USERNAME="$(getenv "$1" SSH_USERNAME)"
+SSH_PASSWORD="$(getenv "$1" SSH_PASSWORD)"
+SSH_URL="$(getenv "$1" SSH_URL)"
+webconsole -u "$SSH_USERNAME" -p "$SSH_PASSWORD" -P "$FTP_PATH" "$SSH_URL" chmod +x scripts/post-deploy
+webconsole -u "$SSH_USERNAME" -p "$SSH_PASSWORD" -P "$FTP_PATH" "$SSH_URL" scripts/post-deploy
