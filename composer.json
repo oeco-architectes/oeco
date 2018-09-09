@@ -77,7 +77,7 @@
             "phpcs --extensions=php --standard=.phpcs.xml ."
         ],
         "test": [
-            "@composer test:assets",
+            "@composer test:js",
             "@composer test:php",
             "@composer test:e2e"
         ],
@@ -85,7 +85,7 @@
             "cat .composer-phpunit.txt",
             "phpunit --colors=always $([ \"$COVERAGE\" = '' ] || echo '--coverage-html coverage/php') $([ \"$CI\" = '' ] || echo '--coverage-clover coverage/php/clover.xml')"
         ],
-        "test:assets": [
+        "test:js": [
             "cat .composer-npm-test.txt",
             "npm run test:run"
         ],
