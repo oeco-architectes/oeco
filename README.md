@@ -1,6 +1,10 @@
 Oeco Architectes website
 ========================
 
+[![Build Status](https://travis-ci.org/oeco-architectes/oeco.svg?branch=master)](https://travis-ci.org/oeco-architectes/oeco)
+[![Test Coverage](https://img.shields.io/codecov/c/github/oeco-architectes/oeco/master.svg)](https://codecov.io/github/oeco-architectes/oeco?branch=master)
+[![Technical Debt](https://img.shields.io/codeclimate/tech-debt/oeco-architectes/oeco.svg)](https://codeclimate.com/github/oeco-architectes/oeco)
+
 Requirements
 ------------
 
