@@ -2,10 +2,10 @@
     "private": true,
     "scripts": {
         "lint": "run-p lint:*",
-        "lint:ec": "editorconfig-checker --ignore-defaults --exclude-pattern './{coverage,.git,bootstrap/cache,node_modules,storage,vendor}/**' --exclude-pattern './public/**/*.{css,js}'  --exclude-pattern './**/*.{gif,jpg,png}'",
+        "lint:ec": "editorconfig-checker --ignore-defaults --exclude-pattern './{.deployment,.git,bootstrap/cache,coverage,node_modules,storage,vendor}/**' --exclude-pattern './public/**/*.{css,js}'  --exclude-pattern './**/*.{gif,jpg,png,phar,sqlite}'",
         "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore --color .",
         "lint:md": "markdownlint *.md .github/*.md doc*/*.md",
-        "lint:scss": "sass-lint -i 'coverage/**, node_modules/**, vendor/**' '**/*.scss' -v -q",
+        "lint:scss": "sass-lint -i '.deployment/**, coverage/**, node_modules/**, vendor/**' '**/*.scss' -v -q",
         "test:run": "cross-env NODE_ENV=test jest --color $([ \"$CI\" = '' ] && [ \"$COVERAGE\" = '' ] || echo '--coverage')",
         "test": "npm run test:run -- --watch",
         "dev": "npm run development",
