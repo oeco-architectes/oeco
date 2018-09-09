@@ -111,10 +111,15 @@ composer build # Optimize Composer autoloader, and generate public/{css,fonts,js
 
 Serve `public/` directory.
 
-Continuous Integration
-----------------------
+Continuous Delivery
+-------------------
 
-TODO
+Continuous delivery is setup as follows:
+1. Each commit triggers a build on [Travis CI], which runs linting (`composer test`) and all tests (`composer test`)
+2. If the commit belongs to the `master` branch, deployment is done on the **staging** platform.
+3. If the commit is a `tag`, deployment is done on the **production** platform.
+
+See [.travis.yml] for details.
 
 License
 -------
@@ -130,3 +135,5 @@ Copyright © 2018 Alex Mercier and Oeco Architectes. All rights reserved.
 [Latest Node.JS]: https://nodejs.org/en/download/current/
 [Apache]: https://www.apache.org/
 [composer.json]: composer.json
+[Travis CI]: https://travis-ci.org/oeco-architectes/oeco
+[.travis.yml]: ./.travis.yml
