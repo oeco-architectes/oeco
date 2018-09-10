@@ -74,7 +74,7 @@
         ],
         "lint": [
             "npm run --silent lint",
-            "phpcs --extensions=php --standard=.phpcs.xml ."
+            "phpcs --extensions=php --standard=phpcs.xml ."
         ],
         "test": [
             "@composer test:js",
