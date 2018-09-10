@@ -73,7 +73,7 @@
         },
         "overrides": [
             {
-                "files": "resources/assets/js/**/*.js",
+                "files": "resources/js/**/*.js",
                 "excludedFiles": "*.spec.js",
                 "env": {
                     "browser": true,
