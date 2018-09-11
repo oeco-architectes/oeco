@@ -64,10 +64,10 @@
             "@composer clear-cache",
             "@composer dump-autoload --apcu",
             "cat .composer-watch.txt",
-            "@php artisan serve"
+            "COMPOSER_PROCESS_TIMEOUT=0 php artisan serve"
         ],
         "watch": [
-            "npm run watch -- --colors"
+            "COMPOSER_PROCESS_TIMEOUT=0 npm run watch -- --colors"
         ],
         "build": [
             "npm run production -- --colors"
