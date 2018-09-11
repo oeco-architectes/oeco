@@ -12,6 +12,7 @@
         "php": "^7.2.0",
         "fideloper/proxy": "^4.0",
         "fzaninotto/faker": "^1.8",
+        "graham-campbell/markdown": "^10.1",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0"
     },
