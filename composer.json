@@ -67,10 +67,10 @@
             "@php artisan serve"
         ],
         "watch": [
-            "npm run watch"
+            "npm run watch -- --colors"
         ],
         "build": [
-            "npm run production"
+            "npm run production -- --colors"
         ],
         "lint": [
             "npm run --silent lint",
