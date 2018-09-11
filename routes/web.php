@@ -13,3 +13,4 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/projects', 'ProjectController@index');
+Route::get('/projects/{project}', 'ProjectController@show');
