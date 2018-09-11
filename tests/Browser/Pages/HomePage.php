@@ -3,6 +3,7 @@
 namespace Tests\Browser\Pages;
 
 use Laravel\Dusk\Browser;
+use PHPUnit_Framework_Assert as PHPUnit;
 
 class HomePage extends Page
 {
@@ -35,7 +36,7 @@ class HomePage extends Page
     public function elements()
     {
         return [
-            '@element' => '#selector',
+            '@news' => 'ul > li > figure',
         ];
     }
 }
