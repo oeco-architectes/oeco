@@ -5,7 +5,7 @@ namespace Tests\Browser\Pages;
 use Laravel\Dusk\Browser;
 use PHPUnit_Framework_Assert as PHPUnit;
 
-class HomePage extends Page
+class PublicationsPage extends Page
 {
     /**
      * Get the URL for the page.
@@ -14,7 +14,7 @@ class HomePage extends Page
      */
     public function url()
     {
-        return '/';
+        return '/agency/publications';
     }
 
     /**
@@ -36,7 +36,7 @@ class HomePage extends Page
     public function elements()
     {
         return [
-            '@news' => 'ul > li > figure',
+            '@image' => 'article > img',
         ];
     }
 }
