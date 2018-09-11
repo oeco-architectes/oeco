@@ -14,3 +14,5 @@
 Route::get('/', 'HomeController@index');
 Route::get('/projects', 'ProjectController@index');
 Route::get('/projects/{project}', 'ProjectController@show');
+Route::get('/agency', staticView('agency.index'));
+Route::get('/agency/publications', staticView('agency.publications'));

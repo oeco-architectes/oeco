@@ -27,6 +27,9 @@
         "symfony/process": "^4.1"
     },
     "autoload": {
+        "files": [
+            "app/helpers.php"
+        ],
         "classmap": [
             "database/seeds",
             "database/factories"
