@@ -11,13 +11,13 @@
     "require": {
         "php": "^7.2.0",
         "fideloper/proxy": "^4.0",
+        "fzaninotto/faker": "^1.8",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0"
     },
     "require-dev": {
         "dg/ftp-deployment": "^3.0",
         "filp/whoops": "^2.0",
-        "fzaninotto/faker": "^1.4",
         "laravel/dusk": "^4.0",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^2.0",
