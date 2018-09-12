@@ -8,6 +8,8 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class ProjectTest extends DuskTestCase
 {
+    use HasNavigationMenu;
+
     public function testProjectSections()
     {
         $this->browse(function (Browser $browser) {
@@ -15,6 +17,7 @@ class ProjectTest extends DuskTestCase
                 ->visit(new Pages\ProjectPage())
                 ->assertElementsCount('@image', 10)
                 ->assertElementsCount('@paragraph', 30);
+            $this->assertHasNavigationMenu($browser);
         });
     }
 }
