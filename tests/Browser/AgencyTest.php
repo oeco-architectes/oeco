@@ -8,6 +8,8 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class AgencyTest extends DuskTestCase
 {
+    use HasNavigationMenu;
+
     protected function assertContact($browser)
     {
         return $browser
@@ -30,6 +32,7 @@ class AgencyTest extends DuskTestCase
                 ->assertElementsCount('@title', 1)
                 ->assertElementsCount('@paragraph', 7);
             $this->assertContact($browser);
+            $this->assertHasNavigationMenu($browser);
         });
     }
 
@@ -41,6 +44,7 @@ class AgencyTest extends DuskTestCase
                 ->assertSee('Prix & publications')
                 ->assertElementsCount('@image', 1);
             $this->assertContact($browser);
+            $this->assertHasNavigationMenu($browser);
         });
     }
 }

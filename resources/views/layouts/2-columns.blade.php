@@ -1,7 +1,11 @@
-<article>
-    @yield('article')
-</article
+@extends('layouts.html5')
 
-<aside>
-    @yield('aside')
-</aside>
+@section('content')
+    <article>
+        @yield('article')
+    </article
+
+    <aside>
+        @yield('aside')
+    </aside>
+@endsection
