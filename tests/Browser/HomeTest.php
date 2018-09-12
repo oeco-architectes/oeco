@@ -13,7 +13,7 @@ class HomeTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser
                 ->visit(new Pages\HomePage())
-                ->assertCount(20, $browser->elements('@news'));
+                ->assertElementsCount('@news', 20);
         });
     }
 }

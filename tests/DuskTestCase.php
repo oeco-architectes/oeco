@@ -23,6 +23,17 @@ abstract class DuskTestCase extends BaseTestCase
     }
 
     /**
+     * Create the DuskBrowser instance.
+     *
+     * @param  \Facebook\WebDriver\Remote\RemoteWebDriver  $driver
+     * @return \Laravel\Dusk\Browser
+     */
+    protected function newBrowser($driver)
+    {
+        return new DuskBrowser($driver);
+    }
+
+    /**
      * Create the RemoteWebDriver instance.
      *
      * @return \Facebook\WebDriver\Remote\RemoteWebDriver

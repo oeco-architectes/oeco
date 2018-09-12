@@ -13,7 +13,7 @@ class ProjectsTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser
                 ->visit(new Pages\ProjectsPage())
-                ->assertCount(30, $browser->elements('@project'));
+                ->assertElementsCount('@project', 30);
         });
     }
 }

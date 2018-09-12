@@ -27,8 +27,8 @@ class AgencyTest extends DuskTestCase
             $browser
                 ->visit(new Pages\AgencyPage())
                 ->assertSee('Œco Architectes : œuvre collective')
-                ->assertCount(1, $browser->elements('@title'))
-                ->assertCount(7, $browser->elements('@paragraph'));
+                ->assertElementsCount('@title', 1)
+                ->assertElementsCount('@paragraph', 7);
             $this->assertContact($browser);
         });
     }
@@ -39,7 +39,7 @@ class AgencyTest extends DuskTestCase
             $browser
                 ->visit(new Pages\PublicationsPage())
                 ->assertSee('Prix & publications')
-                ->assertCount(1, $browser->elements('@image'));
+                ->assertElementsCount('@image', 1);
             $this->assertContact($browser);
         });
     }
