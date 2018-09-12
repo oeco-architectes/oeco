@@ -15,6 +15,11 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
     <body>
+        {{-- Site navigation --}}
+        <nav>
+            {!! $navigationMenu->asUl() !!}
+        </nav>
+
         <main>
             @yield('content')
         </main>
