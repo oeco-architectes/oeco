@@ -25,8 +25,8 @@ class ProjectPage extends Page
     public function elements()
     {
         return [
-            '@image' => 'img',
-            '@paragraph' => 'p',
+            '@image' => 'main img',
+            '@paragraph' => 'main p',
         ];
     }
 }

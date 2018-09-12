@@ -25,7 +25,7 @@ class PublicationsPage extends Page
     public function elements()
     {
         return [
-            '@image' => 'article > img',
+            '@image' => 'main article > img',
         ];
     }
 }

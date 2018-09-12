@@ -25,7 +25,7 @@ class ProjectsPage extends Page
     public function elements()
     {
         return [
-            '@project' => 'ul > li[data-category]',
+            '@project' => 'main ul > li[data-category]',
         ];
     }
 }

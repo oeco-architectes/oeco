@@ -25,8 +25,8 @@ class AgencyPage extends Page
     public function elements()
     {
         return [
-            '@title' => 'article > h2',
-            '@paragraph' => 'article > p',
+            '@title' => 'main article > h2',
+            '@paragraph' => 'main article > p',
         ];
     }
 }
