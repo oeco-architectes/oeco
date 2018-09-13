@@ -56,6 +56,7 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate",
+            "@php -r \"file_exists('public/img/oeco-logo.svg') || copy('https://oeco-architectes.github.io/oeco-logo/oeco-logo.svg', 'public/img/oeco-logo.svg');\"",
             "npm install"
         ],
         "post-autoload-dump": [
