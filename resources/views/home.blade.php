@@ -1,7 +1,7 @@
 @extends('layouts.html5')
 
 @section('content')
-    <ul>
+    <ul class="oe-news">
         @foreach ($news as $n)
             <li>
                 <figure>
@@ -10,10 +10,11 @@
                         width="{{ $n->image->width }}"
                         height="{{ $n->image->height }}"
                         alt="{{ $n->title }}"
+                        class="oe-news__image"
                     />
                     <figcaption>
-                        <h2>{{ $n->title }}</h2>
-                        <p>{{ $n->headline }}</p>
+                        <h2 class="oe-news__title">{{ $n->title }}</h2>
+                        <p class="oe-news__headline">{{ $n->headline }}</p>
                     </figcaption>
                 </figure>
             </li>

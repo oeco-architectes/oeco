@@ -1,0 +1,29 @@
+.#{$namespace}-news {
+    $vertical-spacing: 2 * $global-spacing;
+    $text-vertical-spacing: $global-spacing;
+
+    padding: 0;
+    list-style: none;
+
+    li {
+        margin-bottom: $vertical-spacing;
+    }
+
+    figure {
+        display: block;
+        margin: 0;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    &__image,
+    &__title,
+    &__headline {
+        margin-top: 0;
+        margin-bottom: $text-vertical-spacing;
+    }
+}
