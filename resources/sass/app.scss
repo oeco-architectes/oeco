@@ -1,1 +1,11 @@
 @import '~normalize.css/normalize';
+
+$namespace: 'oe';
+
+$global-spacing: 1rem;
+
+body {
+    padding: 2 * $global-spacing $global-spacing;
+}
+
+@import 'nav';
