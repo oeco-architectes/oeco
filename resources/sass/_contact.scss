@@ -1,0 +1,48 @@
+.#{$namespace}-contact {
+    $vertical-spacing: 2 * $global-spacing;
+    $text-vertical-spacing: $global-spacing;
+
+    &__team {
+        margin: 0;
+        margin-bottom: $vertical-spacing;
+
+        img {
+            margin-bottom: $text-vertical-spacing;
+            width: 100%;
+            height: auto;
+        }
+
+        figcaption {
+            display: flex;
+            justify-content: space-around;
+
+            [itemprop='founder'] {
+                text-align: center;
+            }
+
+            [itemprop$='Name'] {
+                display: block;
+            }
+        }
+    }
+
+    &__title {
+        margin-top: 0;
+        margin-bottom: $vertical-spacing;
+        text-align: center;
+    }
+
+    &__address,
+    &__phone,
+    &__email {
+        margin-top: 0;
+        margin-bottom: $vertical-spacing;
+        text-align: center;
+
+        h4,
+        p {
+            margin-top: 0;
+            margin-bottom: $text-vertical-spacing;
+        }
+    }
+}
