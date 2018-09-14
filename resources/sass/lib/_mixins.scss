@@ -1,0 +1,35 @@
+/// Horizontal, unbulleted list
+/// @param {Number} $item-spacing Vertical and horizontal spacing between 2 items
+/// @param {Bool} $wrap Allow items to wrap (default: `true`).
+@mixin horizontal-list($item-spacing, $wrap: true) {
+    display: flex;
+    @if ($wrap) {
+        flex-wrap: wrap;
+    }
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0;
+    list-style: none;
+
+    > li {
+        display: inline-block;
+        padding: $item-spacing / 2;
+        vertical-align: middle;
+    }
+}
+
+/// Horizontal, unbulleted list containing anchors.
+/// @param {Number} $item-spacing Vertical and horizontal spacing between 2 items
+/// @param {Number} $anchor-padding-vertical Anchors vertical padding
+/// @param {Number} $anchor-padding-horizontal Anchors horizontal padding
+/// @param {Bool} $wrap Allow items to wrap (default: `true`).
+@mixin horizontal-nav-list($item-spacing, $anchor-padding-vertical, $anchor-padding-horizontal, $wrap: true) {
+    @include horizontal-list($item-spacing, $wrap);
+
+    > li {
+        > a {
+            display: block;
+            padding: $anchor-padding-vertical $anchor-padding-horizontal;
+        }
+    }
+}

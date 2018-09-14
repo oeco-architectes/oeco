@@ -1,0 +1,12 @@
+.#{$namespace}-subnav {
+    $vertical-spacing: 2 * $global-spacing;
+    $item-spacing: .2rem;
+    $anchor-padding-vertical: .25rem;
+    $anchor-padding-horizontal: .5rem;
+
+    ul {
+        @include horizontal-nav-list($item-spacing, $anchor-padding-vertical, $anchor-padding-horizontal);
+        margin-top: 0;
+        margin-bottom: $vertical-spacing;
+    }
+}

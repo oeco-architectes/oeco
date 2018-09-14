@@ -2,7 +2,7 @@
     $vertical-spacing: 2 * $global-spacing;
     padding: 0 $global-spacing;
 
-    $item-spacing: .1rem;
+    $item-spacing: .2rem;
     $anchor-padding-vertical: .25rem;
     $anchor-padding-horizontal: .5rem;
 
@@ -21,24 +21,11 @@
     }
 
     &__menu {
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
+        @include horizontal-nav-list($item-spacing, $anchor-padding-vertical, $anchor-padding-horizontal);
         margin-top: 0;
         margin-bottom: $vertical-spacing;
-        padding: 0;
-        list-style: none;
-
-        > li {
-            display: inline-block;
-            margin: $item-spacing;
-            vertical-align: middle;
-        }
 
         a {
-            display: block;
-            padding: $anchor-padding-vertical $anchor-padding-horizontal;
-
             > img {
                 margin: -$anchor-padding-vertical 0;
                 height: 2rem;
