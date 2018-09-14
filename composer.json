@@ -69,10 +69,10 @@
             "@composer clear-cache",
             "@composer dump-autoload --apcu",
             "cat .composer-watch.txt",
-            "COMPOSER_PROCESS_TIMEOUT=0 php artisan serve"
+            "@php artisan serve"
         ],
         "watch": [
-            "COMPOSER_PROCESS_TIMEOUT=0 npm run watch -- --colors"
+            "npm run watch -- --colors"
         ],
         "build": [
             "npm run production -- --colors"
@@ -114,6 +114,7 @@
     },
     "config": {
         "preferred-install": "dist",
+        "process-timeout": 0,
         "sort-packages": true,
         "optimize-autoloader": true
     },
