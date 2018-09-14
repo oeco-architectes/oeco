@@ -1,0 +1,14 @@
+.#{$namespace}-project {
+    $text-vertical-spacing: $global-spacing;
+
+    > * {
+        margin-top: 0;
+        margin-bottom: $text-vertical-spacing;
+
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
