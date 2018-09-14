@@ -13,7 +13,7 @@
         </ul>
     </nav>
 
-    <ul>
+    <ul class="oe-projects">
         @foreach ($projects as $project)
             <li data-category="{{ $project->category->id }}">
                 <figure>

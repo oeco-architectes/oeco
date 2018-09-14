@@ -1,3 +1,25 @@
+/// Vertical, unbulleted list
+/// @param {Number} $item-spacing Vertical spacing between 2 items
+@mixin vertical-list($item-spacing) {
+    padding: 0;
+    list-style: none;
+
+    li {
+        margin-bottom: $item-spacing;
+    }
+
+    figure {
+        display: block;
+        margin: 0;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}
+
 /// Horizontal, unbulleted list
 /// @param {Number} $item-spacing Vertical and horizontal spacing between 2 items
 /// @param {Bool} $wrap Allow items to wrap (default: `true`).

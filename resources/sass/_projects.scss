@@ -1,12 +1,11 @@
-.#{$namespace}-news {
+.#{$namespace}-projects {
     $vertical-spacing: 2 * $global-spacing;
     $text-vertical-spacing: $global-spacing;
 
     @include vertical-list($vertical-spacing);
 
     &__image,
-    &__title,
-    &__headline {
+    &__title {
         margin-top: 0;
         margin-bottom: $text-vertical-spacing;
     }
