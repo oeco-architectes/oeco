@@ -20,7 +20,7 @@ class GenerateMenus
             $menu->add('Projets', 'projects');
             $menu->add('Agence', 'agency');
             $menu->add(
-                '<img src="img/facebook-icon.svg">',
+                '<img src="/img/facebook-icon.svg">',
                 'https://www.facebook.com/OECO-Architectes-143451935789053/'
             );
         });
