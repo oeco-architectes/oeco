@@ -1,6 +1,6 @@
 @extends('layouts.html5')
 
-@section('content')
+@section('main')
     <ul>
         @foreach ($news as $n)
             <li>

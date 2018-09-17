@@ -25,8 +25,12 @@
             {!! $navigationMenu->asUl(['class' => 'oe-nav__menu']) !!}
         </nav>
 
-        <main>
-            @yield('content')
+        <main
+            @hasSection('main-class')
+                class="@yield('main-class')"
+            @endif
+        >
+            @yield('main')
         </main>
     </body>
 </html>

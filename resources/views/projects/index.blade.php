@@ -1,6 +1,6 @@
 @extends('layouts.html5')
 
-@section('content')
+@section('main')
     <nav>
         <ul>
             @foreach ($categories as $category)
