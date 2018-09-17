@@ -10,4 +10,6 @@
     </h2>
 
     <img src="/img/oeco-publications.jpg" alt="Prix & publications d'Œco Architectes" />
+
+    <a href="/agency">Retour</a>
 @endsection
