@@ -1,6 +1,7 @@
 @extends('layouts.html5')
 
-@section('content')
+@section('main-class', 'oe-project')
+@section('main')
     @foreach ($sections as $section)
         @if (gettype($section) === 'string')
             {!! @Markdown::convertToHtml($section) !!}
@@ -13,4 +14,5 @@
             />
         @endif
     @endforeach
+    <a href="/projects">Retour</a>
 @endsection

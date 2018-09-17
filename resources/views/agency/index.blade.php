@@ -52,4 +52,6 @@
         contexte spatial et économique, en adéquation avec les souhaits de nos clients et des futurs
         habitants. Les préoccupations environnementales sont également à la base de nos projets.
     </p>
+
+    <a href="/agency/publications">Publications</a>
 @endsection

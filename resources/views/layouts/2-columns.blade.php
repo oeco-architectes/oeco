@@ -1,6 +1,6 @@
 @extends('layouts.html5')
 
-@section('content')
+@section('main')
     <article>
         @yield('article')
     </article
