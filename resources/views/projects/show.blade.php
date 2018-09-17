@@ -14,4 +14,5 @@
             />
         @endif
     @endforeach
+    <a href="/projects">Retour</a>
 @endsection
