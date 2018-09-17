@@ -4,6 +4,7 @@
     @include('agency.contact')
 @endsection
 
+@section('article-class', 'oe-agency')
 @section('article')
     <h2>
         Œco Architectes : œuvre collective

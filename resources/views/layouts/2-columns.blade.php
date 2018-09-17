@@ -1,7 +1,7 @@
 @extends('layouts.html5')
 
 @section('content')
-    <article>
+    <article class="@yield('article-class')">
         @yield('article')
     </article
 
