@@ -1,5 +1,5 @@
 .#{$namespace}-nav {
-    $vertical-spacing: 2 * $global-spacing;
+    $vertical-spacing: $line-break;
     padding: 0 $global-spacing;
 
     $item-spacing: .2rem;

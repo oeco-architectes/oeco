@@ -6,7 +6,7 @@
 
 @section('article-class', 'oe-agency')
 @section('article')
-    <h2>
+    <h2 class="oe-agency__title">
         Œco Architectes : œuvre collective
     </h2>
 

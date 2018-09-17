@@ -1,0 +1,108 @@
+$font-files: (
+    'HelveticaNeueLTStd-Bd.otf',
+    'HelveticaNeueLTStd-BdCn.otf',
+    'HelveticaNeueLTStd-BdCnO.otf',
+    'HelveticaNeueLTStd-BdEx.otf',
+    'HelveticaNeueLTStd-BdExO.otf',
+    'HelveticaNeueLTStd-BdIt.otf',
+    'HelveticaNeueLTStd-BdOu.otf',
+    'HelveticaNeueLTStd-Blk.otf',
+    'HelveticaNeueLTStd-BlkCn.otf',
+    'HelveticaNeueLTStd-BlkCnO.otf',
+    'HelveticaNeueLTStd-BlkEx.otf',
+    'HelveticaNeueLTStd-BlkExO.otf',
+    'HelveticaNeueLTStd-BlkIt.otf',
+    'HelveticaNeueLTStd-Cn.otf',
+    'HelveticaNeueLTStd-CnO.otf',
+    'HelveticaNeueLTStd-Ex.otf',
+    'HelveticaNeueLTStd-ExO.otf',
+    'HelveticaNeueLTStd-Hv.otf',
+    'HelveticaNeueLTStd-HvCn.otf',
+    'HelveticaNeueLTStd-HvCnO.otf',
+    'HelveticaNeueLTStd-HvEx.otf',
+    'HelveticaNeueLTStd-HvExO.otf',
+    'HelveticaNeueLTStd-HvIt.otf',
+    'HelveticaNeueLTStd-It.otf',
+    'HelveticaNeueLTStd-Lt.otf',
+    'HelveticaNeueLTStd-LtCn.otf',
+    'HelveticaNeueLTStd-LtCnO.otf',
+    'HelveticaNeueLTStd-LtEx.otf',
+    'HelveticaNeueLTStd-LtExO.otf',
+    'HelveticaNeueLTStd-LtIt.otf',
+    'HelveticaNeueLTStd-Md.otf',
+    'HelveticaNeueLTStd-MdCn.otf',
+    'HelveticaNeueLTStd-MdCnO.otf',
+    'HelveticaNeueLTStd-MdEx.otf',
+    'HelveticaNeueLTStd-MdExO.otf',
+    'HelveticaNeueLTStd-MdIt.otf',
+    'HelveticaNeueLTStd-Roman.otf',
+    'HelveticaNeueLTStd-Th.otf',
+    'HelveticaNeueLTStd-ThCn.otf',
+    'HelveticaNeueLTStd-ThCnO.otf',
+    'HelveticaNeueLTStd-ThEx.otf',
+    'HelveticaNeueLTStd-ThExO.otf',
+    'HelveticaNeueLTStd-ThIt.otf',
+    'HelveticaNeueLTStd-UltLt.otf',
+    'HelveticaNeueLTStd-UltLtCn.otf',
+    'HelveticaNeueLTStd-UltLtCnO.otf',
+    'HelveticaNeueLTStd-UltLtEx.otf',
+    'HelveticaNeueLTStd-UltLtExO.otf',
+    'HelveticaNeueLTStd-UltLtIt.otf',
+    'HelveticaNeueLTStd-XBlkCn.otf',
+    'HelveticaNeueLTStd-XBlkCnO.otf',
+);
+
+$missing-files: (
+    'HelveticaNeueLTStd-UltLtO.otf',
+    'HelveticaNeueLTStd-ThO.otf',
+    'HelveticaNeueLTStd-LtO.otf',
+    'HelveticaNeueLTStd-RomanO.otf',
+    'HelveticaNeueLTStd-MdO.otf',
+    'HelveticaNeueLTStd-BdO.otf',
+    'HelveticaNeueLTStd-HvO.otf',
+    'HelveticaNeueLTStd-BlkO.otf',
+    'HelveticaNeueLTStd-RomanCn.otf',
+    'HelveticaNeueLTStd-RomanCnO.otf',
+    'HelveticaNeueLTStd-RomanEx.otf',
+    'HelveticaNeueLTStd-RomanExO.otf',
+);
+
+$font-weights: (
+    200: 'UltLt', // 25 Ultra Light
+    300: 'Th', // 35 Thin
+    400: 'Lt', // 45 Light
+    500: 'Roman', // 55 Roman
+    600: 'Md', // 65 Medium
+    700: 'Bd', // 75 Bold
+    800: 'Hv', // 85 Heavy
+    900: 'Blk', // 95 Black
+);
+
+$font-variants: (
+    Regular: '',
+    Condensed: 'Cn',
+    Extended: 'Ex',
+);
+
+$font-styles: (
+    normal: '',
+    italic: 'O', // Oblique
+);
+
+@each $variant, $variant-url in $font-variants {
+    @each $weight, $weight-url in $font-weights {
+        @each $style, $style-url in $font-styles {
+            $filename: 'HelveticaNeueLTStd-#{$weight-url}#{$variant-url}#{$style-url}.otf';
+            @if (index($font-files, $filename) != null) {
+                @font-face {
+                    font-family: 'Helvetica Neue Oeco #{$variant}';
+                    font-weight: $weight;
+                    font-style: $style;
+                    src: url('/fonts/#{$filename}') format('opentype');
+                }
+            } @elseif (index($missing-files, $filename) == null) {
+                @error 'Unexpected missing font file: #{$filename}.';
+            }
+        }
+    }
+}

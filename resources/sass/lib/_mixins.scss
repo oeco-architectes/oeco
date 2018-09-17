@@ -70,3 +70,9 @@
         height: auto;
     }
 }
+
+/// Title
+@mixin title {
+    text-transform: uppercase;
+    font-weight: 300; // map-get($font-weights, title);
+}

@@ -1,12 +1,16 @@
 .#{$namespace}-projects {
-    $vertical-spacing: 2 * $global-spacing;
-    $text-vertical-spacing: $global-spacing;
+    $vertical-spacing: 1.5 * $line-break;
+    $text-vertical-spacing: $line-break;
 
     @include vertical-list($vertical-spacing);
 
-    &__image,
+    // &__image,
+    // &__title {
+    //     margin-top: 0;
+    //     margin-bottom: $text-vertical-spacing;
+    // }
+
     &__title {
-        margin-top: 0;
-        margin-bottom: $text-vertical-spacing;
+
     }
 }

@@ -1,13 +1,21 @@
 .#{$namespace}-news {
-    $vertical-spacing: 2 * $global-spacing;
-    $text-vertical-spacing: $global-spacing;
+    $font-size-factor: 1.2;
+
+    $vertical-spacing: 2 * $line-break;
 
     @include vertical-list($vertical-spacing);
 
-    &__image,
-    &__title,
+    &__image {
+        margin-bottom: $line-break;
+    }
+
+    &__title {
+        @include title;
+        margin-bottom: 0;
+        font-size: $font-size-factor * 1rem;
+    }
+
     &__headline {
-        margin-top: 0;
-        margin-bottom: $text-vertical-spacing;
+        line-height: $font-size-factor * $base-line-height;
     }
 }

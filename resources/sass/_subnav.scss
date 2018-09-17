@@ -1,5 +1,5 @@
 .#{$namespace}-subnav {
-    $vertical-spacing: 2 * $global-spacing;
+    $vertical-spacing: $line-break;
     $item-spacing: .2rem;
     $anchor-padding-vertical: .25rem;
     $anchor-padding-horizontal: .5rem;

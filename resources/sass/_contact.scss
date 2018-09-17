@@ -1,6 +1,6 @@
 .#{$namespace}-contact {
-    $vertical-spacing: 2 * $global-spacing;
-    $text-vertical-spacing: $global-spacing;
+    $vertical-spacing: 2 * $line-break;
+    $text-vertical-spacing: $line-break;
 
     &__team {
         margin: 0;

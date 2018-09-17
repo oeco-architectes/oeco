@@ -16,16 +16,18 @@
     <ul class="oe-projects">
         @foreach ($projects as $project)
             <li data-category="{{ $project->category->id }}">
-                <figure>
-                    <img
-                        src="{{ $project->image->href }}"
-                        width="{{ $project->image->width }}"
-                        height="{{ $project->image->height }}"
-                        alt="{{ $project->title }}"
-                    />
-                    <figcaption>
-                        <h2>{{ $project->title }}</h2>
-                    </figcaption>
+                <a href="/projects/{{ $project->category->id }}"
+                    <figure>
+                        <img
+                            src="{{ $project->image->href }}"
+                            width="{{ $project->image->width }}"
+                            height="{{ $project->image->height }}"
+                            alt="{{ $project->title }}"
+                        />
+                        <figcaption>
+                            <h2 class="oe-projects__title">{{ $project->title }}</h2>
+                        </figcaption>
+                    </figure>
                 </figure>
             </li>
         @endforeach

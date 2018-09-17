@@ -1,19 +1,32 @@
-@import '~normalize.css/normalize';
-
 $namespace: 'oe';
 
+$base-font-size: 14px;
+$base-line-height: 1.8;
 $global-spacing: 1rem;
+$line-break: $base-line-height * 1rem;
+
+$font-weights: (
+    default: 400,
+    title: 300,
+);
+
+$font-sizes: (
+    title: 1.4rem,
+);
+
+@import 'lib/reset';
+@import 'lib/mixins';
 
 body {
     padding: 2 * $global-spacing $global-spacing;
 }
 
-@import 'lib/mixins';
-
 @import 'agency';
 @import 'contact';
+@import 'fonts';
 @import 'nav';
 @import 'news';
 @import 'project';
 @import 'projects';
 @import 'subnav';
+@import 'typography';

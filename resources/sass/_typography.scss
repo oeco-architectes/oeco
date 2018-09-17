@@ -1,0 +1,11 @@
+html {
+    line-height: $base-line-height;
+    font-family: 'Helvetica Neue Oeco Regular', sans-serif;
+    font-size: $base-font-size;
+    font-weight: map-get($font-weights, default);
+}
+
+* {
+    font-size: inherit;
+    font-weight: inherit;
+}

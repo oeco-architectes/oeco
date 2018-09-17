@@ -1,5 +1,5 @@
 .#{$namespace}-project {
-    $text-vertical-spacing: $global-spacing;
+    $text-vertical-spacing: $line-break;
 
     @include article($text-vertical-spacing);
 }
