@@ -55,3 +55,18 @@
         }
     }
 }
+
+/// Article
+/// @param {Number} $text-vertical-spacing  Vertical spacing between paragraphs, images, etc.
+@mixin article($text-vertical-spacing) {
+    > * {
+        margin-top: 0;
+        margin-bottom: $text-vertical-spacing;
+
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
