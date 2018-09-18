@@ -1,0 +1,53 @@
+/// Layout
+/// ======
+///
+/// Layout-related functions, placeholders and mixins.
+
+/// Set a left and right property
+/// @param {String} $property Property without `left` or `right`
+/// @param {*} $value Value
+@mixin set-horizontal($property, $value) {
+    #{$property}: {
+        right: $value;
+        left: $value;
+    }
+}
+
+/// Set a top and bottom property
+/// @param {String} $property Property without `top` or `bottom`
+/// @param {*} $value Value
+@mixin set-vertical($property, $value) {
+    #{$property}: {
+        top: $value;
+        bottom: $value;
+    }
+}
+
+/// Set a left and right margin
+/// @param {Number} $margin Margin
+@mixin horizontal-margin($margin) {
+    @include set-horizontal(margin, $margin);
+}
+
+/// Set top and bottom margin to `auto`
+@mixin centered-block {
+    @include horizontal-margin(auto);
+}
+
+/// Set a top and bottom margin
+/// @param {Number} $margin Margin
+@mixin vertical-margin($margin) {
+    @include set-vertical(margin, $margin);
+}
+
+/// Set a left and right padding
+/// @param {Number} $padding Padding
+@mixin horizontal-padding($padding) {
+    @include set-horizontal(padding, $padding);
+}
+
+/// Set a top and bottom padding
+/// @param {Number} $padding Padding
+@mixin vertical-padding($padding) {
+    @include set-vertical(padding, $padding);
+}

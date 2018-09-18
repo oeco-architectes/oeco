@@ -15,22 +15,24 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
     <body>
-        {{-- Site navigation --}}
-        <nav class="oe-nav">
-            <h1 class="oe-nav__logo">
-                <a href="/">
-                    <img src="/img/oeco-logo.svg" alt="{{ config('app.name') }}">
-                </a>
-            </h1>
-            {!! $navigationMenu->asUl(['class' => 'oe-nav__menu']) !!}
-        </nav>
+        <div class="oe-container">
+            {{-- Site navigation --}}
+            <nav class="oe-nav">
+                <h1 class="oe-nav__logo">
+                    <a href="/">
+                        <img src="/img/oeco-logo.svg" alt="{{ config('app.name') }}">
+                    </a>
+                </h1>
+                {!! $navigationMenu->asUl(['class' => 'oe-nav__menu']) !!}
+            </nav>
 
-        <main
-            @hasSection('main-class')
-                class="@yield('main-class')"
-            @endif
-        >
-            @yield('main')
-        </main>
+            <main
+                @hasSection('main-class')
+                    class="@yield('main-class')"
+                @endif
+            >
+                @yield('main')
+            </main>
+        </div>
     </body>
 </html>

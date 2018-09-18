@@ -1,0 +1,34 @@
+@import '../lib/layout';
+
+/// Page container
+///
+/// Set a vertical padding and for each breakpoint:
+/// - a width of 100% and a horizontal padding, or
+/// - a fixed width (in ems, using `mq-px2em`)
+///
+/// @require {Mixin} mq
+/// @require {Function} mq-px2em
+.oe-container {
+    $padding-horizontal: 1rem;
+    $padding-vertical: 2rem;
+    $widths: (
+        mobile: 100%,
+        tablet: 700px,
+        desktop: 900px,
+        wide: 1200px,
+    );
+
+    @include vertical-padding($padding-vertical);
+
+    @each $breakpoint, $width in $widths {
+        @include mq($from: $breakpoint) {
+            @if ($width == 100%) {
+                @include horizontal-padding($padding-horizontal);
+                width: $width;
+            } @else {
+                @include centered-block;
+                width: mq-px2em($width);
+            }
+        }
+    }
+}
