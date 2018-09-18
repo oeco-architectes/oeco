@@ -1,0 +1,77 @@
+/// Fonts
+/// =====
+
+/// Settings
+/// --------
+
+$font-weights: (
+    normal: 500,
+    bold: 700,
+    light: 300,
+);
+
+$font-variants: (
+    Regular,
+    // Condensed,
+    // Extended,
+);
+
+$font-styles: (
+    normal,
+    // italic,
+);
+
+/// Font weight utility
+/// @param {String} $weight Weight alias (any key of `$font-weights`).
+/// @return {Number} Font weight as a number.
+@function font-weight($weight: normal) {
+    @if not map-has-key($font-weights, $weight) {
+        @error 'Invalid font weight: #{$weight}. Must be one of: #{map-keys($font-weights)}';
+    }
+    @return map-get($font-weights, $weight);
+}
+
+// Font face definitions
+// ---------------------
+
+$font-weight-paths: (
+    200: 'UltLt', // 25 Ultra Light
+    300: 'Th', // 35 Thin
+    400: 'Lt', // 45 Light
+    500: 'Roman', // 55 Roman
+    600: 'Md', // 65 Medium
+    700: 'Bd', // 75 Bold
+    800: 'Hv', // 85 Heavy
+    900: 'Blk', // 95 Black
+);
+
+$font-variant-paths: (
+    Regular: '',
+    Condensed: 'Cn',
+    Extended: 'Ex',
+);
+
+$font-style-paths: (
+    normal: '',
+    italic: 'O', // Oblique
+);
+
+@each $variant in $font-variants {
+    $variant-path: map-get($font-variant-paths, $variant);
+
+    @each $weight in map-values($font-weights) {
+        $weight-path: map-get($font-weight-paths, $weight);
+
+        @each $style in $font-styles {
+            $style-path: map-get($font-style-paths, $style);
+
+            $filename: 'HelveticaNeueLTStd-#{$weight-path}#{$variant-path}#{$style-path}.otf';
+            @font-face {
+                font-family: 'Oeco #{$variant}';
+                font-weight: $weight;
+                font-style: $style;
+                src: url('/fonts/#{$filename}') format('opentype');
+            }
+        }
+    }
+}

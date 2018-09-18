@@ -2,7 +2,7 @@
     "private": true,
     "scripts": {
         "lint": "run-p lint:*",
-        "lint:ec": "editorconfig-checker --ignore-defaults --exclude-pattern './{.deployment,.git,bootstrap/cache,coverage,node_modules,storage,vendor}/**' --exclude-pattern './public/**/*.{css,js,svg}'  --exclude-pattern './**/*.{gif,jpg,png,phar,sqlite,log,otf}'",
+        "lint:ec": "editorconfig-checker --ignore-defaults --exclude-pattern './{.deployment,.git,bootstrap/cache,coverage,node_modules,resources/fonts,storage,vendor}/**' --exclude-pattern './public/**/*.{css,js,svg}'  --exclude-pattern './**/*.{gif,jpg,png,phar,sqlite,log,otf,tar,gz}'",
         "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore --color .",
         "lint:md": "markdownlint *.md .github/*.md doc*/*.md",
         "lint:scss": "sass-lint -i '.deployment/**, coverage/**, node_modules/**, vendor/**' '**/*.scss' -v -q",
