@@ -1,0 +1,38 @@
+/// Typography
+/// ==========
+///
+/// [typi] is used to provide font-size and line-height declarations, and maintain vertical rythm
+/// within pages.
+///
+/// [typi]: https://github.com/zellwk/typi
+
+$typi: (
+    base: (
+        null: (13px, 1.6),
+        desktop: (14px),
+        wide: (15px),
+    ),
+);
+
+$typi-breakpoint: mq;
+
+@import '~typi';
+@include typi-init;
+
+html {
+    font-family: 'Oeco Regular', sans-serif;
+    font-weight: font-weight(normal);
+}
+
+h1, h2, h3 { // sass-lint:disable-line single-line-per-selector
+    text-transform: uppercase;
+    font-weight: font-weight(light);
+}
+
+h4, h5, h6, dt, b, strong { // sass-lint:disable-line single-line-per-selector
+    font-weight: font-weight(bold);
+}
+
+img {
+    display: block;
+}
