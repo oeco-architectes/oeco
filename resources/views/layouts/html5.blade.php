@@ -17,8 +17,8 @@
     <body>
         <div class="oe-container">
             {{-- Site navigation --}}
-            <nav class="oe-nav">
-                <h1 class="oe-nav__logo">
+            <nav class="oe-nav oe-nav--primary">
+                <h1 class="oe-nav__header">
                     <a href="/">
                         <img src="/img/oeco-logo.svg" alt="{{ config('app.name') }}">
                     </a>

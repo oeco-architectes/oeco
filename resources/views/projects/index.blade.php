@@ -1,7 +1,7 @@
 @extends('layouts.html5')
 
 @section('main')
-    <nav>
+    <nav class="oe-nav oe-nav--secondary">
         <ul class="oe-menu">
             @foreach ($categories as $category)
                 <li class="oe-menu__item">
