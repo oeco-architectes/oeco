@@ -18,12 +18,13 @@
             <li data-category="{{ $project->category->id }}">
                 <a href="/projects/{{ $project->category->id }}">
                     <figure>
-                        <img
-                            src="{{ $project->image->href }}"
-                            width="{{ $project->image->width }}"
-                            height="{{ $project->image->height }}"
-                            alt="{{ $project->title }}"
-                        />
+                        @include('partials/image', [
+                            'href' => $project->image->href,
+                            'width' => $project->image->width,
+                            'height' => $project->image->height,
+                            'title' => $project->title,
+                            'color' => $project->image->color,
+                        ])
                         <figcaption>
                             <h2>{{ $project->title }}</h2>
                         </figcaption>

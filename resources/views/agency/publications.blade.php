@@ -9,7 +9,13 @@
         Prix & publications
     </h2>
 
-    <img src="/img/oeco-publications.jpg" alt="Prix & publications d'Œco Architectes" />
+    @include('partials/image', [
+        'href' => '/img/oeco-publications.jpg',
+        'width' => 661,
+        'height' => 437,
+        'title' => 'Prix & publications d\'Œco Architectes',
+        'color' => 'bcbdbd',
+    ])
 
     <a href="/agency">Retour</a>
 @endsection

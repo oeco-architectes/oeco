@@ -6,12 +6,13 @@
         @if (gettype($section) === 'string')
             {!! @Markdown::convertToHtml($section) !!}
         @else
-            <img
-                src="{{ $section->href }}"
-                width="{{ $section->width }}"
-                height="{{ $section->height }}"
-                alt="{{ $section->title }}"
-            />
+            @include('partials/image', [
+                'href' => $section->href,
+                'width' => $section->width,
+                'height' => $section->height,
+                'title' => $section->title,
+                'color' => $section->color,
+            ])
         @endif
     @endforeach
     <a href="/projects">Retour</a>

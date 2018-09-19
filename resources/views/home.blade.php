@@ -5,12 +5,13 @@
         @foreach ($news as $n)
             <li>
                 <figure>
-                    <img
-                        src="{{ $n->image->href }}"
-                        width="{{ $n->image->width }}"
-                        height="{{ $n->image->height }}"
-                        alt="{{ $n->title }}"
-                    />
+                    @include('partials/image', [
+                        'href' => $n->image->href,
+                        'width' => $n->image->width,
+                        'height' => $n->image->height,
+                        'title' => $n->title,
+                        'color' => $n->image->color,
+                    ])
                     <figcaption>
                         <h2>{{ $n->title }}</h2>
                         <p>{{ $n->headline }}</p>

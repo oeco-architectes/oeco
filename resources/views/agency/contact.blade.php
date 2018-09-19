@@ -2,22 +2,28 @@
     <meta itemprop="image" content="/img/oeco-team.jpg"></meta>
 
     <figure>
-        <img src="/img/oeco-team.jpg"/>
+        @include('partials/image', [
+            'href' => '/img/oeco-team.jpg',
+            'width' => 363,
+            'height' => 363,
+            'title' => 'Fondateurs d\'Œco Architectes',
+            'color' => '9c9c9c',
+        ])
+        <figcaption>
+            <span itemprop="founder" itemscope itemtype="http://schema.org/Person">
+                <span itemprop="givenName">Vanessa</span>
+                <span itemprop="familiyName">Larrère</span>
+            </span>
+            <span itemprop="founder" itemscope itemtype="http://schema.org/Person">
+                <span itemprop="givenName">Claire</span>
+                <span itemprop="familiyName">Furlan</span>
+            </span>
+            <span itemprop="founder" itemscope itemtype="http://schema.org/Person">
+                <span itemprop="givenName">Coralie</span>
+                <span itemprop="familiyName">Bouscal</span>
+            </span>
+        </figcaption>
     </figure>
-    <figcaption>
-        <span itemprop="founder" itemscope itemtype="http://schema.org/Person">
-            <span itemprop="givenName">Vanessa</span>
-            <span itemprop="familiyName">Larrère</span>
-        </span>
-        <span itemprop="founder" itemscope itemtype="http://schema.org/Person">
-            <span itemprop="givenName">Claire</span>
-            <span itemprop="familiyName">Furlan</span>
-        </span>
-        <span itemprop="founder" itemscope itemtype="http://schema.org/Person">
-            <span itemprop="givenName">Coralie</span>
-            <span itemprop="familiyName">Bouscal</span>
-        </span>
-    </figcaption>
 
     <h3 itemprop="name">Œco Architectes</h3>
 

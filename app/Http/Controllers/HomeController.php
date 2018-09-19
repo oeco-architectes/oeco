@@ -23,16 +23,16 @@ class HomeController extends Controller
 
         $news = [];
         for ($i = 0; $i < 20; $i++) {
+            $color = $backgrounds[$i % count($backgrounds)];
+
             $news[$i] = new Obj();
             $news[$i]->title = $faker->sentence(12, true);
             $news[$i]->headline = $faker->text(120);
             $news[$i]->image = new Obj();
-            $news[$i]->image->href =
-                'https://dummyimage.com/'
-                . $width . 'x' . $height . '/'
-                . $backgrounds[$i % count($backgrounds)] . '/fff';
+            $news[$i]->image->href = 'https://dummyimage.com/' . $width . 'x' . $height . '/' . $color . '/fff';
             $news[$i]->image->width = $width;
             $news[$i]->image->height = $height;
+            $news[$i]->image->color = $color;
         }
 
         return view('home', [
