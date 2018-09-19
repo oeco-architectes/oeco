@@ -1,0 +1,31 @@
+@import '../lib/debug';
+@import '../lib/layout';
+
+/// Responsive images
+///
+/// @example
+///     <div class="oe-image" padding-top="56.25%">
+///         <img class="oe-image__content" src="..." alt="..."/>
+///     </div>
+///
+/// @require {Mixin} error
+/// @require {Mixin} cover
+.oe-image {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+
+    &:not([style^='padding-top:']) {
+        @include error('Missing padding-top.');
+        padding-top: percentage(9/16);
+    }
+
+    &:not([style*='background-color:']) {
+        @include error('Missing background.');
+    }
+
+    &__content {
+        @include cover;
+        object-fit: contain;
+    }
+}

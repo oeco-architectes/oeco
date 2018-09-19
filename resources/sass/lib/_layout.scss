@@ -24,7 +24,7 @@
 }
 
 /// Set a left and right margin
-/// @param {Number} $margin Margin
+/// @param {Length} $margin Margin
 @mixin horizontal-margin($margin) {
     @include set-horizontal(margin, $margin);
 }
@@ -35,19 +35,19 @@
 }
 
 /// Set a top and bottom margin
-/// @param {Number} $margin Margin
+/// @param {Length} $margin Margin
 @mixin vertical-margin($margin) {
     @include set-vertical(margin, $margin);
 }
 
 /// Set a left and right padding
-/// @param {Number} $padding Padding
+/// @param {Length} $padding Padding
 @mixin horizontal-padding($padding) {
     @include set-horizontal(padding, $padding);
 }
 
 /// Set a top and bottom padding
-/// @param {Number} $padding Padding
+/// @param {Length} $padding Padding
 @mixin vertical-padding($padding) {
     @include set-vertical(padding, $padding);
 }
@@ -58,4 +58,27 @@
 @mixin size($height: null, $width: $height) {
     width: $width;
     height: $height;
+}
+
+/// Offset positioning
+/// @param {String} $position Either `relative`, `absolute` or `fixed`
+/// @param {Length} $top Top offset
+/// @param {Length} $right Right offset
+/// @param {Length} $bottom Bottom offset
+/// @param {Length} $left Left offset
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+/// Shorthand mixin for offset positioning
+/// @require {Mixin} position
+/// @require {Mixin} size
+@mixin cover {
+    @include position(absolute, 0, 0, 0, 0);
+    @include size(100%);
+    margin: 0;
 }
