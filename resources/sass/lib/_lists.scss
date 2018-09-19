@@ -1,0 +1,22 @@
+/// Lists
+/// =====
+
+/// Vertical, unbulleted list
+@mixin vertical-list {
+    padding: 0;
+    list-style: none;
+}
+
+/// Horizontal, unbulleted list
+/// @param {Bool} $wrap Allow items to wrap (default: `true`).
+@mixin horizontal-list($wrap: true) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    list-style: none;
+
+    @if wrap {
+        flex-wrap: wrap;
+    }
+}

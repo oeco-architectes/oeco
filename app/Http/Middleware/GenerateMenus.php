@@ -23,6 +23,9 @@ class GenerateMenus
                 '<img src="/img/facebook-icon.svg">',
                 'https://www.facebook.com/OECO-Architectes-143451935789053/'
             );
+            foreach ($menu->all() as $menuItem) {
+                $menuItem->attr('class', 'oe-menu__item ' . $menuItem->attr('class'));
+            }
         });
 
         return $next($request);

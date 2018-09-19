@@ -2,9 +2,9 @@
 
 @section('main')
     <nav>
-        <ul>
+        <ul class="oe-menu">
             @foreach ($categories as $category)
-                <li>
+                <li class="oe-menu__item">
                     <a href="#category/{{ $category->id }}">
                         {{ $category->name }}
                     </a>

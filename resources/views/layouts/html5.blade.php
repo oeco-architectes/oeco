@@ -23,7 +23,7 @@
                         <img src="/img/oeco-logo.svg" alt="{{ config('app.name') }}">
                     </a>
                 </h1>
-                {!! $navigationMenu->asUl(['class' => 'oe-nav__menu']) !!}
+                {!! $navigationMenu->asUl(['class' => 'oe-menu']) !!}
             </nav>
 
             <main
