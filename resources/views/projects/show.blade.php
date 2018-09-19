@@ -1,12 +1,15 @@
 @extends('layouts.html5')
 
-@section('main-class', 'oe-project')
+@section('main-class', 'oe-article')
 @section('main')
     @foreach ($sections as $section)
         @if (gettype($section) === 'string')
-            {!! @Markdown::convertToHtml($section) !!}
+            <div class="oe-article__section">
+                {!! @Markdown::convertToHtml($section) !!}
+            </div>
         @else
             @include('partials/image', [
+                'class' => 'oe-article__section',
                 'href' => $section->href,
                 'width' => $section->width,
                 'height' => $section->height,
@@ -15,5 +18,9 @@
             ])
         @endif
     @endforeach
-    <a href="/projects">Retour</a>
+
+
+    <nav class="oe-nav oe-menu oe-menu__item">
+        <a href="/projects">▸ Retour</a>
+    </nav>
 @endsection
