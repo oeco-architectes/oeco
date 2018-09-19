@@ -1,0 +1,8 @@
+/// Article
+/// @require {Mixin} vr
+.oe-article {
+    &__title,
+    &__section {
+        margin-bottom: vr(1);
+    }
+}

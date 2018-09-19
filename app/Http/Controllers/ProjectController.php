@@ -30,16 +30,16 @@ class ProjectController extends Controller
 
         $projects = [];
         for ($i = 0; $i < 30; $i++) {
+            $color = $backgrounds[$i % count($backgrounds)];
+
             $projects[$i] = new Obj();
             $projects[$i]->category = $categories[ $i % count($categories) ];
             $projects[$i]->title = $faker->sentence(12, true);
             $projects[$i]->image = new Obj();
-            $projects[$i]->image->href =
-                'https://dummyimage.com/'
-                . $width . 'x' . $height . '/'
-                . $backgrounds[$i % count($backgrounds)] . '/fff';
+            $projects[$i]->image->href = 'https://dummyimage.com/' . $width . 'x' . $height . '/' . $color . '/fff';
             $projects[$i]->image->width = $width;
             $projects[$i]->image->height = $height;
+            $projects[$i]->image->color = $color;
         }
 
         return view('projects.index', [
@@ -68,14 +68,14 @@ class ProjectController extends Controller
             if ($i % 2 === 0) {
                 $sections[$i] = $faker->paragraphs(3, true);
             } else {
+                $color = $backgrounds[floor($i / 2) % count($backgrounds)];
+
                 $sections[$i] = new Obj();
-                $sections[$i]->href =
-                    'https://dummyimage.com/'
-                    . $width . 'x' . $height . '/'
-                    . $backgrounds[floor($i / 2) % count($backgrounds)] . '/fff';
+                $sections[$i]->href = 'https://dummyimage.com/' . $width . 'x' . $height . '/' . $color . '/fff';
                 $sections[$i]->width = $width;
                 $sections[$i]->height = $height;
                 $sections[$i]->title = $project->title . ' #' . ceil($i / 2);
+                $sections[$i]->color = $color;
             }
         }
 

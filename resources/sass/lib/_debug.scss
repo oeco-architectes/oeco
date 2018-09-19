@@ -1,0 +1,25 @@
+/// Debugging
+/// =========
+
+@import 'layout';
+
+/// Display an error message using `after` pseudo-element.
+/// @require {Mixin} cover
+@mixin error($message: null) {
+    $error-bg: #b00020;
+    $error-color: #fff;
+    $error-prefix: '✖ ERROR';
+
+    &::after {
+        @include cover;
+        background: $error-bg;
+        padding: 1rem;
+        color: $error-color;
+        font-weight: bold;
+        @if message {
+            content: '#{$error-prefix}: #{$message}';
+        } @else {
+            content: $error-prefix;
+        }
+    }
+}

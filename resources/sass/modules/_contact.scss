@@ -1,0 +1,31 @@
+/// Contact details
+/// @require {Mixin} vr
+.oe-contact {
+    &__picture {
+        margin-bottom: vr(1);
+    }
+
+    &__caption {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: vr(2);
+    }
+
+    &__caption-member {
+        text-align: center;
+    }
+
+    &__caption-member-name {
+        display: block;
+    }
+
+    &__title {
+        margin-bottom: vr(1);
+        text-align: center;
+    }
+
+    &__section {
+        margin-bottom: vr(1);
+        text-align: center;
+    }
+}

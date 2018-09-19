@@ -1,10 +1,10 @@
 @extends('layouts.html5')
 
 @section('main')
-    <nav>
-        <ul>
+    <nav class="oe-nav oe-nav--secondary">
+        <ul class="oe-menu">
             @foreach ($categories as $category)
-                <li>
+                <li class="oe-menu__item">
                     <a href="#category/{{ $category->id }}">
                         {{ $category->name }}
                     </a>
@@ -13,17 +13,19 @@
         </ul>
     </nav>
 
-    <ul>
+    <ul class="oe-mozaic">
         @foreach ($projects as $project)
-            <li data-category="{{ $project->category->id }}">
+            <li data-category="{{ $project->category->id }}" class="oe-mozaic__item">
                 <a href="/projects/{{ $project->category->id }}">
                     <figure>
-                        <img
-                            src="{{ $project->image->href }}"
-                            width="{{ $project->image->width }}"
-                            height="{{ $project->image->height }}"
-                            alt="{{ $project->title }}"
-                        />
+                        @include('partials/image', [
+                            'class' => 'oe-mozaic__image',
+                            'href' => $project->image->href,
+                            'width' => $project->image->width,
+                            'height' => $project->image->height,
+                            'title' => $project->title,
+                            'color' => $project->image->color,
+                        ])
                         <figcaption>
                             <h2>{{ $project->title }}</h2>
                         </figcaption>
