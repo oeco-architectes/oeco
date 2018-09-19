@@ -13,12 +13,13 @@
         </ul>
     </nav>
 
-    <ul>
+    <ul class="oe-mozaic">
         @foreach ($projects as $project)
-            <li data-category="{{ $project->category->id }}">
+            <li data-category="{{ $project->category->id }}" class="oe-mozaic__item">
                 <a href="/projects/{{ $project->category->id }}">
                     <figure>
                         @include('partials/image', [
+                            'class' => 'oe-mozaic__image',
                             'href' => $project->image->href,
                             'width' => $project->image->width,
                             'height' => $project->image->height,

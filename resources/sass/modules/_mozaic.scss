@@ -1,0 +1,14 @@
+@import '../lib/lists';
+
+/// Display a vertical list on mobile
+.oe-mozaic {
+    @include vertical-list;
+
+    &__item {
+        margin-bottom: vr(2);
+    }
+
+    &__image {
+        margin-bottom: vr(1);
+    }
+}
