@@ -64,20 +64,18 @@ then
     sed -i'' 's/Disallow:$/Disallow: \//' public/robots.txt
 fi
 
+# Retrieve environment variables
+ftp_username="$(getenv "$1" FTP_USERNAME)" || exit 1
+ftp_password="$(getenv "$1" FTP_PASSWORD)" || exit 1
+ftp_host="$(getenv "$1" FTP_HOST)" || exit 1
+ftp_path="$(getenv "$1" FTP_PATH)" || exit 1
+ssh_username="$(getenv "$1" SSH_USERNAME)" || exit 1
+ssh_password="$(getenv "$1" SSH_PASSWORD)" || exit 1
+ssh_url="$(getenv "$1" SSH_URL)"
+
 # Deploy
-FTP_USERNAME="$(getenv "$1" FTP_USERNAME)" || exit 1
-FTP_PASSWORD="$(getenv "$1" FTP_PASSWORD)" || exit 1
-FTP_HOST="$(getenv "$1" FTP_HOST)" || exit 1
-FTP_PATH="$(getenv "$1" FTP_PATH)" || exit 1
-export FTP_USERNAME
-export FTP_PASSWORD
-export FTP_HOST
-export FTP_PATH
-composer deploy
+FTP_USERNAME="$ftp_username" FTP_PASSWORD="$ftp_password" FTP_HOST="$ftp_host" FTP_PATH="$ftp_path" composer deploy
 
 # Run post-deploy script remotely
-SSH_USERNAME="$(getenv "$1" SSH_USERNAME)"
-SSH_PASSWORD="$(getenv "$1" SSH_PASSWORD)"
-SSH_URL="$(getenv "$1" SSH_URL)"
-webconsole -u "$SSH_USERNAME" -p "$SSH_PASSWORD" -P "$FTP_PATH" "$SSH_URL" chmod +x scripts/post-deploy
-webconsole -u "$SSH_USERNAME" -p "$SSH_PASSWORD" -P "$FTP_PATH" "$SSH_URL" scripts/post-deploy
+webconsole -u "$ssh_username" -p "$ssh_password" -P "$ftp_path" "$ssh_url" chmod +x scripts/post-deploy
+webconsole -u "$ssh_username" -p "$ssh_password" -P "$ftp_path" "$ssh_url" scripts/post-deploy
