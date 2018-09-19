@@ -7,7 +7,7 @@
 --}}
 
 <div
-    class="oe-image"
+    class="oe-image {{ $class ?? '' }}"
     style="padding-top: {{ 100 * $height / $width }}%; background-color: #{{ $color }}"
 >
     <img
