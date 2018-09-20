@@ -60,7 +60,8 @@
             "@php -r \"file_exists('resources/fonts.tar.gz') || symlink('fonts', 'resources/fonts.tar.gz');\"",
             "@php -r \"file_exists('resources/fonts.tar') || (new PharData('resources/fonts.tar.gz'))->decompress();\"",
             "@php -r \"(new PharData('resources/fonts.tar'))->extractTo('public/fonts', null, true);\"",
-            "npm install"
+            "npm install",
+            "npm run development"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",

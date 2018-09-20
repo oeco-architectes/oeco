@@ -13,7 +13,7 @@ class AgencyTest extends DuskTestCase
     protected function assertContact($browser)
     {
         return $browser
-            ->assertSee('Œco Architectes')
+            ->assertSee('ŒCO ARCHITECTES')
             ->assertSee('Adresse')
             ->assertSee('31 Rue Bertrand de Born')
             ->assertSee('Téléphone')
@@ -28,7 +28,7 @@ class AgencyTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser
                 ->visit(new Pages\AgencyPage())
-                ->assertSee('Œco Architectes : œuvre collective')
+                ->assertSee('ŒCO ARCHITECTES : ŒUVRE COLLECTIVE')
                 ->assertElementsCount('@title', 1)
                 ->assertElementsCount('@paragraph', 7);
             $this->assertContact($browser);
@@ -41,7 +41,7 @@ class AgencyTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser
                 ->visit(new Pages\PublicationsPage())
-                ->assertSee('Prix & publications')
+                ->assertSee('PRIX & PUBLICATIONS')
                 ->assertElementsCount('@image', 1);
             $this->assertContact($browser);
             $this->assertHasNavigationMenu($browser);
