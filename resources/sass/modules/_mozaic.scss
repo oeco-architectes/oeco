@@ -1,11 +1,17 @@
 @import '../lib/lists';
 
 /// Display a vertical list on mobile
+/// @require {Function} vr
+/// @require {Mixin} typi
 .oe-mozaic {
     @include vertical-list;
 
     &__item {
         margin-bottom: vr(2);
+    }
+
+    &__title {
+        @include typi('heading2');
     }
 
     &__image {

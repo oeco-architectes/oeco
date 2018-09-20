@@ -20,7 +20,7 @@
     @endforeach
 
 
-    <nav class="oe-nav oe-menu oe-menu__item">
+    <nav class="oe-nav oe-nav--links oe-menu oe-menu__item">
         <a href="/projects">▸ Retour</a>
     </nav>
 @endsection

@@ -1,6 +1,8 @@
 @import '../lib/lists';
 
 /// Display a vertical list on mobile
+/// @require {Function} vr
+/// @require {Mixin} typi
 .oe-carousel {
     @include vertical-list;
 
@@ -11,5 +13,13 @@
     &__image,
     &__title {
         margin-bottom: vr(1);
+    }
+
+    &__title {
+        @include typi('heading2');
+    }
+
+    &__headline, {
+        font-size: inherit;
     }
 }

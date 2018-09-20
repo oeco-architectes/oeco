@@ -27,7 +27,7 @@
                             'color' => $project->image->color,
                         ])
                         <figcaption>
-                            <h2>{{ $project->title }}</h2>
+                            <h3 class="oe-mozaic__title">{{ $project->title }}</h3>
                         </figcaption>
                     </figure>
                 </a>

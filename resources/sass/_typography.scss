@@ -6,13 +6,31 @@
 ///
 /// [typi]: https://github.com/zellwk/typi
 
+@import './lib/lang';
+
 $typi: (
     base: (
-        null: (13px, 1.6),
-        desktop: (14px),
-        wide: (15px),
+        null: (15px, 1.6),
+        tablet: 14px,
+        desktop: 15px,
+        wide: 16px,
     ),
 );
+
+$font-sizes-offsets: (
+    heading1: 6px,
+    heading2: 2px,
+    nav1: 2px,
+    nav2: 1px,
+);
+@each $size, $offset in $font-sizes-offsets {
+    $typi: map-set($typi, $size, (
+            null: 15px + $offset,
+            tablet: 14px + $offset,
+            desktop: 15px + $offset,
+            wide: 16px + $offset,
+    ));
+}
 
 $typi-breakpoint: mq;
 

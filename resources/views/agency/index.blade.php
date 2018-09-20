@@ -54,7 +54,7 @@
         habitants. Les préoccupations environnementales sont également à la base de nos projets.
     </p>
 
-    <nav class="oe-nav oe-menu oe-menu__item">
+    <nav class="oe-nav oe-nav--links oe-menu oe-menu__item">
         <a class="oe-menu__item" href="/agency/publications">▸ Publications</a>
     </nav>
 @endsection

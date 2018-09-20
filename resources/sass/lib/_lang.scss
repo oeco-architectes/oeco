@@ -1,0 +1,14 @@
+/// Language
+/// ========
+///
+/// Sass-related functions, placeholders and mixins.
+
+/// Set a value to a map
+/// @param {Map} $map Input map
+/// @param {Key} $key New map key
+/// @param {*} $value New value to set for key `$key`
+/// @return A new map containing all key/values from `$map`, and the new key/value pair
+/// `$key`/`$value`.
+@function map-set($map, $key, $value) {
+    @return map-merge($map, ($key: $value));
+}

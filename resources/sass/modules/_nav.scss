@@ -4,9 +4,12 @@
 /// ==========
 
 /// Primary and secondary navigation
+/// @require {Function} vr
+/// @require {Mixin} typi
 /// @require {Mixin} centered-block
+/// @require {Mixin} size
 .oe-nav {
-    $vertical-spacing: vr(1.5);
+    $vertical-spacing: vr(2);
     $header-width: 24rem;
     $header-width-max: 80%;
 
@@ -31,7 +34,17 @@
     }
 
     &--primary,
-    &--secondary {
+    &--secondary,
+    &--links {
         margin-bottom: $vertical-spacing;
+    }
+
+    &--primary {
+        @include typi('nav1')
+    }
+
+    &--secondary,
+    &--links {
+        @include typi('nav2');
     }
 }

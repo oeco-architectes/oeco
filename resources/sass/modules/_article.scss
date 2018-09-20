@@ -1,8 +1,13 @@
 /// Article
-/// @require {Mixin} vr
+/// @require {Function} vr
+/// @require {Mixin} typi
 .oe-article {
     &__title,
     &__section {
         margin-bottom: vr(1);
+    }
+
+    &__title {
+        @include typi('heading1');
     }
 }

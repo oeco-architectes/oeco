@@ -1,5 +1,6 @@
 /// Contact details
-/// @require {Mixin} vr
+/// @require {Function} vr
+/// @require {Mixin} typi
 .oe-contact {
     &__picture {
         margin-bottom: vr(1);
@@ -20,6 +21,7 @@
     }
 
     &__title {
+        @include typi('heading2');
         margin-bottom: vr(1);
         text-align: center;
     }
