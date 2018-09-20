@@ -16,7 +16,7 @@ install:
   - travis_retry composer create-project --prefer-dist
 before_script:
   - composer lint
-  - php artisan serve & # Laravel Dusk
+  - php artisan serve 2>/dev/null & # Laravel Dusk
   - |
     curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
     chmod +x ./cc-test-reporter
