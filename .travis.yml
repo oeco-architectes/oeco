@@ -1,8 +1,3 @@
-# Required to prevent "Failed to connect to localhost port 9515: Connection refused" random errors.
-sudo: required
-dist: trusty
-# ---
-
 language: php
 php:
   - 7.2
