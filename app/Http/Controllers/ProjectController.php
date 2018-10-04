@@ -34,7 +34,7 @@ class ProjectController extends Controller
 
             $projects[$i] = new Obj();
             $projects[$i]->category = $categories[ $i % count($categories) ];
-            $projects[$i]->title = $faker->sentence(12, true);
+            $projects[$i]->title = $faker->sentence(8, true);
             $projects[$i]->image = new Obj();
             $projects[$i]->image->href = 'https://dummyimage.com/' . $width . 'x' . $height . '/' . $color . '/fff';
             $projects[$i]->image->width = $width;
@@ -62,7 +62,7 @@ class ProjectController extends Controller
         ];
 
         $project = new Obj();
-        $project->title = $faker->sentence(12, true);
+        $project->title = $faker->sentence(8, true);
         $sections = [];
         for ($i = 0; $i < 20; $i++) {
             if ($i % 2 === 0) {
