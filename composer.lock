@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aadba9ea236588cd841b9a11dd17a4b7",
+    "content-hash": "8a1d22de6983de4160427d8c4b70ada5",
     "packages": [
         {
             "name": "amercier/rectangular-mozaic",
@@ -51,6 +51,44 @@
             ],
             "description": "Rectangular mozaic generator library",
             "time": "2018-10-05T06:00:39+00:00"
+        },
+        {
+            "name": "devitek/yaml-configuration",
+            "version": "3.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Devitek/laravel-yaml-configuration.git",
+                "reference": "a2ab10faae73f1d8a1c088bfbb806031c3f2acba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Devitek/laravel-yaml-configuration/zipball/a2ab10faae73f1d8a1c088bfbb806031c3f2acba",
+                "reference": "a2ab10faae73f1d8a1c088bfbb806031c3f2acba",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.2",
+                "php": ">=5.4.0",
+                "symfony/yaml": "3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Devitek\\": "src/Devitek"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas SIEFFERT",
+                    "email": "thomas.sieffert@devitek.fr"
+                }
+            ],
+            "description": "Add YAML file support to Laravel Configuration",
+            "time": "2016-08-20T20:09:02+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2529,6 +2567,65 @@
                 "dump"
             ],
             "time": "2018-08-02T09:24:26+00:00"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "v3.4.17",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "640b6c27fed4066d64b64d5903a86043f4a4de7f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/640b6c27fed4066d64b64d5903a86043f4a4de7f",
+                "reference": "640b6c27fed4066d64b64d5903a86043f4a4de7f",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5.9|>=7.0.8",
+                "symfony/polyfill-ctype": "~1.8"
+            },
+            "conflict": {
+                "symfony/console": "<3.4"
+            },
+            "require-dev": {
+                "symfony/console": "~3.4|~4.0"
+            },
+            "suggest": {
+                "symfony/console": "For validating YAML files using the lint command"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Yaml\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Yaml Component",
+            "homepage": "https://symfony.com",
+            "time": "2018-10-02T16:33:53+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

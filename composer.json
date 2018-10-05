@@ -11,6 +11,7 @@
     "require": {
         "php": "^7.2.0",
         "amercier/rectangular-mozaic": "^0.2.0",
+        "devitek/yaml-configuration": "^3.1",
         "fideloper/proxy": "^4.0",
         "fzaninotto/faker": "^1.8",
         "graham-campbell/markdown": "^10.1",

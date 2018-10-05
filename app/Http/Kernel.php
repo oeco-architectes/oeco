@@ -61,4 +61,10 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
     ];
+
+    protected function bootstrappers()
+    {
+        $this->bootstrappers[] = \Devitek\Core\Config\LoadYamlConfiguration::class;
+        return $this->bootstrappers;
+    }
 }

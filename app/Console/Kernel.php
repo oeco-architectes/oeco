@@ -39,4 +39,10 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
+
+    protected function bootstrappers()
+    {
+        $this->bootstrappers[] = \Devitek\Core\Config\LoadYamlConfiguration::class;
+        return $this->bootstrappers;
+    }
 }
