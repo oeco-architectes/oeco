@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const uiConfig = require('./config/ui');
 
 /**
  * --------------------------------------------------------------------------
@@ -12,7 +13,9 @@ const mix = require('laravel-mix');
 
 mix
     .js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/app.scss', 'public/css', {
+        data: Object.entries(uiConfig).map(([name, value]) => `$${name}: ${value};`).join(''),
+    });
 
 if (mix.inProduction()) {
     mix.version();
