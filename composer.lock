@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7ecb29fc4e37f9f860c3cecf89a134a0",
+    "content-hash": "aadba9ea236588cd841b9a11dd17a4b7",
     "packages": [
         {
             "name": "amercier/rectangular-mozaic",
-            "version": "v0.1.0",
+            "version": "v0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/amercier/rectangular-mozaic.git",
-                "reference": "5fce3ee6e15abeef2451cf25ac6812c9aa660623"
+                "reference": "25ecec9528eac643807a2c522bfc269e38ecbc34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/amercier/rectangular-mozaic/zipball/5fce3ee6e15abeef2451cf25ac6812c9aa660623",
-                "reference": "5fce3ee6e15abeef2451cf25ac6812c9aa660623",
+                "url": "https://api.github.com/repos/amercier/rectangular-mozaic/zipball/25ecec9528eac643807a2c522bfc269e38ecbc34",
+                "reference": "25ecec9528eac643807a2c522bfc269e38ecbc34",
                 "shasum": ""
             },
             "require": {
@@ -50,7 +50,7 @@
                 }
             ],
             "description": "Rectangular mozaic generator library",
-            "time": "2018-10-03T20:26:23+00:00"
+            "time": "2018-10-05T06:00:39+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

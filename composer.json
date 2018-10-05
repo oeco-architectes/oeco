@@ -10,7 +10,7 @@
     "type": "project",
     "require": {
         "php": "^7.2.0",
-        "amercier/rectangular-mozaic": "^0.1.0",
+        "amercier/rectangular-mozaic": "^0.2.0",
         "fideloper/proxy": "^4.0",
         "fzaninotto/faker": "^1.8",
         "graham-campbell/markdown": "^10.1",
