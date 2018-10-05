@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use stdClass as Obj;
 use Faker\Factory as FakerFactory;
 use Illuminate\Http\Request;
+use RectangularMozaic\Cell;
+use RectangularMozaic\Generator as Mozaic;
 
 class ProjectController extends Controller
 {
@@ -42,9 +44,25 @@ class ProjectController extends Controller
             $projects[$i]->image->color = $color;
         }
 
+        $grid = Mozaic::generate(count($projects), config('ui.mozaic-columns'));
+        $i = 0;
+        $tileTypes = [
+            Cell::SMALL => 'small',
+            Cell::TALL_TOP => 'tall',
+            Cell::WIDE_RIGHT => 'wide',
+        ];
+        foreach ($grid->getValues() as $row) {
+            foreach ($row as $cell) {
+                if (array_key_exists($cell, $tileTypes)) {
+                    $projects[$i]->tileType = $tileTypes[$cell];
+                    $i += 1;
+                }
+            }
+        }
+
         return view('projects.index', [
             'categories' => $categories,
-            'projects' => $projects
+            'projects' => $projects,
         ]);
     }
 

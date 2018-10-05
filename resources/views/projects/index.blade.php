@@ -15,7 +15,7 @@
 
     <ul class="oe-mozaic">
         @foreach ($projects as $project)
-            <li data-category="{{ $project->category->id }}" class="oe-mozaic__item">
+            <li data-category="{{ $project->category->id }}" class="oe-mozaic__item oe-mozaic__item--{{ $project->tileType }}">
                 <a href="/projects/{{ $project->category->id }}">
                     <figure>
                         @include('partials/image', [
