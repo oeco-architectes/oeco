@@ -18,3 +18,101 @@
         margin-bottom: vr(1);
     }
 }
+
+/// Display a mozaic on desktop and wide, when grid layot is supported.
+/// @require {Variable} $mozaic-columns
+/// @require {Variable} $mozaic-gap
+/// @require {Variable} $container-widths
+/// @require {Function} font-weight
+/// @require {Function} vr
+/// @require {Mixin} mq
+/// @require {Mixin} position
+/// @require {Mixin} typi
+@supports (display: grid) {
+    $caption-animation-opacity: 750ms;
+    $caption-animation-transform: 250ms;
+    $caption-padding-h: 1rem;
+    $caption-padding-v: 1rem;
+    $caption-color: #fff;
+    $caption-text-shadow: rgba(0, 0, 0, .6);
+    $caption-background-top: rgba(0, 0, 0, .6);
+    $caption-background-bottom: rgba(0, 0, 0, .4);
+
+    @each $breakpoint in (desktop, wide) {
+        $width: (map-get($container-widths, $breakpoint) - 3 * $mozaic-gap) / 4;
+
+        @include mq($from: $breakpoint) {
+            .oe-mozaic {
+                $root: &;
+
+                display: grid;
+                grid-template-columns: repeat($mozaic-columns, $width);
+                grid-column-gap: $mozaic-gap;
+
+                // Grid is available but not :hover, display captions under images
+                &__item {
+                    margin-bottom: vr(.5);
+                }
+
+                &__image {
+                    margin-bottom: vr(.5);
+                }
+
+                &__title {
+                    @include typi('base');
+                    text-transform: none;
+                    font-weight: font-weight(normal);
+                }
+
+                // :hover is available, display revealing caption
+                @media (any-hover: hover) {
+                    grid-auto-rows: $width * 9 / 16;
+                    grid-row-gap: $mozaic-gap;
+
+                    &__item {
+                        position: relative;
+                        margin-bottom: 0;
+                        overflow: hidden;
+
+                        > a,
+                        > a > figure {
+                            height: 100%;
+                        }
+
+                        &--tall {
+                            grid-row: auto / span 2;
+                        }
+
+                        &--wide {
+                            grid-column: auto / span 2;
+                        }
+
+                        &:hover #{$root}__title { // sass-lint:disable-line force-element-nesting
+                            transform: translateY(-100%);
+                            opacity: 1;
+                        }
+                    }
+
+                    &__title {
+                        @include position(absolute, 100%, 0, auto, 0);
+                        transition:
+                            opacity $caption-animation-opacity ease-out, // sass-lint:disable-line indentation
+                            transform $caption-animation-transform ease-out; // sass-lint:disable-line indentation
+                        opacity: 0;
+                        background: linear-gradient(to bottom, $caption-background-top, $caption-background-bottom);
+                        padding: $caption-padding-v $caption-padding-h;
+                        text-shadow: 0 0 10px $caption-text-shadow;
+                        color: $caption-color;
+                        will-change: opacity, transform;
+                    }
+
+                    &__image {
+                        margin-bottom: 0;
+                        padding-top: 0 !important; // sass-lint:disable-line no-important
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
