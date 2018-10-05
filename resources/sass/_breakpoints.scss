@@ -16,3 +16,13 @@
 //    );
 
 @import '~sass-mq';
+
+// $mozaic-columns is defined in config/ui.json
+$mozaic-gap: 6px;
+
+$container-widths: (
+    mobile: 100%,
+    tablet: 700px,
+    desktop: $mozaic-columns * 16 * 14px + ($mozaic-columns - 1) * $mozaic-gap,
+    wide: $mozaic-columns * 16 * 18px + ($mozaic-columns - 1) * $mozaic-gap, // sass-lint:disable-line indentation
+);
