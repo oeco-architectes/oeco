@@ -1,5 +1,16 @@
+const flat = require('flat');
 const mix = require('laravel-mix');
-const uiConfig = require('./config/ui');
+const yaml = require('js-yaml');
+const fs = require('fs');
+
+// Load UI config
+const configPath = './config/ui.yml';
+let config;
+try {
+    config = yaml.safeLoad(fs.readFileSync(configPath, 'utf8'));
+} catch (e) {
+    throw new Error(`Failed to load ${configPath}: ${e}`);
+}
 
 /**
  * --------------------------------------------------------------------------
@@ -14,7 +25,9 @@ const uiConfig = require('./config/ui');
 mix
     .js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css', {
-        data: Object.entries(uiConfig).map(([name, value]) => `$${name}: ${value};`).join(''),
+        data: Object.entries(flat(config, { delimiter: '-' }))
+            .map(([name, value]) => `$${name}: ${value};\n`)
+            .join(''),
     });
 
 if (mix.inProduction()) {

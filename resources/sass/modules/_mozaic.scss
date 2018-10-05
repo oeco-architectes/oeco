@@ -20,9 +20,9 @@
 }
 
 /// Display a mozaic on desktop and wide, when grid layot is supported.
-/// @require {Variable} $mozaic-columns
-/// @require {Variable} $mozaic-gap
-/// @require {Variable} $container-widths
+/// @require {Variable} $mozaic-settings
+/// @require {Placeholder} %mozaic-desktop
+/// @require {Placeholder} %mozaic-wide
 /// @require {Function} font-weight
 /// @require {Function} vr
 /// @require {Mixin} mq
@@ -38,16 +38,14 @@
     $caption-background-top: rgba(0, 0, 0, .6);
     $caption-background-bottom: rgba(0, 0, 0, .4);
 
-    @each $breakpoint in (desktop, wide) {
-        $width: (map-get($container-widths, $breakpoint) - 3 * $mozaic-gap) / 4;
-
+    @each $breakpoint, $grid-settings in $mozaic-settings {
         @include mq($from: $breakpoint) {
             .oe-mozaic {
                 $root: &;
 
                 display: grid;
-                grid-template-columns: repeat($mozaic-columns, $width);
-                grid-column-gap: $mozaic-gap;
+                grid-template-columns: map-get($grid-settings, template-columns);
+                grid-column-gap: map-get($grid-settings, column-gap);
 
                 // Grid is available but not :hover, display captions under images
                 &__item {
@@ -66,8 +64,8 @@
 
                 // :hover is available, display revealing caption
                 @media (any-hover: hover) {
-                    grid-auto-rows: $width * 9 / 16;
-                    grid-row-gap: $mozaic-gap;
+                    grid-auto-rows: map-get($grid-settings, auto-rows);
+                    grid-row-gap: map-get($grid-settings, row-gap);
 
                     &__item {
                         position: relative;

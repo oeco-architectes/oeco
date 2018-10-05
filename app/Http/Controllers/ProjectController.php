@@ -44,7 +44,7 @@ class ProjectController extends Controller
             $projects[$i]->image->color = $color;
         }
 
-        $grid = Mozaic::generate(count($projects), config('ui.mozaic-columns'));
+        $grid = Mozaic::generate(count($projects), config('ui.mozaic.columns'));
         $i = 0;
         $tileTypes = [
             Cell::SMALL => 'small',
