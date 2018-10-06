@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8a1d22de6983de4160427d8c4b70ada5",
+    "content-hash": "e70b8a18aa4cd594f6219ad68cf36f06",
     "packages": [
         {
             "name": "amercier/rectangular-mozaic",
-            "version": "v0.2.0",
+            "version": "v0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/amercier/rectangular-mozaic.git",
-                "reference": "25ecec9528eac643807a2c522bfc269e38ecbc34"
+                "reference": "d026a82c1bc73979308235a7a440665e92ee8525"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/amercier/rectangular-mozaic/zipball/25ecec9528eac643807a2c522bfc269e38ecbc34",
-                "reference": "25ecec9528eac643807a2c522bfc269e38ecbc34",
+                "url": "https://api.github.com/repos/amercier/rectangular-mozaic/zipball/d026a82c1bc73979308235a7a440665e92ee8525",
+                "reference": "d026a82c1bc73979308235a7a440665e92ee8525",
                 "shasum": ""
             },
             "require": {
@@ -50,7 +50,7 @@
                 }
             ],
             "description": "Rectangular mozaic generator library",
-            "time": "2018-10-05T06:00:39+00:00"
+            "time": "2018-10-06T13:19:18+00:00"
         },
         {
             "name": "devitek/yaml-configuration",

@@ -51,7 +51,7 @@ class ProjectController extends Controller
             Cell::TALL_TOP => 'tall',
             Cell::WIDE_RIGHT => 'wide',
         ];
-        foreach ($grid->getValues() as $row) {
+        foreach ($grid->getCells() as $row) {
             foreach ($row as $cell) {
                 if (array_key_exists($cell, $tileTypes)) {
                     $projects[$i]->tileType = $tileTypes[$cell];
