@@ -4,23 +4,26 @@
 /// [sass-mq] is used as it requires minimal configuration to provide a mixin that allows composing
 /// media queries.
 //
-/// [sass-mq]: https://github.com/sass-mq/sass-mq
-
-/// Currently default `sass-mq` breakpoints are used:
-//
-///    $mq-breakpoints: (
-///        mobile:  320px,
-///        tablet:  740px,
-///        desktop: 980px,
-///        wide:    1300px
-///    );
-///
 /// Some variables must be defined globally (typically in config/ui.yml):
+/// @require {Variable} $breakpoints-mobile
+/// @require {Variable} $breakpoints-tablet
+/// @require {Variable} $breakpoints-desktop
+/// @require {Variable} $breakpoints-wide
 /// @require {Variable} $mozaic-columns
 /// @require {Variable} $mozaic-desktop-gap
 /// @require {Variable} $mozaic-desktop-width
 /// @require {Variable} $mozaic-wide-gap
 /// @require {Variable} $mozaic-wide-width
+///
+/// [sass-mq]: https://github.com/sass-mq/sass-mq
+
+
+$mq-breakpoints: (
+    'mobile': $breakpoints-mobile,
+    'tablet': $breakpoints-tablet,
+    'desktop': $breakpoints-desktop,
+    'wide': $breakpoints-wide,
+);
 
 @import '~sass-mq';
 
