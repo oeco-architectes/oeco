@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use stdClass as Obj;
 use Faker\Factory as FakerFactory;
 use Illuminate\Http\Request;
+use App\DummyImage;
 
 class HomeController extends Controller
 {
@@ -23,16 +24,11 @@ class HomeController extends Controller
 
         $news = [];
         for ($i = 0; $i < 20; $i++) {
-            $color = $backgrounds[$i % count($backgrounds)];
-
             $news[$i] = new Obj();
             $news[$i]->title = $faker->sentence(12, true);
             $news[$i]->headline = $faker->text(120);
-            $news[$i]->image = new Obj();
-            $news[$i]->image->href = 'https://dummyimage.com/' . $width . 'x' . $height . '/' . $color . '/fff';
-            $news[$i]->image->width = $width;
-            $news[$i]->image->height = $height;
-            $news[$i]->image->color = $color;
+            $news[$i]->color = DummyImage::backgroundColorFromIndex($i);
+            $news[$i]->image = new DummyImage($width, $height, $news[$i]->color);
         }
 
         return view('home', [

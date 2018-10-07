@@ -7,6 +7,7 @@ use Faker\Factory as FakerFactory;
 use Illuminate\Http\Request;
 use RectangularMozaic\Cell;
 use RectangularMozaic\Generator as Mozaic;
+use App\DummyImage;
 
 class ProjectController extends Controller
 {
@@ -17,11 +18,6 @@ class ProjectController extends Controller
     public function index(Request $request)
     {
         $faker = FakerFactory::create();
-        $width = 960;
-        $height = 540;
-        $backgrounds = [
-            '4caf50', 'd81b60', 'f57c00', '03a9f4', '673ab7', '009688', 'f44336'
-        ];
 
         $categories = [];
         for ($i = 0; $i < 6; $i++) {
@@ -32,16 +28,11 @@ class ProjectController extends Controller
 
         $projects = [];
         for ($i = 0; $i < 30; $i++) {
-            $color = $backgrounds[$i % count($backgrounds)];
-
             $projects[$i] = new Obj();
             $projects[$i]->category = $categories[ $i % count($categories) ];
             $projects[$i]->title = $faker->sentence(8, true);
-            $projects[$i]->image = new Obj();
-            $projects[$i]->image->href = 'https://dummyimage.com/' . $width . 'x' . $height . '/' . $color . '/fff';
-            $projects[$i]->image->width = $width;
-            $projects[$i]->image->height = $height;
-            $projects[$i]->image->color = $color;
+            $projects[$i]->color = DummyImage::backgroundColorFromIndex($i);
+            $projects[$i]->image = new DummyImage(960, 540, $projects[$i]->color);
         }
 
         $grid = Mozaic::generate(count($projects), config('ui.mozaic.columns'));
@@ -73,11 +64,6 @@ class ProjectController extends Controller
     public function show(Request $request)
     {
         $faker = FakerFactory::create();
-        $width = 960;
-        $height = 540;
-        $backgrounds = [
-            '4caf50', 'd81b60', 'f57c00', '03a9f4', '673ab7', '009688', 'f44336'
-        ];
 
         $project = new Obj();
         $project->title = $faker->sentence(8, true);
@@ -86,14 +72,10 @@ class ProjectController extends Controller
             if ($i % 2 === 0) {
                 $sections[$i] = $faker->paragraphs(3, true);
             } else {
-                $color = $backgrounds[floor($i / 2) % count($backgrounds)];
-
                 $sections[$i] = new Obj();
-                $sections[$i]->href = 'https://dummyimage.com/' . $width . 'x' . $height . '/' . $color . '/fff';
-                $sections[$i]->width = $width;
-                $sections[$i]->height = $height;
+                $sections[$i]->color = DummyImage::backgroundColorFromIndex(floor($i / 2));
+                $sections[$i]->image = new DummyImage(960, 540, $sections[$i]->color);
                 $sections[$i]->title = $project->title . ' #' . ceil($i / 2);
-                $sections[$i]->color = $color;
             }
         }
 

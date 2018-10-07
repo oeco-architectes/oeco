@@ -12,9 +12,7 @@
 
     @include('partials/image', [
         'class' => 'oe-article__section',
-        'href' => '/img/oeco-publications.jpg',
-        'width' => 661,
-        'height' => 437,
+        'image' => new \App\Image('/img/oeco-publications.jpg', 661, 437),
         'title' => 'Prix & publications d\'Œco Architectes',
         'color' => 'bcbdbd',
     ])

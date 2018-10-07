@@ -8,9 +8,7 @@
     <figure>
         @include('partials/image', [
             'class' => 'oe-contact__picture',
-            'href' => '/img/oeco-team.jpg',
-            'width' => 363,
-            'height' => 363,
+            'image' => new \App\Image('/img/oeco-team.jpg', 363, 363),
             'title' => 'Fondateurs d\'Œco Architectes',
             'color' => '9c9c9c',
         ])

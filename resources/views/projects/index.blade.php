@@ -20,11 +20,9 @@
                     <figure>
                         @include('partials/image', [
                             'class' => 'oe-mozaic__image',
-                            'href' => $project->image->href,
-                            'width' => $project->image->width,
-                            'height' => $project->image->height,
                             'title' => $project->title,
-                            'color' => $project->image->color,
+                            'image' => $project->image,
+                            'color' => $project->color,
                         ])
                         <figcaption>
                             <h3 class="oe-mozaic__title">{{ $project->title }}</h3>

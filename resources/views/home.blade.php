@@ -7,11 +7,9 @@
                 <figure>
                     @include('partials/image', [
                         'class' => 'oe-carousel__image',
-                        'href' => $n->image->href,
-                        'width' => $n->image->width,
-                        'height' => $n->image->height,
+                        'image' => $n->image,
                         'title' => $n->title,
-                        'color' => $n->image->color,
+                        'color' => $n->color,
                     ])
                     <figcaption>
                         <h2 class="oe-carousel__title">{{ $n->title }}</h2>
