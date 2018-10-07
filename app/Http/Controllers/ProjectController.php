@@ -5,12 +5,44 @@ namespace App\Http\Controllers;
 use stdClass as Obj;
 use Faker\Factory as FakerFactory;
 use Illuminate\Http\Request;
-use RectangularMozaic\Cell;
 use RectangularMozaic\Generator as Mozaic;
+use RectangularMozaic\Tile;
 use App\DummyImage;
 
 class ProjectController extends Controller
 {
+    protected static function getImage($project, string $breakpoint, Tile $tile)
+    {
+        $width = config("ui.mozaic.{$breakpoint}.width");
+        $height = config("ui.mozaic.{$breakpoint}.height");
+        $gap = config("ui.mozaic.{$breakpoint}.gap");
+
+        switch ($tile->getValue()) {
+            case Tile::SMALL:
+                return new DummyImage($width, $height, $project->color);
+            case Tile::TALL:
+                return new DummyImage($width, 2 * $height + $gap, $project->color);
+            case Tile::WIDE:
+                return new DummyImage(2 * $width + $gap, $height, $project->color);
+        }
+    }
+
+    protected static function getResponsiveQuery(string $breakpoint)
+    {
+        $ems = intval(config("ui.breakpoints.{$breakpoint}")) / 16;
+        return "min-width: {$ems}em";
+    }
+
+    protected static function getResponsiveImages($project, Tile $tile)
+    {
+        return array_map(function ($breakpoint) use ($project, $tile) {
+            return [
+                static::getImage($project, $breakpoint, $tile),
+                static::getResponsiveQuery($breakpoint),
+            ];
+        }, ['wide', 'desktop']);
+    }
+
     /**
      * Show all projects
      * @return \Illuminate\Http\Response
@@ -27,28 +59,16 @@ class ProjectController extends Controller
         }
 
         $projects = [];
-        for ($i = 0; $i < 30; $i++) {
+        $grid = Mozaic::generate(30, config('ui.mozaic.columns'));
+        foreach ($grid->getTiles(true, true) as $i => $tile) {
             $projects[$i] = new Obj();
             $projects[$i]->category = $categories[ $i % count($categories) ];
             $projects[$i]->title = $faker->sentence(8, true);
             $projects[$i]->color = DummyImage::backgroundColorFromIndex($i);
+            $projects[$i]->tileType = strtolower("{$tile}");
             $projects[$i]->image = new DummyImage(960, 540, $projects[$i]->color);
-        }
-
-        $grid = Mozaic::generate(count($projects), config('ui.mozaic.columns'));
-        $i = 0;
-        $tileTypes = [
-            Cell::SMALL => 'small',
-            Cell::TALL_TOP => 'tall',
-            Cell::WIDE_RIGHT => 'wide',
-        ];
-        foreach ($grid->getCells() as $row) {
-            foreach ($row as $cell) {
-                if (array_key_exists($cell, $tileTypes)) {
-                    $projects[$i]->tileType = $tileTypes[$cell];
-                    $i += 1;
-                }
-            }
+            $projects[$i]->responsiveImages = static::getResponsiveImages($projects[$i], $tile);
+            $projects[$i]->wideImage = static::getImage($projects[$i], 'wide', $tile);
         }
 
         return view('projects.index', [

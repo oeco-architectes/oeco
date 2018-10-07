@@ -22,6 +22,7 @@
                             'class' => 'oe-mozaic__image',
                             'title' => $project->title,
                             'image' => $project->image,
+                            'responsiveImages' => $project->responsiveImages,
                             'color' => $project->color,
                         ])
                         <figcaption>
