@@ -10,9 +10,7 @@
         @else
             @include('partials/image', [
                 'class' => 'oe-article__section',
-                'href' => $section->href,
-                'width' => $section->width,
-                'height' => $section->height,
+                'image' => $section->image,
                 'title' => $section->title,
                 'color' => $section->color,
             ])

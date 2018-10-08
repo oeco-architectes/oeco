@@ -1,0 +1,17 @@
+breakpoints:
+    mobile: 320px
+    tablet: 740px
+    desktop: 980px
+    wide: 1300px
+mozaic:
+    columns: 4
+    desktop:
+        # Cell ratio: 3:2
+        gap: 6 # 3 * 2
+        width: 228 # 76 * 3
+        height: 152 # 76 * 2
+    wide:
+        # Cell ratio: 3:2
+        gap: 6 # 3 * 2
+        width: 300 # 100 * 3
+        height: 200 # 100 * 2

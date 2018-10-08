@@ -25,7 +25,10 @@ class ProjectsPage extends Page
     public function elements()
     {
         return [
-            '@project' => 'main ul > li[data-category]',
+            '@project' => '.oe-mozaic__item',
+            '@project-small' => '.oe-mozaic__item--small',
+            '@project-tall' => '.oe-mozaic__item--tall',
+            '@project-wide' => '.oe-mozaic__item--wide',
         ];
     }
 }
