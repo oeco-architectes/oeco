@@ -2,7 +2,10 @@
 
 namespace Tests;
 
+use Laravel\Dusk\Browser;
 use Laravel\Dusk\TestCase as BaseTestCase;
+use Facebook\WebDriver\WebDriverBy;
+use Facebook\WebDriver\WebDriverDimension;
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
@@ -43,12 +46,32 @@ abstract class DuskTestCase extends BaseTestCase
         $options = (new ChromeOptions())->addArguments([
             '--disable-gpu',
             '--headless',
-            '--no-sandbox' // Mandatory for Travis CI, Docker, etc.
+            '--no-sandbox', // Mandatory for Travis CI, Docker, etc.
         ]);
 
         return RemoteWebDriver::create(
             'http://localhost:9515',
             DesiredCapabilities::chrome()->setCapability(ChromeOptions::CAPABILITY, $options)
         );
+    }
+
+    /**
+     * Capture a screenshot of the page for each failed ones.
+     * Screenshot are stored in the screenshots/ directory.
+     *
+     * @param Browser[] $browsers Browser instances
+     * @return void
+     */
+    protected function captureFailuresFor($browsers)
+    {
+        $browsers->each(function (Browser $browser, $key) {
+            $body = $browser->driver->findElement(WebDriverBy::tagName('body'));
+            if (!empty($body)) {
+                $currentSize = $body->getSize();
+                $size = new WebDriverDimension($currentSize->getWidth(), $currentSize->getHeight());
+                $browser->driver->manage()->window()->setSize($size);
+            }
+            $browser->screenshot("failure-{$this->getName()}-{$key}");
+        });
     }
 }
