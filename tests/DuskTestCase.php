@@ -26,9 +26,21 @@ abstract class DuskTestCase extends BaseTestCase
     }
 
     /**
+     * Close all windows between tests. This prevents browser from reusing cached images,
+     * which which can be troublesome for testing responsive images.
+     *
+     * @return void
+     */
+    public function tearDown()
+    {
+        $this->closeAll();
+        parent::tearDown();
+    }
+
+    /**
      * Create the DuskBrowser instance.
      *
-     * @param  \Facebook\WebDriver\Remote\RemoteWebDriver  $driver
+     * @param  \Facebook\WebDriver\Remote\RemoteWebDriver $driver
      * @return \Laravel\Dusk\Browser
      */
     protected function newBrowser($driver)
