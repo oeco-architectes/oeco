@@ -37,7 +37,7 @@
         "sass-mq": "^5.0.0",
         "typi": "^3.2.0",
         "vue": "^2.5.17",
-        "vue-jest": "^2.6.0"
+        "vue-jest": "^3.0.0"
     },
     "pre-commit": [
         "pre-commit"
