@@ -5,9 +5,21 @@
 /// @require {Mixin} typi
 .oe-carousel {
     @include vertical-list;
+    display: block;
 
     &__item {
+        display: block;
         margin-bottom: vr(2);
+
+        @at-root [data-script='yes'] & {
+            margin-bottom: vr(1);
+            cursor: pointer;
+
+            // Hide slides except first one during VueCarousel loading
+            &:not(:first-child):not(.VueCarousel-slide) { // sass-lint:disable-line force-pseudo-nesting
+                display: none;
+            }
+        }
     }
 
     &__image,
@@ -21,5 +33,24 @@
 
     &__headline, {
         font-size: inherit;
+    }
+}
+
+// VueCarousel customizations
+// sass-lint:disable class-name-format, no-important, force-pseudo-nesting
+.VueCarousel-dot {
+    $carousel-nav-focus-bg: #666;
+
+    margin-top: 0 !important;
+    line-height: 10px !important;
+
+    &-button {
+        transition: background 250ms ease-out;
+    }
+
+    &:hover &-button,
+    &-button:focus {
+        outline: none !important;
+        background: $carousel-nav-focus-bg !important;
     }
 }
