@@ -25,7 +25,7 @@ class HomePage extends Page
     public function elements()
     {
         return [
-            '@news' => 'main ul > li > figure',
+            '@news' => 'main .oe-carousel__item',
         ];
     }
 }

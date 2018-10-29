@@ -1,9 +1,21 @@
 @extends('layouts.html5')
 
 @section('main')
-    <ul class="oe-carousel">
+    <carousel
+        class="oe-carousel"
+        role="list"
+        :per-page="1"
+        easing="ease-out"
+        autoplay
+        :autoplay-timeout="4000"
+        autoplay-hover-pause
+        loop
+        pagination-enabled
+        pagination-color="#e9e9e9"
+        pagination-active-color="#999"
+    >
         @foreach ($news as $n)
-            <li class="oe-carousel__item">
+            <slide class="oe-carousel__item" role="listitem">
                 <figure>
                     @include('partials/image', [
                         'class' => 'oe-carousel__image',
@@ -16,7 +28,7 @@
                         <p class="oe-carousel__headline">{{ $n->headline }}</p>
                     </figcaption>
                 </figure>
-            </li>
+            </slide>
         @endforeach
     </ul>
 @endsection

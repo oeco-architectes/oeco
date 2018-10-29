@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import ExampleComponent from './components/ExampleComponent.vue';
+import VueCarousel from 'vue-carousel';
 
-Vue.component('example-component', ExampleComponent);
-new Vue({ el: '#app' }); // eslint-disable-line no-new
+Vue.use(VueCarousel);
+new Vue({ el: '.oe-container' }); // eslint-disable-line no-new
