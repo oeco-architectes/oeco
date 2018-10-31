@@ -23,7 +23,6 @@ fonts
 *.lock
 *.log
 *.phar
-*.php
 *.sqlite
 *.tar
 *.tar.gz
