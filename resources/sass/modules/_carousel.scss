@@ -16,7 +16,7 @@
             cursor: pointer;
 
             // Hide slides except first one during VueCarousel loading
-            &:not(:first-child):not(.VueCarousel-slide) { // sass-lint:disable-line force-pseudo-nesting
+            &:not(:first-child):not(.VueCarousel-slide) {
                 display: none;
             }
         }
@@ -37,7 +37,6 @@
 }
 
 // VueCarousel customizations
-// sass-lint:disable class-name-format, no-important, force-pseudo-nesting
 .VueCarousel-dot {
     $carousel-nav-focus-bg: #666;
 

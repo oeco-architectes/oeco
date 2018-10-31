@@ -42,12 +42,12 @@ html {
     font-weight: font-weight(normal);
 }
 
-h1, h2, h3 { // sass-lint:disable-line single-line-per-selector
+h1, h2, h3 {
     text-transform: uppercase;
     font-weight: font-weight(light);
 }
 
-h4, h5, h6, dt, b, strong { // sass-lint:disable-line single-line-per-selector
+h4, h5, h6, dt, b, strong {
     font-weight: font-weight(bold);
 }
 

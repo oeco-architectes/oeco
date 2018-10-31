@@ -85,7 +85,7 @@
                             grid-column: auto / span 2;
                         }
 
-                        &:hover #{$root}__title { // sass-lint:disable-line force-element-nesting
+                        &:hover #{$root}__title {
                             transform: translateY(-100%);
                             opacity: 1;
                         }
@@ -94,8 +94,8 @@
                     &__title {
                         @include position(absolute, 100%, 0, auto, 0);
                         transition:
-                            opacity $caption-animation-opacity ease-out, // sass-lint:disable-line indentation
-                            transform $caption-animation-transform ease-out; // sass-lint:disable-line indentation
+                            opacity $caption-animation-opacity ease-out,
+                            transform $caption-animation-transform ease-out;
                         opacity: 0;
                         background: linear-gradient(to bottom, $caption-background-top, $caption-background-bottom);
                         padding: $caption-padding-v $caption-padding-h;
@@ -106,7 +106,7 @@
 
                     &__image {
                         margin-bottom: 0;
-                        padding-top: 0 !important; // sass-lint:disable-line no-important
+                        padding-top: 0 !important;
                         height: 100%;
                     }
                 }
