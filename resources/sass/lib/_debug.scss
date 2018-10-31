@@ -6,16 +6,18 @@
 /// Display an error message using `after` pseudo-element.
 /// @require {Mixin} cover
 @mixin error($message: null) {
-    $error-bg: #b00020;
-    $error-color: #fff;
+    $error-bg: rgb(176, 0, 32);
+    $error-color: rgb(255, 255, 255);
     $error-prefix: '✖ ERROR';
 
     &::after {
         @include cover;
-        background: $error-bg;
         padding: 1rem;
+
+        background: $error-bg;
         color: $error-color;
         font-weight: bold;
+
         @if message {
             content: '#{$error-prefix}: #{$message}';
         } @else {

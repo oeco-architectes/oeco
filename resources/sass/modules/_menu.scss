@@ -4,22 +4,23 @@
 /// @require {Mixin} horizontal-list
 /// @require {Mixin} horizontal-padding
 .oe-menu {
-    $item-horizontal-spacing: .5rem;
-    $item-horizontal-padding: .5rem;
+    $item-horizontal-spacing: 0.5rem;
+    $item-horizontal-padding: 0.5rem;
     $item-height: vr(1.5);
 
     @include horizontal-list;
 
     &__item {
         @include horizontal-padding($item-horizontal-spacing);
+
         height: $item-height;
 
         a {
             @include horizontal-padding($item-horizontal-padding);
 
             display: flex;
-            align-items: flex-end;
             height: 100%;
+            align-items: flex-end;
         }
 
         img {

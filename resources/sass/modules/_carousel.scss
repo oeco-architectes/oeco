@@ -5,6 +5,7 @@
 /// @require {Mixin} typi
 .oe-carousel {
     @include vertical-list;
+
     display: block;
 
     &__item {
@@ -38,7 +39,7 @@
 
 // VueCarousel customizations
 .VueCarousel-dot {
-    $carousel-nav-focus-bg: #666;
+    $carousel-nav-focus-bg: rgb(102, 102, 102);
 
     margin-top: 0 !important;
     line-height: 10px !important;

@@ -7,12 +7,14 @@
 /// [Bootstrap Reboot]: https://getbootstrap.com/docs/4.1/content/reboot/
 
 @mixin hover {
+
     &:hover {
         @content;
     }
 }
 
 @mixin hover-focus {
+
     &:hover,
     &:focus {
         @content;
@@ -89,7 +91,7 @@ body {
 // might still respond to pointer events.
 //
 // Credit: https://github.com/suitcss/base
-[tabindex="-1"]:focus {
+[tabindex='-1']:focus {
     outline: 0 !important;
 }
 
@@ -100,9 +102,9 @@ body {
 // 2. Show the overflow in Edge and IE.
 
 hr {
+    overflow: visible; // 2
     box-sizing: content-box; // 1
     height: 0; // 1
-    overflow: visible; // 2
 }
 
 
@@ -139,10 +141,10 @@ p {
 
 abbr[title],
 abbr[data-original-title] { // 4
+    border-bottom: 0; // 1
     text-decoration: underline; // 2
     text-decoration: underline dotted; // 2
     cursor: help; // 3
-    border-bottom: 0; // 1
 }
 
 address {
@@ -170,7 +172,7 @@ dt {
 }
 
 dd {
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
     margin-left: 0; // Undo browser default
 }
 
@@ -206,8 +208,9 @@ sup {
     vertical-align: baseline;
 }
 
-sub { bottom: -.25em; }
-sup { top: -.5em; }
+sub { bottom: -0.25em; }
+
+sup { top: -0.5em; }
 
 
 //
@@ -215,9 +218,9 @@ sup { top: -.5em; }
 //
 
 a {
+    background-color: transparent; // Remove the gray background on active links in IE 10.
     color: inherit; // #oeco $link-color;
     text-decoration: none; // #oeco $link-decoration;
-    background-color: transparent; // Remove the gray background on active links in IE 10.
 
     @include hover {
         // #oeco color: $link-hover-color;
@@ -254,17 +257,17 @@ pre,
 code,
 kbd,
 samp {
-    font-family: monospace; // #oeco $font-family-monospace;
     font-size: 1em; // Correct the odd `em` font sizing in all browsers.
+    font-family: monospace; // #oeco $font-family-monospace;
 }
 
 pre {
+    // Don't allow content to break outside
+    overflow: auto;
     // Remove browser default top margin
     margin-top: 0;
     // Reset browser default of `1em` to use `rem`s
     margin-bottom: 0; // #oeco 1rem;
-    // Don't allow content to break outside
-    overflow: auto;
     // We have @viewport set which causes scrollbars to overlap content in IE11 and Edge, so
     // we force a non-overlapping, non-auto-hiding scrollbar to counteract.
     -ms-overflow-style: scrollbar;
@@ -286,8 +289,8 @@ figure {
 //
 
 img {
-    vertical-align: middle;
     border-style: none; // Remove the border on images inside links in IE 10-.
+    vertical-align: middle;
 }
 
 svg {
@@ -353,9 +356,9 @@ select,
 optgroup,
 textarea {
     margin: 0; // Remove the margin in Firefox and Safari
-    font-family: inherit;
     font-size: inherit;
     line-height: inherit;
+    font-family: inherit;
 }
 
 button,
@@ -372,32 +375,32 @@ select {
 //    controls in Android 4.
 // 2. Correct the inability to style clickable types in iOS and Safari.
 button,
-html [type="button"], // 1
-[type="reset"],
-[type="submit"] {
+html [type='button'], 
+[type='reset'],
+[type='submit'] {
     -webkit-appearance: button; // 2
 }
 
 // Remove inner border and padding from Firefox, but don't restore the outline like Normalize.
 button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
+[type='button']::-moz-focus-inner,
+[type='reset']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner {
     padding: 0;
     border-style: none;
 }
 
-input[type="radio"],
-input[type="checkbox"] {
+input[type='radio'],
+input[type='checkbox'] {
     box-sizing: border-box; // 1. Add the correct box sizing in IE 10-
     padding: 0; // 2. Remove the padding in IE 10-
 }
 
 
-input[type="date"],
-input[type="time"],
-input[type="datetime-local"],
-input[type="month"] {
+input[type='date'],
+input[type='time'],
+input[type='datetime-local'],
+input[type='month'] {
     // Remove the default appearance of temporal inputs to avoid a Mobile Safari
     // bug where setting a custom line-height prevents text from being vertically
     // centered within the input.
@@ -421,8 +424,8 @@ fieldset {
     min-width: 0;
     // Reset the default outline behavior of fieldsets so they don't affect page layout.
     padding: 0;
-    margin: 0;
     border: 0;
+    margin: 0;
 }
 
 // 1. Correct the text wrapping in Edge and IE.
@@ -432,10 +435,10 @@ legend {
     width: 100%;
     max-width: 100%; // 1
     padding: 0;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
+    color: inherit; // 2
     font-size: 1.5rem;
     line-height: inherit;
-    color: inherit; // 2
     white-space: normal; // 1
 }
 
@@ -444,12 +447,12 @@ progress {
 }
 
 // Correct the cursor style of increment and decrement buttons in Chrome.
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
     height: auto;
 }
 
-[type="search"] {
+[type='search'] {
     // This overrides the extra rounded corners on search inputs in iOS so that our
     // `.form-control` class can properly style them. Note that this cannot simply
     // be added to `.form-control` as it's not specific enough. For details, see
@@ -462,8 +465,8 @@ progress {
 // Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
 //
 
-[type="search"]::-webkit-search-cancel-button,
-[type="search"]::-webkit-search-decoration {
+[type='search']::-webkit-search-cancel-button,
+[type='search']::-webkit-search-decoration {
     -webkit-appearance: none;
 }
 

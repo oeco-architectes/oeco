@@ -22,10 +22,11 @@
 
         a {
             @include centered-block;
+
             display: block;
-            flex-grow: 1;
             width: $header-width;
             max-width: $header-width-max;
+            flex-grow: 1;
         }
 
         img {
@@ -41,7 +42,8 @@
 
     &--primary {
         @include typi('nav1')
-    }
+    ;
+}
 
     &--secondary,
     &--links {

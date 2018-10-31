@@ -23,12 +23,13 @@ $font-sizes-offsets: (
     nav1: 2px,
     nav2: 1px,
 );
+
 @each $size, $offset in $font-sizes-offsets {
     $typi: map-set($typi, $size, (
-            null: 15px + $offset,
-            tablet: 14px + $offset,
-            desktop: 15px + $offset,
-            wide: 16px + $offset,
+        null: 15px + $offset,
+        tablet: 14px + $offset,
+        desktop: 15px + $offset,
+        wide: 16px + $offset,
     ));
 }
 
@@ -38,13 +39,13 @@ $typi-breakpoint: mq;
 @include typi-init;
 
 html {
-    font-family: 'Oeco Regular', sans-serif;
     font-weight: font-weight(normal);
+    font-family: 'Oeco Regular', sans-serif;
 }
 
 h1, h2, h3 {
-    text-transform: uppercase;
     font-weight: font-weight(light);
+    text-transform: uppercase;
 }
 
 h4, h5, h6, dt, b, strong {
