@@ -30,7 +30,7 @@ class DummyImage extends Image
     public function __construct($width, $height, $color)
     {
         parent::__construct(
-            'https://dummyimage.com/' . $width . 'x' . $height . '/' . $color . '/fff',
+            "https://dummyimage.com/{$width}x{$height}/{$color}/fff",
             $width,
             $height
         );
