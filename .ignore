@@ -1,0 +1,5 @@
+/.deployment
+/coverage
+/node_modules
+/storage
+/vendor
