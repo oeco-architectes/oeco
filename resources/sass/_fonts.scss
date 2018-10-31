@@ -10,16 +10,9 @@ $font-weights: (
     light: 300,
 );
 
-$font-variants: (
-    Regular,
-    // Condensed,
-    // Extended,
-);
+$font-variants: (Regular, /* Condensed, Extended */);
 
-$font-styles: (
-    normal,
-    // italic,
-);
+$font-styles: (normal, /* italic */);
 
 /// Font weight utility
 /// @param {String} $weight Weight alias (any key of `$font-weights`).
