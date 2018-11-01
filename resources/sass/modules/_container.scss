@@ -22,7 +22,7 @@
                 width: $width;
             } @else {
                 @include horizontal-padding(0);
-                @include centered-block;
+                @include centered-block();
 
                 width: $width; // We don't use mq-px2em() to ensure mozaic items fill pixel-erfectly
             }

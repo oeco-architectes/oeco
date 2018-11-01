@@ -8,6 +8,8 @@
 
 @import './lib/lang';
 
+$font-family: 'Oeco Regular';
+
 $typi: (
     base: (
         null: (15px, 1.6),
@@ -25,30 +27,38 @@ $font-sizes-offsets: (
 );
 
 @each $size, $offset in $font-sizes-offsets {
-    $typi: map-set($typi, $size, (
+    $size-values: (
         null: 15px + $offset,
         tablet: 14px + $offset,
         desktop: 15px + $offset,
         wide: 16px + $offset,
-    ));
+    );
+    $typi: map-set($typi, $size, $size-values); // stylelint-disable-line scss/no-duplicate-dollar-variables
 }
 
 $typi-breakpoint: mq;
 
 @import '~typi';
-@include typi-init;
+@include typi-init();
 
 html {
     font-weight: font-weight(normal);
-    font-family: 'Oeco Regular', sans-serif;
+    font-family: $font-family, sans-serif;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-weight: font-weight(light);
     text-transform: uppercase;
 }
 
-h4, h5, h6, dt, b, strong {
+h4,
+h5,
+h6,
+dt,
+b,
+strong {
     font-weight: font-weight(bold);
 }
 

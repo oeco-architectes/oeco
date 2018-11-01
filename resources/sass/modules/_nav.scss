@@ -21,7 +21,7 @@
         margin-bottom: $vertical-spacing;
 
         a {
-            @include centered-block;
+            @include centered-block();
 
             display: block;
             width: $header-width;
@@ -41,9 +41,8 @@
     }
 
     &--primary {
-        @include typi('nav1')
-    ;
-}
+        @include typi('nav1');
+    }
 
     &--secondary,
     &--links {

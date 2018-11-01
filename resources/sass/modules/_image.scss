@@ -18,7 +18,7 @@
     &:not([style^='padding-top:']) {
         @include error('Missing padding-top.');
 
-        padding-top: percentage(9/16);
+        padding-top: percentage(9 / 16);
     }
 
     &:not([style*='background-color:']) {
@@ -26,7 +26,7 @@
     }
 
     &__content {
-        @include cover;
+        @include cover();
 
         object-fit: cover;
         object-position: 50% 50%;

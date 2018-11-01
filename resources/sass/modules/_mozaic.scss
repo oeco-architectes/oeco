@@ -1,10 +1,13 @@
 @import '../lib/lists';
 
+// stylelint-disable max-nesting-depth
+// TODO Refactor
+
 /// Display a vertical list on mobile
 /// @require {Function} vr
 /// @require {Mixin} typi
 .oe-mozaic {
-    @include vertical-list;
+    @include vertical-list();
 
     &__item {
         margin-bottom: vr(2);
@@ -59,13 +62,13 @@
 
                 &__title {
                     @include typi('base');
-                    font-weight: font-weight(normal);
 
+                    font-weight: font-weight(normal);
                     text-transform: none;
                 }
 
                 // :hover is available, display revealing caption
-                @media (any-hover: hover) {
+                @media (any-hover: hover) { // stylelint-disable-line scss/media-feature-value-dollar-variable
                     grid-row-gap: map-get($grid-settings, row-gap);
                     grid-auto-rows: map-get($grid-settings, auto-rows);
 
@@ -95,12 +98,12 @@
 
                     &__title {
                         @include position(absolute, 100%, 0, auto, 0);
+
                         opacity: 0;
                         padding: $caption-padding-v $caption-padding-h;
                         background: linear-gradient(to bottom, $caption-background-top, $caption-background-bottom);
                         color: $caption-color;
                         text-shadow: 0 0 10px $caption-text-shadow;
-
                         transition:
                             opacity $caption-animation-opacity ease-out,
                             transform $caption-animation-transform ease-out;

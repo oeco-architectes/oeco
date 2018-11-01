@@ -67,11 +67,12 @@ $font-style-paths: (
             $style-path: map-get($font-style-paths, $style);
 
             $filename: 'HelveticaNeueLTStd-#{$weight-path}#{$variant-path}#{$style-path}.otf';
+            $family: 'Oeco #{$variant}';
 
             @font-face {
                 font-style: $style;
                 font-weight: $weight;
-                font-family: 'Oeco #{$variant}';
+                font-family: $family;
                 src: url('/fonts/#{$filename}') format('opentype');
             }
         }

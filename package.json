@@ -102,7 +102,13 @@
             "stylelint-config-idiomatic-sass"
         ],
         "rules": {
-            "indentation": 4
+            "font-weight-notation": null,
+            "indentation": 4,
+            "max-line-length": 120,
+            "scss/at-function-named-arguments": null,
+            "scss/at-function-parentheses-space-before": "never",
+            "scss/at-mixin-named-arguments": null,
+            "scss/at-mixin-parentheses-space-before": "never"
         }
     },
     "jest": {

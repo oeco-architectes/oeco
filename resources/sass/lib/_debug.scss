@@ -11,9 +11,9 @@
     $error-prefix: '✖ ERROR';
 
     &::after {
-        @include cover;
-        padding: 1rem;
+        @include cover();
 
+        padding: 1rem;
         background: $error-bg;
         color: $error-color;
         font-weight: bold;
