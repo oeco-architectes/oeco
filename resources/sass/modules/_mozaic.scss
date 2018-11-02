@@ -1,10 +1,13 @@
 @import '../lib/lists';
 
+// stylelint-disable max-nesting-depth
+// TODO Refactor
+
 /// Display a vertical list on mobile
 /// @require {Function} vr
 /// @require {Mixin} typi
 .oe-mozaic {
-    @include vertical-list;
+    @include vertical-list();
 
     &__item {
         margin-bottom: vr(2);
@@ -33,13 +36,14 @@
     $caption-animation-transform: 250ms;
     $caption-padding-h: 1rem;
     $caption-padding-v: 1rem;
-    $caption-color: #fff;
-    $caption-text-shadow: rgba(0, 0, 0, .6);
-    $caption-background-top: rgba(0, 0, 0, .6);
-    $caption-background-bottom: rgba(0, 0, 0, .4);
+    $caption-color: rgb(255, 255, 255);
+    $caption-text-shadow: rgba(0, 0, 0, 0.6);
+    $caption-background-top: rgba(0, 0, 0, 0.6);
+    $caption-background-bottom: rgba(0, 0, 0, 0.4);
 
     @each $breakpoint, $grid-settings in $mozaic-settings {
         @include mq($from: $breakpoint) {
+
             .oe-mozaic {
                 $root: &;
 
@@ -49,28 +53,29 @@
 
                 // Grid is available but not :hover, display captions under images
                 &__item {
-                    margin-bottom: vr(.5);
+                    margin-bottom: vr(0.5);
                 }
 
                 &__image {
-                    margin-bottom: vr(.5);
+                    margin-bottom: vr(0.5);
                 }
 
                 &__title {
                     @include typi('base');
-                    text-transform: none;
+
                     font-weight: font-weight(normal);
+                    text-transform: none;
                 }
 
                 // :hover is available, display revealing caption
-                @media (any-hover: hover) {
-                    grid-auto-rows: map-get($grid-settings, auto-rows);
+                @media (any-hover: hover) { // stylelint-disable-line scss/media-feature-value-dollar-variable
                     grid-row-gap: map-get($grid-settings, row-gap);
+                    grid-auto-rows: map-get($grid-settings, auto-rows);
 
                     &__item {
                         position: relative;
-                        margin-bottom: 0;
                         overflow: hidden;
+                        margin-bottom: 0;
 
                         > a,
                         > a > figure {
@@ -85,29 +90,30 @@
                             grid-column: auto / span 2;
                         }
 
-                        &:hover #{$root}__title { // sass-lint:disable-line force-element-nesting
-                            transform: translateY(-100%);
+                        &:hover #{$root}__title {
                             opacity: 1;
+                            transform: translateY(-100%);
                         }
                     }
 
                     &__title {
                         @include position(absolute, 100%, 0, auto, 0);
-                        transition:
-                            opacity $caption-animation-opacity ease-out, // sass-lint:disable-line indentation
-                            transform $caption-animation-transform ease-out; // sass-lint:disable-line indentation
+
                         opacity: 0;
-                        background: linear-gradient(to bottom, $caption-background-top, $caption-background-bottom);
                         padding: $caption-padding-v $caption-padding-h;
-                        text-shadow: 0 0 10px $caption-text-shadow;
+                        background: linear-gradient(to bottom, $caption-background-top, $caption-background-bottom);
                         color: $caption-color;
+                        text-shadow: 0 0 10px $caption-text-shadow;
+                        transition:
+                            opacity $caption-animation-opacity ease-out,
+                            transform $caption-animation-transform ease-out;
                         will-change: opacity, transform;
                     }
 
                     &__image {
-                        margin-bottom: 0;
-                        padding-top: 0 !important; // sass-lint:disable-line no-important
                         height: 100%;
+                        padding-top: 0 !important;
+                        margin-bottom: 0;
                     }
                 }
             }

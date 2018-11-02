@@ -28,6 +28,7 @@ $font-styles: (
     @if not map-has-key($font-weights, $weight) {
         @error 'Invalid font weight: #{$weight}. Must be one of: #{map-keys($font-weights)}';
     }
+
     @return map-get($font-weights, $weight);
 }
 
@@ -66,10 +67,12 @@ $font-style-paths: (
             $style-path: map-get($font-style-paths, $style);
 
             $filename: 'HelveticaNeueLTStd-#{$weight-path}#{$variant-path}#{$style-path}.otf';
+            $family: 'Oeco #{$variant}';
+
             @font-face {
-                font-family: 'Oeco #{$variant}';
-                font-weight: $weight;
                 font-style: $style;
+                font-weight: $weight;
+                font-family: $family;
                 src: url('/fonts/#{$filename}') format('opentype');
             }
         }

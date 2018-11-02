@@ -2,14 +2,15 @@
 /// @require {Function} vr
 /// @require {Mixin} typi
 .oe-contact {
+
     &__picture {
         margin-bottom: vr(1);
     }
 
     &__caption {
         display: flex;
-        justify-content: space-around;
         margin-bottom: vr(2);
+        justify-content: space-around;
     }
 
     &__caption-member {
@@ -22,6 +23,7 @@
 
     &__title {
         @include typi('heading2');
+
         margin-bottom: vr(1);
         text-align: center;
     }

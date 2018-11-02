@@ -7,20 +7,16 @@
 /// @param {String} $property Property without `left` or `right`
 /// @param {*} $value Value
 @mixin set-horizontal($property, $value) {
-    #{$property}: {
-        right: $value;
-        left: $value;
-    }
+    #{$property}-right: $value;
+    #{$property}-left: $value;
 }
 
 /// Set a top and bottom property
 /// @param {String} $property Property without `top` or `bottom`
 /// @param {*} $value Value
 @mixin set-vertical($property, $value) {
-    #{$property}: {
-        top: $value;
-        bottom: $value;
-    }
+    #{$property}-top: $value;
+    #{$property}-bottom: $value;
 }
 
 /// Set a left and right margin
@@ -80,5 +76,6 @@
 @mixin cover {
     @include position(absolute, 0, 0, 0, 0);
     @include size(100%);
+
     margin: 0;
 }

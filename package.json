@@ -4,8 +4,8 @@
         "lint": "run-p lint:*",
         "lint:ec": "editorconfig-checker --ignore-defaults --exclude-pattern './{.deployment,.git,bootstrap/cache,coverage,node_modules,resources/fonts,storage,vendor}/**' --exclude-pattern './public/**/*.{css,js,svg}'  --exclude-pattern './**/*.{gif,jpg,png,ico,phar,sqlite,log,otf,tar,gz}'",
         "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore --color .",
+        "lint:stylelint": "stylelint --ignore-path .ignore --syntax scss '**/*.scss'",
         "lint:md": "markdownlint *.md .github/*.md doc*/*.md",
-        "lint:scss": "sass-lint -i '.deployment/**, coverage/**, node_modules/**, vendor/**' '**/*.scss' -v -q",
         "test:run": "cross-env NODE_ENV=test jest --color $([ \"$CI\" = '' ] && [ \"$COVERAGE\" = '' ] || echo '--coverage')",
         "test": "npm run test:run -- --watch",
         "dev": "npm run development",
@@ -33,8 +33,11 @@
         "markdownlint-cli": "^0.13.0",
         "npm-run-all": "^4.1.3",
         "pre-commit": "^1.2.2",
-        "sass-lint": "^1.12.1",
         "sass-mq": "^5.0.0",
+        "stylelint": "^9.7.1",
+        "stylelint-config-idiomatic-sass": "^1.0.0",
+        "stylelint-config-strict-scss": "^0.5.0",
+        "stylelint-scss": "^3.3.2",
         "typi": "^3.2.0",
         "vue": "^2.5.17",
         "vue-carousel": "^0.16.0-rc1",
@@ -92,6 +95,21 @@
                 }
             }
         ]
+    },
+    "stylelint": {
+        "extends": [
+            "stylelint-config-strict-scss",
+            "stylelint-config-idiomatic-sass"
+        ],
+        "rules": {
+            "font-weight-notation": null,
+            "indentation": 4,
+            "max-line-length": 120,
+            "scss/at-function-named-arguments": null,
+            "scss/at-function-parentheses-space-before": "never",
+            "scss/at-mixin-named-arguments": null,
+            "scss/at-mixin-parentheses-space-before": "never"
+        }
     },
     "jest": {
         "testRegex": ".*\\.spec\\.jsx?$",

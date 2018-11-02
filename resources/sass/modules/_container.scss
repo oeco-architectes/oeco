@@ -18,10 +18,12 @@
         @include mq($from: $breakpoint) {
             @if ($width == 100%) {
                 @include horizontal-padding($padding-horizontal);
+
                 width: $width;
             } @else {
                 @include horizontal-padding(0);
-                @include centered-block;
+                @include centered-block();
+
                 width: $width; // We don't use mq-px2em() to ensure mozaic items fill pixel-erfectly
             }
         }

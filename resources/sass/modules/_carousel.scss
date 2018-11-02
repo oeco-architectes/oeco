@@ -4,7 +4,8 @@
 /// @require {Function} vr
 /// @require {Mixin} typi
 .oe-carousel {
-    @include vertical-list;
+    @include vertical-list();
+
     display: block;
 
     &__item {
@@ -16,7 +17,7 @@
             cursor: pointer;
 
             // Hide slides except first one during VueCarousel loading
-            &:not(:first-child):not(.VueCarousel-slide) { // sass-lint:disable-line force-pseudo-nesting
+            &:not(:first-child):not(.VueCarousel-slide) { // stylelint-disable-line selector-class-pattern
                 display: none;
             }
         }
@@ -37,9 +38,9 @@
 }
 
 // VueCarousel customizations
-// sass-lint:disable class-name-format, no-important, force-pseudo-nesting
+// stylelint-disable selector-class-pattern
 .VueCarousel-dot {
-    $carousel-nav-focus-bg: #666;
+    $carousel-nav-focus-bg: rgb(102, 102, 102);
 
     margin-top: 0 !important;
     line-height: 10px !important;
@@ -48,8 +49,8 @@
         transition: background 250ms ease-out;
     }
 
-    &:hover &-button,
-    &-button:focus {
+    &-button:focus,
+    &:hover &-button {
         outline: none !important;
         background: $carousel-nav-focus-bg !important;
     }
