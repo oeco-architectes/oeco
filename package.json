@@ -41,7 +41,9 @@
         "sass-mq": "^5.0.0",
         "stylelint": "^9.7.1",
         "stylelint-config-idiomatic-sass": "^1.0.0",
+        "stylelint-config-prettier": "^4.0.0",
         "stylelint-config-strict-scss": "^0.5.0",
+        "stylelint-prettier": "^1.0.3",
         "stylelint-scss": "^3.3.2",
         "typi": "^3.2.0",
         "vue": "^2.5.17",
@@ -111,12 +113,11 @@
     "stylelint": {
         "extends": [
             "stylelint-config-strict-scss",
-            "stylelint-config-idiomatic-sass"
+            "stylelint-config-idiomatic-sass",
+            "stylelint-prettier/recommended"
         ],
         "rules": {
             "font-weight-notation": null,
-            "indentation": 4,
-            "max-line-length": 120,
             "scss/at-function-named-arguments": null,
             "scss/at-function-parentheses-space-before": "never",
             "scss/at-mixin-named-arguments": null,
