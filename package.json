@@ -2,6 +2,7 @@
     "private": true,
     "scripts": {
         "lint": "run-p lint:*",
+        "lint:prettier": "prettier --ignore-path .ignore --list-different '**/*'",
         "lint:eslint": "eslint --ext .js,.vue --ignore-path .gitignore --color .",
         "lint:stylelint": "stylelint --ignore-path .ignore --syntax scss '**/*.scss'",
         "test:run": "cross-env NODE_ENV=test jest --color $([ \"$CI\" = '' ] && [ \"$COVERAGE\" = '' ] || echo '--coverage')",
