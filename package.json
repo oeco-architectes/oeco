@@ -2,8 +2,7 @@
     "private": true,
     "scripts": {
         "lint": "run-p lint:*",
-        "lint:ec": "editorconfig-checker --ignore-defaults --exclude-pattern './{.deployment,.git,bootstrap/cache,coverage,node_modules,resources/fonts,storage,vendor}/**' --exclude-pattern './public/**/*.{css,js,svg}'  --exclude-pattern './**/*.{gif,jpg,png,ico,phar,sqlite,log,otf,tar,gz}'",
-        "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore --color .",
+        "lint:eslint": "eslint --ext .js,.vue --ignore-path .gitignore --color .",
         "lint:stylelint": "stylelint --ignore-path .ignore --syntax scss '**/*.scss'",
         "test:run": "cross-env NODE_ENV=test jest --color $([ \"$CI\" = '' ] && [ \"$COVERAGE\" = '' ] || echo '--coverage')",
         "test": "npm run test:run -- --watch",
@@ -20,7 +19,6 @@
         "@prettier/plugin-php": "^0.9.0",
         "@vue/test-utils": "^1.0.0-beta.25",
         "cross-env": "^5.2.0",
-        "editorconfig-checker": "^1.3.3",
         "eslint": "^5.8.0",
         "eslint-config-airbnb-base": "^13.1.0",
         "eslint-config-prettier": "^3.1.0",
