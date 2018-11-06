@@ -9,14 +9,12 @@
 /// [Bootstrap Reboot]: https://getbootstrap.com/docs/4.1/content/reboot/
 
 @mixin hover {
-
     &:hover {
         @content;
     }
 }
 
 @mixin hover-focus {
-
     &:hover,
     &:focus {
         @content;
@@ -29,7 +27,6 @@
 // styles targeting irrelevant browsers while applying new styles.
 //
 // Normalize is licensed MIT. https://github.com/necolas/normalize.css
-
 
 // Document
 //
@@ -65,7 +62,16 @@ html {
 
 // stylelint-disable selector-list-comma-newline-after
 // Shim for "new" HTML5 structural elements to display correctly (IE10, older browsers)
-article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+article,
+aside,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
     display: block;
 }
 // stylelint-enable selector-list-comma-newline-after
@@ -97,7 +103,6 @@ body {
     outline: 0 !important;
 }
 
-
 // Content grouping
 //
 // 1. Add the correct box sizing in Firefox.
@@ -109,7 +114,6 @@ hr {
     height: 0; // 1
 }
 
-
 //
 // Typography
 //
@@ -119,7 +123,12 @@ hr {
 // By default, `<h1>`-`<h6>` all receive top and bottom margins. We nuke the top
 // margin for easier control within type scales as it avoids margin collapsing.
 // stylelint-disable selector-list-comma-newline-after
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     margin-top: 0;
     margin-bottom: 0; // #oeco $headings-margin-bottom;
 }
@@ -142,7 +151,8 @@ p {
 // 4. Duplicate behavior to the data-* attribute for our tooltip plugin
 
 abbr[title],
-abbr[data-original-title] { // 4
+abbr[data-original-title] {
+    // 4
     border-bottom: 0; // 1
     text-decoration: underline; // 2
     text-decoration: underline dotted; // 2
@@ -210,10 +220,13 @@ sup {
     vertical-align: baseline;
 }
 
-sub { bottom: -0.25em; }
+sub {
+    bottom: -0.25em;
+}
 
-sup { top: -0.5em; }
-
+sup {
+    top: -0.5em;
+}
 
 //
 // Links
@@ -250,7 +263,6 @@ a:not([href]):not([tabindex]) {
     }
 }
 
-
 //
 // Code
 //
@@ -275,7 +287,6 @@ pre {
     -ms-overflow-style: scrollbar;
 }
 
-
 //
 // Figures
 //
@@ -284,7 +295,6 @@ figure {
     // Apply a consistent margin strategy (matches our type styles).
     margin: 0; // #oeco 0 0 1rem;
 }
-
 
 //
 // Images and content
@@ -301,7 +311,6 @@ svg {
     overflow: hidden;
     vertical-align: middle;
 }
-
 
 //
 // Tables
@@ -324,7 +333,6 @@ th {
     // closest parent with a set `text-align`.
     text-align: inherit;
 }
-
 
 //
 // Forms
@@ -397,7 +405,6 @@ input[type='checkbox'] {
     box-sizing: border-box; // 1. Add the correct box sizing in IE 10-
     padding: 0; // 2. Remove the padding in IE 10-
 }
-
 
 input[type='date'],
 input[type='time'],

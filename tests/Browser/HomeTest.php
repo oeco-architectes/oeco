@@ -13,9 +13,7 @@ class HomeTest extends DuskTestCase
     public function testNews()
     {
         $this->browse(function (Browser $browser) {
-            $browser
-                ->visit(new Pages\HomePage())
-                ->assertElementsCount('@news', 20);
+            $browser->visit(new Pages\HomePage())->assertElementsCount('@news', 20);
             $this->assertHasNavigationMenu($browser);
         });
     }

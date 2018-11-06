@@ -59,7 +59,10 @@ class DummyImageTest extends TestCase
         $height = static::TEST_HEIGHT;
         $firstColor = DummyImage::BACKGROUND_COLORS[0];
         $image = DummyImage::fromIndex(0, $width, $height);
-        $this->assertSame("https://dummyimage.com/{$width}x{$height}/{$firstColor}/fff", $image->uri);
+        $this->assertSame(
+            "https://dummyimage.com/{$width}x{$height}/{$firstColor}/fff",
+            $image->uri
+        );
     }
 
     public function testFromIndexCreateAnImageWithLastColorIndex()
@@ -69,7 +72,10 @@ class DummyImageTest extends TestCase
         $colorsNumber = count(DummyImage::BACKGROUND_COLORS);
         $lastColor = DummyImage::BACKGROUND_COLORS[$colorsNumber - 1];
         $image = DummyImage::fromIndex($colorsNumber - 1, $width, $height);
-        $this->assertSame("https://dummyimage.com/{$width}x{$height}/{$lastColor}/fff", $image->uri);
+        $this->assertSame(
+            "https://dummyimage.com/{$width}x{$height}/{$lastColor}/fff",
+            $image->uri
+        );
     }
 
     public function testFromIndexCreateAnImageWithFirstColorForColorsNumber()
@@ -78,6 +84,9 @@ class DummyImageTest extends TestCase
         $height = static::TEST_HEIGHT;
         $firstColor = DummyImage::BACKGROUND_COLORS[0];
         $image = DummyImage::fromIndex(count(DummyImage::BACKGROUND_COLORS), $width, $height);
-        $this->assertSame("https://dummyimage.com/{$width}x{$height}/{$firstColor}/fff", $image->uri);
+        $this->assertSame(
+            "https://dummyimage.com/{$width}x{$height}/{$firstColor}/fff",
+            $image->uri
+        );
     }
 }

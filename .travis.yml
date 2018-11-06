@@ -4,49 +4,49 @@ sudo: false
 
 language: php
 php:
-  - 7.2
+    - 7.2
 addons:
-  chrome: stable
+    chrome: stable
 env:
-  - COMPOSER_NO_INTERACTION=1
-    COMPOSER_PROCESS_TIMEOUT=0
-    PATH="$HOME/.composer/vendor/bin:$PATH"
+    - COMPOSER_NO_INTERACTION=1
+      COMPOSER_PROCESS_TIMEOUT=0
+      PATH="$HOME/.composer/vendor/bin:$PATH"
 install:
-  - travis_retry composer create-project --prefer-dist
+    - travis_retry composer create-project --prefer-dist
 before_script:
-  - composer lint
-  - php artisan serve 2>/dev/null & # Laravel Dusk
-  - |
-    curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-    chmod +x ./cc-test-reporter
-    ./cc-test-reporter before-build
+    - composer lint
+    - php artisan serve 2>/dev/null & # Laravel Dusk
+    - |
+        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+        chmod +x ./cc-test-reporter
+        ./cc-test-reporter before-build
 script:
-  - composer test
+    - composer test
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+    - bash <(curl -s https://codecov.io/bash)
 after_script:
-  - |
-    ./cc-test-reporter format-coverage coverage/php/clover.xml --input-type clover --output coverage/codeclimate.php.json
-    ./cc-test-reporter format-coverage coverage/js/lcov.info --input-type lcov --output coverage/codeclimate.js.json
-    ./cc-test-reporter sum-coverage coverage/codeclimate.*.json
-    ./cc-test-reporter upload-coverage
+    - |
+        ./cc-test-reporter format-coverage coverage/php/clover.xml --input-type clover --output coverage/codeclimate.php.json
+        ./cc-test-reporter format-coverage coverage/js/lcov.info --input-type lcov --output coverage/codeclimate.js.json
+        ./cc-test-reporter sum-coverage coverage/codeclimate.*.json
+        ./cc-test-reporter upload-coverage
 before_deploy:
-  - composer global require amercier/webconsole-cli
-  - composer build
+    - composer global require amercier/webconsole-cli
+    - composer build
 deploy:
-  # Staging
-  - provider: script
-    on:
-      branch: master
-    skip_cleanup: true
-    script: scripts/deploy staging && curl --fail --silent --show-error $STAGING_URL >/dev/null
-  # Production
-  - provider: script
-    on:
-      tags: true
-    skip_cleanup: true
-    script: scripts/deploy production && curl --fail --silent --show-error $PRODUCTION_URL >/dev/null
+    # Staging
+    - provider: script
+      on:
+          branch: master
+      skip_cleanup: true
+      script: scripts/deploy staging && curl --fail --silent --show-error $STAGING_URL >/dev/null
+    # Production
+    - provider: script
+      on:
+          tags: true
+      skip_cleanup: true
+      script: scripts/deploy production && curl --fail --silent --show-error $PRODUCTION_URL >/dev/null
 cache:
-  directories:
-    - $HOME/.composer/cache
-    - $HOME/.npm
+    directories:
+        - $HOME/.composer/cache
+        - $HOME/.npm

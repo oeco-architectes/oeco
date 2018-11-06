@@ -27,7 +27,7 @@ class HomeController extends Controller
         }
 
         return view('home', [
-            'news' => $news
+            'news' => $news,
         ]);
     }
 }

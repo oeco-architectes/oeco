@@ -81,7 +81,10 @@ abstract class DuskTestCase extends BaseTestCase
             if (!empty($body)) {
                 $currentSize = $body->getSize();
                 $size = new WebDriverDimension($currentSize->getWidth(), $currentSize->getHeight());
-                $browser->driver->manage()->window()->setSize($size);
+                $browser->driver
+                    ->manage()
+                    ->window()
+                    ->setSize($size);
             }
             $browser->screenshot("failure-{$this->getName()}-{$key}");
         });

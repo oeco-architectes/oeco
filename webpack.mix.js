@@ -22,18 +22,14 @@ try {
  * file for the application as well as bundling up all the JS files.
  */
 
-mix
-    .js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css', {
-        data: Object.entries(flat(config, { delimiter: '-' }))
-            .map(([name, value]) => `$${name}: ${value};\n`)
-            .join(''),
-    });
+mix.js('resources/js/app.js', 'public/js').sass('resources/sass/app.scss', 'public/css', {
+    data: Object.entries(flat(config, { delimiter: '-' }))
+        .map(([name, value]) => `$${name}: ${value};\n`)
+        .join(''),
+});
 
 if (mix.inProduction()) {
     mix.version();
 } else {
-    mix
-        .webpackConfig({ devtool: 'inline-source-map' })
-        .sourceMaps();
+    mix.webpackConfig({ devtool: 'inline-source-map' }).sourceMaps();
 }
