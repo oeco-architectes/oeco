@@ -35,12 +35,15 @@ class ProjectController extends Controller
 
     protected static function getResponsiveImages($project, Tile $tile)
     {
-        return array_map(function ($breakpoint) use ($project, $tile) {
-            return [
-                static::getImage($project, $breakpoint, $tile),
-                static::getResponsiveQuery($breakpoint),
-            ];
-        }, ['wide', 'desktop']);
+        return array_map(
+            function ($breakpoint) use ($project, $tile) {
+                return [
+                    static::getImage($project, $breakpoint, $tile),
+                    static::getResponsiveQuery($breakpoint),
+                ];
+            },
+            ['wide', 'desktop']
+        );
     }
 
     /**
@@ -62,7 +65,7 @@ class ProjectController extends Controller
         $grid = Mozaic::generate(30, config('ui.mozaic.columns'));
         foreach ($grid->getTiles(true, true) as $i => $tile) {
             $projects[$i] = new Obj();
-            $projects[$i]->category = $categories[ $i % count($categories) ];
+            $projects[$i]->category = $categories[$i % count($categories)];
             $projects[$i]->title = $faker->sentence(8, true);
             $projects[$i]->color = DummyImage::backgroundColorFromIndex($i);
             $projects[$i]->tileType = strtolower("{$tile}");

@@ -10,5 +10,10 @@
 /// @return A new map containing all key/values from `$map`, and the new key/value pair
 /// `$key`/`$value`.
 @function map-set($map, $key, $value) {
-    @return map-merge($map, ($key: $value));
+    @return map-merge(
+        $map,
+        (
+            $key: $value,
+        )
+    );
 }

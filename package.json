@@ -2,10 +2,9 @@
     "private": true,
     "scripts": {
         "lint": "run-p lint:*",
-        "lint:ec": "editorconfig-checker --ignore-defaults --exclude-pattern './{.deployment,.git,bootstrap/cache,coverage,node_modules,resources/fonts,storage,vendor}/**' --exclude-pattern './public/**/*.{css,js,svg}'  --exclude-pattern './**/*.{gif,jpg,png,ico,phar,sqlite,log,otf,tar,gz}'",
-        "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore --color .",
+        "lint:prettier": "prettier --ignore-path .ignore --list-different '**/*'",
+        "lint:eslint": "eslint --ext .js,.vue --ignore-path .gitignore --color .",
         "lint:stylelint": "stylelint --ignore-path .ignore --syntax scss '**/*.scss'",
-        "lint:md": "markdownlint *.md .github/*.md doc*/*.md",
         "test:run": "cross-env NODE_ENV=test jest --color $([ \"$CI\" = '' ] && [ \"$COVERAGE\" = '' ] || echo '--coverage')",
         "test": "npm run test:run -- --watch",
         "dev": "npm run development",
@@ -18,34 +17,54 @@
         "pre-commit": "run-p lint"
     },
     "devDependencies": {
+        "@prettier/plugin-php": "^0.9.0",
         "@vue/test-utils": "^1.0.0-beta.25",
         "cross-env": "^5.2.0",
-        "editorconfig-checker": "^1.3.3",
         "eslint": "^5.8.0",
         "eslint-config-airbnb-base": "^13.1.0",
+        "eslint-config-prettier": "^3.1.0",
         "eslint-plugin-import": "^2.14.0",
+        "eslint-plugin-prettier": "^3.0.0",
+        "eslint-plugin-unicorn": "^6.0.1",
         "eslint-plugin-vue": "^4.7.1",
         "flat": "^4.1.0",
+        "husky": "^1.1.3",
         "jest": "^23.6.0",
         "jest-serializer-vue": "^2.0.2",
         "js-yaml": "^3.12.0",
         "laravel-mix": "^2.1.14",
-        "markdownlint-cli": "^0.13.0",
+        "lint-staged": "^8.0.4",
         "npm-run-all": "^4.1.3",
-        "pre-commit": "^1.2.2",
+        "prettier": "^1.14.3",
         "sass-mq": "^5.0.0",
         "stylelint": "^9.7.1",
         "stylelint-config-idiomatic-sass": "^1.0.0",
+        "stylelint-config-prettier": "^4.0.0",
         "stylelint-config-strict-scss": "^0.5.0",
+        "stylelint-prettier": "^1.0.3",
         "stylelint-scss": "^3.3.2",
         "typi": "^3.2.0",
         "vue": "^2.5.17",
         "vue-carousel": "^0.16.0-rc2",
         "vue-jest": "^3.0.0"
     },
-    "pre-commit": [
-        "pre-commit"
-    ],
+    "lint-staged": {
+        "*": [
+            "prettier --ignore-path .ignore --list-different"
+        ],
+        "*.{js,vue}": [
+            "eslint",
+            "npm run test:run -- --bail --findRelatedTests"
+        ],
+        "*.scss": [
+            "stylelint --syntax scss"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
     "babel": {
         "env": {
             "test": {
@@ -62,10 +81,17 @@
             }
         }
     },
+    "prettier": {
+        "singleQuote": true,
+        "trailingComma": "all"
+    },
     "eslintConfig": {
         "extends": [
             "airbnb-base",
-            "plugin:vue/essential"
+            "plugin:vue/essential",
+            "plugin:prettier/recommended",
+            "prettier",
+            "prettier/unicorn"
         ],
         "rules": {
             "indent": [
@@ -99,12 +125,11 @@
     "stylelint": {
         "extends": [
             "stylelint-config-strict-scss",
-            "stylelint-config-idiomatic-sass"
+            "stylelint-config-idiomatic-sass",
+            "stylelint-prettier/recommended"
         ],
         "rules": {
             "font-weight-notation": null,
-            "indentation": 4,
-            "max-line-length": 120,
             "scss/at-function-named-arguments": null,
             "scss/at-function-parentheses-space-before": "never",
             "scss/at-mixin-named-arguments": null,

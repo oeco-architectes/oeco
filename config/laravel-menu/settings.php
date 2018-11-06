@@ -7,7 +7,7 @@ return array(
         'active_class' => 'oe-menu__item--active',
         'restful' => false,
         'cascade_data' => true,
-        'rest_base' => '',      // string|array
-        'active_element' => 'item',  // item|link
+        'rest_base' => '', // string|array
+        'active_element' => 'item', // item|link
     ),
 );

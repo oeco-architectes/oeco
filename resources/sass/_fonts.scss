@@ -10,16 +10,9 @@ $font-weights: (
     light: 300,
 );
 
-$font-variants: (
-    Regular,
-    // Condensed,
-    // Extended,
-);
+$font-variants: (Regular, /* Condensed, Extended */);
 
-$font-styles: (
-    normal,
-    // italic,
-);
+$font-styles: (normal, /* italic */);
 
 /// Font weight utility
 /// @param {String} $weight Weight alias (any key of `$font-weights`).
@@ -35,15 +28,23 @@ $font-styles: (
 // Font face definitions
 // ---------------------
 
+// - 25 Ultra Light
+// - 35 Thin
+// - 45 Light
+// - 55 Roman
+// - 65 Medium
+// - 75 Bold
+// - 85 Heavy
+// - 95 Black
 $font-weight-paths: (
-    200: 'UltLt', // 25 Ultra Light
-    300: 'Th', // 35 Thin
-    400: 'Lt', // 45 Light
-    500: 'Roman', // 55 Roman
-    600: 'Md', // 65 Medium
-    700: 'Bd', // 75 Bold
-    800: 'Hv', // 85 Heavy
-    900: 'Blk', // 95 Black
+    200: 'UltLt',
+    300: 'Th',
+    400: 'Lt',
+    500: 'Roman',
+    600: 'Md',
+    700: 'Bd',
+    800: 'Hv',
+    900: 'Blk',
 );
 
 $font-variant-paths: (
@@ -52,9 +53,11 @@ $font-variant-paths: (
     Extended: 'Ex',
 );
 
+// - <>
+// - Oblique
 $font-style-paths: (
     normal: '',
-    italic: 'O', // Oblique
+    italic: 'O',
 );
 
 @each $variant in $font-variants {

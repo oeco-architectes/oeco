@@ -22,7 +22,7 @@ class DuskBrowser extends Browser
         }
 
         $anchor = $this->resolver->find("a[href$='{$href}']");
-        $hasText = $anchor && (strpos($anchor->getText(), $link) !== false);
+        $hasText = $anchor && strpos($anchor->getText(), $link) !== false;
         PHPUnit::assertTrue($anchor && $hasText, $message);
 
         return $this;

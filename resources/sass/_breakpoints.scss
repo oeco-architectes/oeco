@@ -27,11 +27,12 @@ $mq-breakpoints: (
 @import '~sass-mq';
 
 /// Container widths
+// prettier-ignore
 $container-widths: (
     mobile: 100%,
     tablet: 700px,
     desktop: #{($mozaic-columns * $mozaic-desktop-width) + ($mozaic-columns - 1) * $mozaic-desktop-gap}px,
-    wide: #{($mozaic-columns * $mozaic-wide-width) + ($mozaic-columns - 1) * $mozaic-wide-gap}px
+    wide: #{($mozaic-columns * $mozaic-wide-width) + ($mozaic-columns - 1) * $mozaic-wide-gap}px,
 );
 
 /// Mozaic config
@@ -47,5 +48,5 @@ $mozaic-settings: (
         auto-rows: #{$mozaic-wide-height}px,
         column-gap: #{$mozaic-wide-gap}px,
         row-gap: #{$mozaic-wide-gap}px,
-    )
+    ),
 );

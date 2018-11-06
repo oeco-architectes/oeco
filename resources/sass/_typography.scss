@@ -12,7 +12,10 @@ $font-family: 'Oeco Regular';
 
 $typi: (
     base: (
-        null: (15px, 1.6),
+        null: (
+            15px,
+            1.6,
+        ),
         tablet: 14px,
         desktop: 15px,
         wide: 16px,
@@ -33,7 +36,8 @@ $font-sizes-offsets: (
         desktop: 15px + $offset,
         wide: 16px + $offset,
     );
-    $typi: map-set($typi, $size, $size-values); // stylelint-disable-line scss/no-duplicate-dollar-variables
+    // stylelint-disable-next-line scss/no-duplicate-dollar-variables
+    $typi: map-set($typi, $size, $size-values);
 }
 
 $typi-breakpoint: mq;

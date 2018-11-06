@@ -1,12 +1,9 @@
-Oeco Architectes website
-========================
+# Oeco Architectes website
 
 [![Build Status](https://travis-ci.org/oeco-architectes/oeco.svg?branch=master)](https://travis-ci.org/oeco-architectes/oeco)
 [![Test Coverage](https://img.shields.io/codecov/c/github/oeco-architectes/oeco/master.svg)](https://codecov.io/github/oeco-architectes/oeco?branch=master)
-[![Technical Debt](https://img.shields.io/codeclimate/tech-debt/oeco-architectes/oeco.svg)](https://codeclimate.com/github/oeco-architectes/oeco) [![Greenkeeper badge](https://badges.greenkeeper.io/oeco-architectes/oeco.svg)](https://greenkeeper.io/)
 
-Requirements
-------------
+## Requirements
 
 - [PHP] CLI (see required version in [composer.json])
 - [Composer]
@@ -37,8 +34,7 @@ Download and install:
 - [Composer for Windows]
 - [Latest Node.JS]
 
-Development environment
------------------------
+## Development environment
 
 ### Development installation
 
@@ -89,8 +85,7 @@ composer start
 composer test:e2e
 ```
 
-Production environment
-----------------------
+## Production environment
 
 ### Server requirements
 
@@ -115,29 +110,28 @@ composer build # Optimize Composer autoloader, and generate public/{css,fonts,js
 
 Serve `public/` directory.
 
-Continuous Delivery
--------------------
+## Continuous Delivery
 
 Continuous delivery is setup as follows:
+
 1. Each commit triggers a build on [Travis CI], which runs linting (`composer test`) and all tests (`composer test`)
 2. If the commit belongs to the `master` branch, deployment is done on the **staging** platform.
 3. If the commit is a `tag`, deployment is done on the **production** platform.
 
 See [.travis.yml] for details.
 
-License
--------
+## License
 
 Copyright © 2018 Alex Mercier and Oeco Architectes. All rights reserved.
 
-[PHP]: http://php.net/
-[Composer]: https://getcomposer.org/
-[NodeJS]: https://nodejs.org/en/
-[NVM]: https://github.com/creationix/nvm
-[PHP for Windows]: https://windows.php.net/download
-[Composer for Windows]: https://getcomposer.org/Composer-Setup.exe
-[Latest Node.JS]: https://nodejs.org/en/download/current/
-[Apache]: https://www.apache.org/
+[php]: http://php.net/
+[composer]: https://getcomposer.org/
+[nodejs]: https://nodejs.org/en/
+[nvm]: https://github.com/creationix/nvm
+[php for windows]: https://windows.php.net/download
+[composer for windows]: https://getcomposer.org/Composer-Setup.exe
+[latest node.js]: https://nodejs.org/en/download/current/
+[apache]: https://www.apache.org/
 [composer.json]: composer.json
-[Travis CI]: https://travis-ci.org/oeco-architectes/oeco
+[travis ci]: https://travis-ci.org/oeco-architectes/oeco
 [.travis.yml]: ./.travis.yml

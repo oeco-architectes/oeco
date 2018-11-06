@@ -38,10 +38,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\GenerateMenus::class,
         ],
 
-        'api' => [
-            'throttle:60,1',
-            'bindings',
-        ],
+        'api' => ['throttle:60,1', 'bindings'],
     ];
 
     /**
