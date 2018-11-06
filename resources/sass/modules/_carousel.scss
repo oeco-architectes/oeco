@@ -17,7 +17,8 @@
             cursor: pointer;
 
             // Hide slides except first one during VueCarousel loading
-            &:not(:first-child):not(.VueCarousel-slide) { // stylelint-disable-line selector-class-pattern
+            // stylelint-disable-next-line selector-class-pattern
+            &:not(:first-child):not(.VueCarousel-slide) {
                 display: none;
             }
         }
@@ -32,7 +33,7 @@
         @include typi('heading2');
     }
 
-    &__headline, {
+    &__headline {
         font-size: inherit;
     }
 }

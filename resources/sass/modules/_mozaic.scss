@@ -43,7 +43,6 @@
 
     @each $breakpoint, $grid-settings in $mozaic-settings {
         @include mq($from: $breakpoint) {
-
             .oe-mozaic {
                 $root: &;
 
@@ -68,7 +67,8 @@
                 }
 
                 // :hover is available, display revealing caption
-                @media (any-hover: hover) { // stylelint-disable-line scss/media-feature-value-dollar-variable
+                // stylelint-disable-next-line scss/media-feature-value-dollar-variable
+                @media (any-hover: hover) {
                     grid-row-gap: map-get($grid-settings, row-gap);
                     grid-auto-rows: map-get($grid-settings, auto-rows);
 
@@ -101,11 +101,14 @@
 
                         opacity: 0;
                         padding: $caption-padding-v $caption-padding-h;
-                        background: linear-gradient(to bottom, $caption-background-top, $caption-background-bottom);
+                        background: linear-gradient(
+                            to bottom,
+                            $caption-background-top,
+                            $caption-background-bottom
+                        );
                         color: $caption-color;
                         text-shadow: 0 0 10px $caption-text-shadow;
-                        transition:
-                            opacity $caption-animation-opacity ease-out,
+                        transition: opacity $caption-animation-opacity ease-out,
                             transform $caption-animation-transform ease-out;
                         will-change: opacity, transform;
                     }
