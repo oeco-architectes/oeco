@@ -31,7 +31,6 @@ return [
             '/storage/framework/views/*',
             '/vendor',
             '/.*',
-            '/cc-test-reporter',
             '/package.json',
             '/package-lock.json',
             '/phpunit.xml',
