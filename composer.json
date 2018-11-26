@@ -90,8 +90,7 @@
         ],
         "test": [
             "@composer test:js",
-            "@composer test:php",
-            "@composer test:e2e"
+            "@composer test:php"
         ],
         "test:php": [
             "cat .composer-phpunit.txt",
@@ -101,7 +100,7 @@
             "cat .composer-npm-test.txt",
             "npm run test:run"
         ],
-        "test:e2e": [
+        "test-e2e": [
             "cat .composer-dusk.txt",
             "@php artisan dusk"
         ],
