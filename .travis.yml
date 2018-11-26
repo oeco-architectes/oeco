@@ -18,6 +18,7 @@ before_script:
     - php artisan serve 2>/dev/null & # Laravel Dusk
 script:
     - composer test
+    - travis_retry composer test-e2e
 after_success:
     - bash <(curl -s https://codecov.io/bash)
 before_deploy:
