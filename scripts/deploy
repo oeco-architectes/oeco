@@ -89,6 +89,7 @@ else
         port = 22
         path = /home/$ftp_username/$ftp_path
         passive = true
+        upload_untracked[] = public
     " | sed 's/^ *//g' > "$1.ini"
 fi
 echo "Deploying using deploy-$1.ini..."
