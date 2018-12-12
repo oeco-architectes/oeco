@@ -108,11 +108,9 @@
             "git-deploy"
         ],
         "migrate": [
-            "@php artisan down --no-interaction",
             "@php artisan cache:clear --no-interaction",
             "@php artisan config:cache --no-interaction",
-            "@php artisan migrate --force --no-interaction",
-            "@php artisan up --no-interaction"
+            "@php artisan migrate --force --no-interaction"
         ],
         "optimize": [
             "@composer dump-autoload --optimize --classmap-authoritative"

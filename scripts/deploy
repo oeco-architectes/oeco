@@ -51,6 +51,20 @@ getenv() {
     echo "$value"
 }
 
+# Execute a command remotely
+execute_remotely() {
+    webconsole -u "$ssh_username" -p "$ssh_password" -P "$ftp_path" "$ssh_url" "$@"
+}
+
+# Check whether files exist remotely
+files_exist_remotely() {
+    if [ "$(execute_remotely "find $* -maxdepth 0 2>/dev/null | wc -l")" = "$#" ]; then
+        return 0;
+    else
+        return 1;
+    fi
+}
+
 # Check argument
 if [ "$#" != 1 ] || [ "$1" != "staging" ] && [ "$1" != "production" ]
 then
@@ -73,7 +87,18 @@ ssh_username="$(getenv "$1" SSH_USERNAME)" || exit 1
 ssh_password="$(getenv "$1" SSH_PASSWORD)" || exit 1
 ssh_url="$(getenv "$1" SSH_URL)"
 
-# Deploy
+# 1. Maintenace mode ON
+if files_exist_remotely artisan vendor; then
+    maintenance=true
+else
+    maintenance=false
+fi
+if [ "$maintenance" = true ]; then
+    echo Turning maintenance mode ON...
+    execute_remotely "php artisan down --no-interaction --message=\"Upgrading Website\" --retry=30"
+fi
+
+# 2. Deploy
 if [ -f "deploy-$1.ini" ]; then
     echo "Found deploy-$1.ini"
 else
@@ -95,6 +120,22 @@ fi
 echo "Deploying using deploy-$1.ini..."
 composer deploy -- "$1"
 
-# Run post-deploy script remotely
-webconsole -u "$ssh_username" -p "$ssh_password" -P "$ftp_path" "$ssh_url" chmod +x scripts/post-deploy
-webconsole -u "$ssh_username" -p "$ssh_password" -P "$ftp_path" "$ssh_url" scripts/post-deploy
+# 3. Install or upgrade Composer
+if files_exist_remotely composer.phar; then
+    echo Composer is already installed, running self-upgrade...
+    execute_remotely php composer.phar self-update
+else
+    echo Could not find composer.phar, downloading...
+    execute_remotely "curl -s https://getcomposer.org/installer | php"
+fi
+
+# 4. Project setup
+execute_remotely php composer.phar --no-interaction install --no-dev
+execute_remotely php composer.phar --no-interaction migrate
+execute_remotely php composer.phar --no-interaction optimize
+
+# 5. Maintenance mode OFF
+if [ "$maintenance" = true ]; then
+    echo Turning maintenance mode OFF...
+    execute_remotely php artisan up
+fi
