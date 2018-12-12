@@ -27,9 +27,9 @@ before_deploy:
 deploy:
     # Staging
     - provider: script
-      on:
-          branch: master
       skip_cleanup: true
+      on:
+          all_branches: true
       script: scripts/deploy staging && curl --fail --silent --show-error $STAGING_URL >/dev/null
     # Production
     - provider: script
