@@ -1,7 +1,3 @@
-# Use container-based infrastructure, preventing FTP deployment errors:
-# Error: php_connect_nonb() failed: Operation now in progress (115)
-sudo: false
-
 language: php
 php:
     - 7.2
