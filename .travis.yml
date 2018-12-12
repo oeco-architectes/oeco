@@ -21,9 +21,9 @@ script:
     - travis_retry composer test-e2e
 after_success:
     - bash <(curl -s https://codecov.io/bash)
+    - composer build # Prevent merging PRs that fail the build
 before_deploy:
     - composer global require amercier/webconsole-cli
-    - composer build
 deploy:
     # Staging
     - provider: script
