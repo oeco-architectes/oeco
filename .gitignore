@@ -10,10 +10,10 @@
 /storage/*.key
 /vendor
 /coverage
-/.deployment
 /.idea
 /.vscode
 /.vagrant
+/*.ini
 Homestead.json
 Homestead.yaml
 npm-debug.log

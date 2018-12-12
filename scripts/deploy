@@ -74,7 +74,25 @@ ssh_password="$(getenv "$1" SSH_PASSWORD)" || exit 1
 ssh_url="$(getenv "$1" SSH_URL)"
 
 # Deploy
-FTP_USERNAME="$ftp_username" FTP_PASSWORD="$ftp_password" FTP_HOST="$ftp_host" FTP_PATH="$ftp_path" composer deploy
+if [ -f "deploy-$1.ini" ]; then
+    echo "Found deploy-$1.ini"
+else
+    echo "Generating deploy-$1.ini..."
+    echo "
+        [server]
+
+        scheme = sftp
+        skip = false
+        user = $ftp_username
+        pass = $ftp_password
+        host = $ftp_host
+        port = 22
+        path = /home/$ftp_username/$ftp_path
+        passive = true
+    " | sed 's/^ *//g' > "$1.ini"
+fi
+echo "Deploying using deploy-$1.ini..."
+composer deploy -- "$1"
 
 # Run post-deploy script remotely
 webconsole -u "$ssh_username" -p "$ssh_password" -P "$ftp_path" "$ssh_url" chmod +x scripts/post-deploy
