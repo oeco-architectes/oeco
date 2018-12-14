@@ -1,4 +1,3 @@
-/.deployment
 /bootstrap/cache
 /coverage
 /node_modules
@@ -19,6 +18,7 @@ fonts
 
 *.cache
 *.config
+*.ini
 *.key
 *.lock
 *.log

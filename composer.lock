@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9f923a141b5e9be15da04e201a414e5d",
+    "content-hash": "ff07edf342280df64a76a904ff78142e",
     "packages": [
         {
             "name": "amercier/rectangular-mozaic",
@@ -2790,66 +2790,86 @@
     ],
     "packages-dev": [
         {
-            "name": "dg/ftp-deployment",
-            "version": "v3.1.0",
+            "name": "brunodebarros/git-deploy-php",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/dg/ftp-deployment.git",
-                "reference": "59c93835a6d3a9749b7ce3e7a9bf52fee5e73897"
+                "url": "https://github.com/BrunoDeBarros/git-deploy-php.git",
+                "reference": "b0fa80a08dc0d980adb259d1593a961e683616c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dg/ftp-deployment/zipball/59c93835a6d3a9749b7ce3e7a9bf52fee5e73897",
-                "reference": "59c93835a6d3a9749b7ce3e7a9bf52fee5e73897",
+                "url": "https://api.github.com/repos/BrunoDeBarros/git-deploy-php/zipball/b0fa80a08dc0d980adb259d1593a961e683616c8",
+                "reference": "b0fa80a08dc0d980adb259d1593a961e683616c8",
                 "shasum": ""
             },
-            "require": {
-                "ext-zlib": "*",
-                "php": ">=7.1"
-            },
             "require-dev": {
-                "nette/tester": "~1.3"
-            },
-            "suggest": {
-                "ext-ftp": "to connect to ftp:// server",
-                "ext-json": "to preprocess CSS files via online service",
-                "ext-openssl": "to connect to ftps:// server and preprocess CSS files",
-                "ext-ssh2": "to connect to sftp:// server"
+                "league/climate": "^3.2",
+                "league/flysystem": "^1.0",
+                "phpseclib/phpseclib": "^2.0",
+                "phpunit/phpunit": "^5.1"
             },
             "bin": [
-                "deployment"
+                "git-deploy"
             ],
-            "type": "project",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0-dev"
-                }
-            },
+            "type": "library",
             "autoload": {
-                "classmap": [
-                    "src/"
-                ]
+                "psr-4": {
+                    "Brunodebarros\\Gitdeploy\\": "tools/src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
+                "MIT"
             ],
             "authors": [
                 {
-                    "name": "David Grudl",
-                    "homepage": "https://davidgrudl.com"
+                    "name": "Bruno Moreira De Barros",
+                    "email": "bruno@terraduo.com",
+                    "homepage": "https://terraduo.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Mangirdas Skripka",
+                    "email": "mangirdas@impresspages.org",
+                    "homepage": "http://www.impresspages.org",
+                    "role": "Developer"
+                },
+                {
+                    "name": "sbtsrbayer",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Tijmen Brommet",
+                    "email": "tijmen@gmail.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Michael Naurbjerg",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Sergey Volkov",
+                    "email": "sergey.volkov.kh@yandex.ua",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Jesse Dobbelaere",
+                    "email": "jesse@dobbelaere-ae.be",
+                    "homepage": "http://www.jessedobbelae.re",
+                    "role": "Developer"
                 }
             ],
-            "description": "A tool for automated deployment of web applications to an FTP server.",
-            "homepage": "https://github.com/dg/ftp-deployment",
+            "description": "git-deploy-php is a simple php-based tool that deploys your Git repositories to FTP/SFTP servers, and keeps them updated automatically.",
+            "homepage": "http://brunodebarros.github.io/git-deploy-php/",
             "keywords": [
-                "deployment",
+                "deploy",
                 "ftp",
-                "ssh"
+                "git",
+                "php",
+                "sftp"
             ],
-            "time": "2018-11-04T12:11:48+00:00"
+            "time": "2017-10-23T12:28:58+00:00"
         },
         {
             "name": "doctrine/instantiator",

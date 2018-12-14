@@ -20,7 +20,7 @@
         "lavary/laravel-menu": "^1.7"
     },
     "require-dev": {
-        "dg/ftp-deployment": "^3.1",
+        "brunodebarros/git-deploy-php": "^2.0",
         "filp/whoops": "^2.3",
         "laravel/dusk": "^4.0",
         "mockery/mockery": "^1.2",
@@ -105,14 +105,12 @@
             "@php artisan dusk"
         ],
         "deploy": [
-            "deployment .deployment.php"
+            "git-deploy"
         ],
         "migrate": [
-            "@php artisan down --no-interaction",
             "@php artisan cache:clear --no-interaction",
             "@php artisan config:cache --no-interaction",
-            "@php artisan migrate --force --no-interaction",
-            "@php artisan up --no-interaction"
+            "@php artisan migrate --force --no-interaction"
         ],
         "optimize": [
             "@composer dump-autoload --optimize --classmap-authoritative"
