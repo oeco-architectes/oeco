@@ -49,7 +49,7 @@
         "stylelint-scss": "^3.4.1",
         "typi": "^3.2.0",
         "vue": "^2.5.18",
-        "vue-carousel": "^0.17.0",
+        "vue-carousel": "^0.18.0",
         "vue-jest": "^3.0.1"
     },
     "lint-staged": {
