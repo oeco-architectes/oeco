@@ -29,7 +29,7 @@
         "eslint-plugin-unicorn": "^8.0.0",
         "eslint-plugin-vue": "^5.0.0",
         "flat": "^4.1.0",
-        "husky": "^2.0.0",
+        "husky": "^3.0.0",
         "jest": "^23.6.0",
         "jest-serializer-vue": "^2.0.2",
         "js-yaml": "^3.12.0",
