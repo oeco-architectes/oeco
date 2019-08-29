@@ -39,7 +39,7 @@
         "prettier": "^1.15.3",
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.15.2",
-        "sass-loader": "^7.1.0",
+        "sass-loader": "^8.0.0",
         "sass-mq": "^5.0.0",
         "stylelint": "^9.9.0",
         "stylelint-config-idiomatic-sass": "^1.0.0",
