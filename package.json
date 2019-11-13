@@ -27,7 +27,7 @@
         "eslint-plugin-import": "^2.14.0",
         "eslint-plugin-prettier": "^3.0.0",
         "eslint-plugin-unicorn": "^8.0.0",
-        "eslint-plugin-vue": "^5.0.0",
+        "eslint-plugin-vue": "^6.0.1",
         "flat": "^4.1.0",
         "husky": "^2.0.0",
         "jest": "^23.6.0",
